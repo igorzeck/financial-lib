@@ -307,7 +307,8 @@ int generate_amortization_schedule(
 
 A função deve preencher o array recebido com os dados de cada mês.
 
-OBS: A função deve retornar 0 em caso de sucesso e um código diferente de zero em caso de erro.
+#### Observação
+A função deve retornar 0 em caso de sucesso e um código diferente de zero em caso de erro.
 
 ---
 
