@@ -1,12 +1,18 @@
+/*
+File for automated tests.
+*/
+
 #include <stdio.h>
 #include "finance.h"
 // TODO: Interactivity
 // TODO: Judge
+// TODO: Link to images
 
-int main() {
-    double principal = 1000.0;
-    double rate = 0.05;
-    int periods = 12;
+int main()
+{
+    double principal = 0;
+    double rate = 0;
+    int periods = 0;
 
     printf("Juros simples: %.2f\n", simple_interest(principal, rate, periods));
     printf("Montante simples: %.2f\n", simple_interest_amount(principal, rate, periods));
