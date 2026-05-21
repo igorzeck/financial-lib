@@ -9,6 +9,12 @@ typedef struct {
     double remaining_balance;
 } AmortizationRow;
 
+// Table of AmortizationRows.
+typedef struct {
+    int length;
+    AmortizationRow *row_array;
+} AmortizationTable;
+
 // -- Functions --
 // Functions declared here meant to be visibile for every caller
 
@@ -19,6 +25,12 @@ typedef struct {
 *               maximum length should be 3.
 */
 void printf_currency(double value, char* currency_str);
+
+void print_schedule_header();
+void print_schedule_row(AmortizationRow sched_row);
+void print_schedule_table(AmortizationTable sched_table);
+void head_schedule_table(AmortizationTable sched_table);
+void tail_schedule_table(AmortizationTable sched_table);
 
 // TODO: Maybe an aggregator between 3 functions?
 
@@ -65,13 +77,25 @@ double fixed_installment(
     int months
 );
 
-// Monthly principal due to amrtized loan:
-// principal_payment:
-// 
-// total_monthly_payment - (outstanding_loan_balance * (monthly_rate / months))
-// Total monthly payment:
+// Monthly armotized schedule uses the following formulae:
+// The function expects an already allocated schedule struct.
 //
-// loan_amount * (montlhy_interest_rate * (1 + montlhy_interest_rate) ^ number_payments) / ((1 + montlhy_interest_rate) ^ number_payments - 1))
+// Total monthly payment (`monthly_due`):
+//
+// `loan_amount * (montlhy_interest_rate * (1 + montlhy_interest_rate) ^ number_payments) / ((1 + montlhy_interest_rate) ^ number_payments - 1))`
+//
+// Pay to interest (`monthly_interest_pay`):
+// 
+// `monthly_rate * principal_due_yestermonth`
+//
+// Pay to principal (`monthly_principal_pay`):
+// 
+//  `monthly_due - monthly_interest_pay`
+//
+// Princpal balance (`principal_due`):
+//
+// `principal_due_yestermonth - monthly_principal_pay`
+//
 int generate_amortization_schedule(
     double principal,
     double monthly_rate,
