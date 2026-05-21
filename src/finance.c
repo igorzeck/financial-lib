@@ -7,17 +7,10 @@
 // Ideally should be on a MACRO for pre-compilation
 const int LINE_WIDTH = 76;
 
-void printf_currency(double value, char* currency_str) {
-    if (strlen(currency_str) > 3) {
-        fprintf(stderr, "printf_currency: currency code too long\n");
-        return;
-    }
-    
-    // TODO: Make this safe on 'currency_str'
-    printf("%.2lf %s", value, currency_str);
-}
+// - Helpers -
 
-void print_schedule_header() {
+// Prints Schedule table header
+void _print_schedule_header() {
     printf("|%-5s|%-19s|%-8s|%-19s|%-19s|\n",
     "Month","Installment","Interest","Amortization","Remaining");
     
@@ -26,6 +19,16 @@ void print_schedule_header() {
     for (int i = 0; i < LINE_WIDTH; i++) printf("%c", '-');
     
     printf("\n");
+}
+
+void printf_currency(double value, char* currency_str) {
+    if (strlen(currency_str) > 3) {
+        fprintf(stderr, "printf_currency: currency code too long\n");
+        return;
+    }
+    
+    // TODO: Make this safe on 'currency_str'
+    printf("%.2lf %s", value, currency_str);
 }
 
 void print_schedule_row(AmortizationRow sched_row) {
@@ -39,7 +42,7 @@ void print_schedule_row(AmortizationRow sched_row) {
 }
 
 void print_schedule_table(AmortizationTable sched_table) {    
-    print_schedule_header();
+    _print_schedule_header();
     for (int _m = 0; _m < sched_table.length; _m++) {
         print_schedule_row(sched_table.row_array[_m]);
     }
@@ -47,7 +50,7 @@ void print_schedule_table(AmortizationTable sched_table) {
 }
 
 void head_schedule_table(AmortizationTable sched_table) {
-    print_schedule_header();
+    _print_schedule_header();
     for (int _m = 0; (_m < 5) && (_m < sched_table.length); _m++) {
         print_schedule_row(sched_table.row_array[_m]);
     }
@@ -55,7 +58,7 @@ void head_schedule_table(AmortizationTable sched_table) {
 }
 
 void tail_schedule_table(AmortizationTable sched_table) {
-    print_schedule_header();
+    _print_schedule_header();
     for (int _m = sched_table.length - 1; (_m >= 0) && (_m >= (sched_table.length - 5)); _m--) {
         print_schedule_row(sched_table.row_array[_m]);
     }
@@ -164,7 +167,7 @@ int generate_amortization_schedule(double principal, double monthly_rate, int mo
         schedule[_m_i].installment       = monthly_due;
         schedule[_m_i].interest          = monthly_rate;
         schedule[_m_i].remaining_balance = principal_due;
-        schedule[_m_i].amortization      = principal;
+        schedule[_m_i].amortization      = monthly_principal_pay;
     }
 
     return 0;

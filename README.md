@@ -84,6 +84,8 @@ To clean the output executables.
 
 Here are the major sources and references for the making of this project:
 
+**Basic C consultation**: https://beej.us/guide/bgclr/ (and others)
+
 **Basic financial formulae**: `INSTRUCTIONS.md`
 
 **Library strcuture**: https://github.com/curl/curl/blob/master/include/curl/curl.h (and others)

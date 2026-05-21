@@ -1,3 +1,6 @@
+// TODO: Make validations for upper limit for values
+// TODO: Table to their own file
+
 // -- Structs --
 // Structs declared here are meant to be visible for every calller
 
@@ -21,12 +24,11 @@ typedef struct {
 // - Helpers -
 
 /*
-* currency_str: should be a NULL-TERMINATED currency stirng e.g. "USD" or "R$" and
-*               maximum length should be 3.
+currency_str: should be a NULL-TERMINATED currency stirng e.g. "USD" or "R$" and
+              maximum length should be 3.
 */
 void printf_currency(double value, char* currency_str);
 
-void print_schedule_header();
 void print_schedule_row(AmortizationRow sched_row);
 void print_schedule_table(AmortizationTable sched_table);
 void head_schedule_table(AmortizationTable sched_table);
@@ -34,12 +36,13 @@ void tail_schedule_table(AmortizationTable sched_table);
 
 // TODO: Maybe an aggregator between 3 functions?
 
+/*
+Check common asked variables
 
-// Check common asked variables
-//
-// Returns: 0 if Ok, else error. 
-//
-// Codes follow a additive pattern (ABC) -> A for Rate; B for periods; C for principal
+Returns: 0 if Ok, else error. 
+
+Codes follow a additive pattern (ABC) -> A for Rate; B for periods; C for principal
+*/
 int check_variables(double principal, double rate, int periods);
 
 // - Finance related -
@@ -76,26 +79,26 @@ double fixed_installment(
     double monthly_rate, 
     int months
 );
+/*
+Monthly armotized schedule uses the following formulae:
+The function expects an already allocated schedule struct.
 
-// Monthly armotized schedule uses the following formulae:
-// The function expects an already allocated schedule struct.
-//
-// Total monthly payment (`monthly_due`):
-//
-// `loan_amount * (montlhy_interest_rate * (1 + montlhy_interest_rate) ^ number_payments) / ((1 + montlhy_interest_rate) ^ number_payments - 1))`
-//
-// Pay to interest (`monthly_interest_pay`):
-// 
-// `monthly_rate * principal_due_yestermonth`
-//
-// Pay to principal (`monthly_principal_pay`):
-// 
-//  `monthly_due - monthly_interest_pay`
-//
-// Princpal balance (`principal_due`):
-//
-// `principal_due_yestermonth - monthly_principal_pay`
-//
+Total monthly payment (`monthly_due`):
+
+`loan_amount * (montlhy_interest_rate * (1 + montlhy_interest_rate) ^ number_payments) / ((1 + montlhy_interest_rate) ^ number_payments - 1))`
+
+Pay to interest (`monthly_interest_pay`):
+
+`monthly_rate * principal_due_yestermonth`
+
+Pay to principal (`monthly_principal_pay`):
+
+ `monthly_due - monthly_interest_pay`
+
+Princpal balance (`principal_due`):
+
+`principal_due_yestermonth - monthly_principal_pay`
+*/
 int generate_amortization_schedule(
     double principal,
     double monthly_rate,

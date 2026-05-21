@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "finance.h"
 
 // TODO: Make selectable what is to be calculated
 
@@ -9,108 +10,68 @@ void clean_buffer()
         ;
 }
 
-// int interactive_menu()
-// {
-//     return -1;
-// }
-
-int input_menu(double *p_principal, double *p_rate, int *p_periods)
+int input_menu(double *ptr_principal, double *ptr_rate, int *ptr_periods)
 {
-    char arr_input[32];
+    char user_input[32];
 
     int b_exit_input = 1;
 
     // FIXME: Lots of repetiton on code below
 
-    while (b_exit_input == 1)
+    do
     {
         int _result = 0;
         printf("\n-- Input de dados --\n");
-        while (1)
+        do
         {
-            printf("Principal: ");
+            while(1) {
+                printf("Principal: ");
 
-            // This is made to limit input size (which scanf can't do)
-            fgets(arr_input, sizeof(arr_input), stdin);
+                // This is made to limit input size (which scanf can't do)
+                fgets(user_input, sizeof(user_input), stdin);
 
-            _result = sscanf(arr_input, "%18lf", p_principal);
+                _result = sscanf(user_input, "%18lf", ptr_principal);
 
-            if (*p_principal < 0)
-            {
-                printf("Warning: principal value shouldn't negative.\n");
-                _result = -1;
+                if (_result == 1) break; else printf("Invalid value!\n");
             }
 
-            if (_result != 1)
+            while (1)
             {
-                printf("Invalid value!\n");
-                // clean_buffer();
-            }
-            else
-            {
-                break;
-            }
-        }
+                printf("Rate: ");
 
-        while (1)
-        {
-            printf("Rate: ");
+                fgets(user_input, sizeof(user_input), stdin);
 
-            fgets(arr_input, sizeof(arr_input), stdin);
+                _result = sscanf(user_input, "%18lf", ptr_rate);
 
-            _result = sscanf(arr_input, "%18lf", p_rate);
-
-            if (*p_rate < 0)
-            {
-                printf("Warning: rate value shouldn't negative.\n");
-                _result = -1;
+                if (_result == 1) break; else printf("Invalid value!\n");
             }
 
-            if (_result != 1)
+            while (1)
             {
-                printf("Invalid value!\n");
-                // clean_buffer();
-            }
-            else
-            {
-                break;
-            }
-        }
+                printf("Periods: ");
 
-        while (1)
-        {
-            printf("Periods: ");
+                fgets(user_input, sizeof(user_input), stdin);
 
-            fgets(arr_input, sizeof(arr_input), stdin);
+                _result = sscanf(user_input, "%12d", ptr_periods);
 
-            _result = sscanf(arr_input, "%12d", p_periods);
-
-            if (*p_periods <= 0)
-            {
-                printf("Warning: period should be greater than zero.\n");
-                _result = -1;
+                if (_result == 1) break; else printf("Invalid value!\n");
             }
-
-            if (_result != 1)
-            {
-                printf("Invalid value!\n");
-                // clean_buffer();
-            }
-            else
-            {
-                break;
-            }
-        }
+            
+        } while(check_variables(*ptr_principal, *ptr_rate, *ptr_periods));
 
         // TODO: Fomat this with F-string
         printf("\n--- Values inserted ---\n\n");
         printf("| Principal         | Rate              | Periods     |\n");
         printf("=======================================================\n");
-        printf("| %-18.2lf| %-18.2lf| %-12d|\n", *p_principal, *p_rate, *p_periods);
+        printf("| %-18.2lf| %-18.2lf| %-12d|\n", *ptr_principal, *ptr_rate, *ptr_periods);
         printf("-------------------------------------------------------\n");
-        printf("\nConfirm (0 - Yes 1 - No):\nOption: ");
-        _result = scanf("%d", &b_exit_input);
-    }
+        printf("\nConfirm \n0. Yes \n1. No:\nOption: ");
+
+        
+        fgets(user_input, sizeof(user_input), stdin);
+
+        _result = sscanf(user_input, "%d", &b_exit_input);
+    } while(b_exit_input == 1);
 
     return 0;
 }
