@@ -1,6 +1,25 @@
 // TODO: Make validations for upper limit for values
 // TODO: Table to their own file
 
+// -- Error codes --
+
+/*
+ERRORS enum type
+
+NOTE: Some liberties were taken to account for ABC additive error code.
+*/
+enum errors_code{
+    // Value errors
+    NO_ERROR=0,
+    NEG_PRINCIPAL=1,
+    NEG_PERIODS=10,
+    NEG_PRINCIPAL_PERIODS=11,
+    NEG_RATE=100,
+    NEG_PRINCIPAL_RATE=101,
+    NEG_PERIODS_RATE=110,
+    NEG_PRINCIPAL_PERIODS_RATE=111,
+};
+
 // -- Structs --
 // Structs declared here are meant to be visible for every calller
 
@@ -29,6 +48,8 @@ currency_str: should be a NULL-TERMINATED currency stirng e.g. "USD" or "R$" and
 */
 void printf_currency(double value, char* currency_str);
 
+void fill_schedule_table(AmortizationTable* table, AmortizationRow* row_array, int length);
+
 void print_schedule_row(AmortizationRow sched_row);
 void print_schedule_table(AmortizationTable sched_table);
 void head_schedule_table(AmortizationTable sched_table);
@@ -43,29 +64,53 @@ Returns: 0 if Ok, else error.
 
 Codes follow a additive pattern (ABC) -> A for Rate; B for periods; C for principal
 */
-int check_variables(double principal, double rate, int periods);
+enum errors_code check_variables(double principal, double rate, int periods);
+
+/*
+Show error at exit of the program
+*/
+void throw_error(enum errors_code error);
 
 // - Finance related -
 
-/* Simple interest */
+/* 
+Simple interest
+
+Return: principal * rate * periods
+*/
 double simple_interest(
     double principal, 
     double rate, 
     int periods
 );
 
+/*
+Simple interest amount
+
+Return: principal * (1 + rate * periods)
+*/
 double simple_interest_amount(
     double principal, 
     double rate, 
     int periods
 );
 
+/*
+Compound interest amount
+
+Return: principal * (1 + rate) ^ periods
+*/
 double compound_interest_amount(
     double principal, 
     double rate, 
     int periods
 );
 
+/*
+Compound interest
+
+Return: compound_interest_amount() - principal
+*/
 double compound_interest(
     double principal,
     double rate, 
@@ -74,14 +119,49 @@ double compound_interest(
 
 // PMT = P * [ i * (1 + i)^n ] / [ (1 + i)^n - 1 ]
 // Here P = principal; i = monthly_rate; n = months
+/*
+Fixed installment
+
+Return: principal * [ rate * (1 + rate)^n ] / [ (1 + rate)^n - 1 ]
+*/
 double fixed_installment(
     double principal, 
     double monthly_rate, 
     int months
 );
+
 /*
+Future value (FV)
+
+pv: Present value
+
+Return: pv * (1 + rate) ^ periods
+*/
+double future_value(
+    double pv,
+    double rate,
+    int periods
+);
+
+/*
+Present value (PV)
+
+fv: future value
+
+Return:
+*/
+double present_value(
+    double fv,
+    double rate,
+    int periods
+);
+
+/*
+Armotization schedule generator
+
+This function expects an already allocated schedule "AmortizationRow" struct.
+
 Monthly armotized schedule uses the following formulae:
-The function expects an already allocated schedule struct.
 
 Total monthly payment (`monthly_due`):
 
@@ -103,5 +183,5 @@ int generate_amortization_schedule(
     double principal,
     double monthly_rate,
     int months,
-    AmortizationRow schedule[]
+    AmortizationTable* sched_table
 );

@@ -8,6 +8,7 @@ Functions for financial calculations, including:
 4. Compound interest;
 5. Fixed installment;
 6. Armotaization schedules;
+7. Future value (FV) and Present value (PV);
 
 This library, forked from [this repository](https://github.com/AlanEdward19/Teste-Desenvolvimento-C-BDS-), was developed as part of the interniship program evaluation of the company BDSDataSolutions. More info on what was expected on `INSTRUCTIONS.md` (formely `README.md`).
 
@@ -32,12 +33,12 @@ Tests can be made using the provided `Makefile`:
 **Automatic tests**: 
 
 ```bash
-make main && ./out
+make main && ./app/out
 ```
 
 **Interactive tests**: 
 ```bash
-make interactive && ./interactive
+make interactive && ./app/interactive
 ```
 
 ### For PowerShell terminal
@@ -91,6 +92,8 @@ Here are the major sources and references for the making of this project:
 **Library strcuture**: https://github.com/curl/curl/blob/master/include/curl/curl.h (and others)
 
 **Armotization**: https://www.investopedia.com/terms/a/amortization.asp
+
+**Future value e Present value**: https://www.investopedia.com/terms/f/futurevalue.asp
 
 ## Acknowledgments of AI
 

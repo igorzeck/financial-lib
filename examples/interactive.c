@@ -75,20 +75,17 @@ int main()
             case 6:
                 printf("\nFor a period of %d months:\n\n", periods);
 
-                AmortizationRow* sched_arr;
                 AmortizationTable __sched_table;
 
-                sched_arr = malloc(periods * sizeof(AmortizationRow));
-
-                generate_amortization_schedule(principal, rate, periods, sched_arr);
-
-                __sched_table.row_array = sched_arr;
+                __sched_table.row_array = malloc(periods * sizeof(AmortizationRow));
                 __sched_table.length = periods;
+
+                generate_amortization_schedule(principal, rate, periods, &__sched_table);
 
                 print_schedule_table(__sched_table);
 
                 // Dealocates memory
-                free(sched_arr);
+                free(__sched_table.row_array);
                 break;
             default:
                 printf("Invalid option!\n");
