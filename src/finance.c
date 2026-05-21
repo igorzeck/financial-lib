@@ -12,6 +12,7 @@ void printf_currency(double value, char* currency_str) {
         fprintf(stderr, "printf_currency: currency code too long\n");
         return;
     }
+    
     // TODO: Make this safe on 'currency_str'
     printf("%.2lf %s", value, currency_str);
 }
@@ -42,7 +43,7 @@ void print_schedule_table(AmortizationTable sched_table) {
     for (int _m = 0; _m < sched_table.length; _m++) {
         print_schedule_row(sched_table.row_array[_m]);
     }
-    printf("\n");
+    printf("Length: %d\n\n", sched_table.length);
 }
 
 void head_schedule_table(AmortizationTable sched_table) {

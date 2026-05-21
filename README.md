@@ -13,23 +13,70 @@ This library, forked from [this repository](https://github.com/AlanEdward19/Test
 
 ## Running and testing
 
+### For bash terminal
+
+You may need to install `make` in your system:
+
+If Ubuntu/Debian:
+
+```bash
+sudo apt install make
+```
+
+Other distros:
+
+You may need to look into the [specific package manager for your distro]().
+
 Tests can be made using the provided `Makefile`:
 
-**Automatic tests**: `make main && ./out`
+**Automatic tests**: 
 
-**Interactive tests**: `make interactive && ./interactive`
+```bash
+make main && ./out
+```
+
+**Interactive tests**: 
+```bash
+make interactive && ./interactive
+```
+
+### For PowerShell terminal
+
+Tests can be made using the provided `Makefile`:
+
+You may need to install `make` in your system `winget install ezwinports.make`
+
+After installing it, if using `WinGM` the command may be `mingw32-make` instead of `make`:
+
+```shell
+mingw32-make interactive; ./interactive
+```
+
+or,
+
+```shell
+mingw32-make main; ./out
+```
+
+## Make file internal commands
 
 The Makefile uses gcc for it's compilation:
 
-`gcc -g examples/interactive.c src/finance.c src/interface.c -I./include -lm -o interactive`
+```bash
+gcc -g examples/interactive.c src/finance.c src/interface.c -I./include -lm -o interactive
+```
 
 and,
 
-`gcc -g tests/main.c src/finance.c src/interface.c -I./include -lm -o out`
+```bash
+gcc -g tests/main.c src/finance.c src/interface.c -I./include -lm -o out
+```
 
 After the tests are made, run:
 
-`make clean`
+```shell
+make clean
+```
 
 To clean the output executables.
 
