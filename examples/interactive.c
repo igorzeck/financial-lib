@@ -32,7 +32,9 @@ int main()
                 "3. Simple interest amount\n"
                 "4. Compound interest amount\n"
                 "5. Compound interest\n"
-                "6. Generate amortization schedule\n"
+                "6. FV\n"
+                "7. PV\n"
+                "8. Generate amortization schedule\n"
                 "0. Exit\n"
             );
         }
@@ -73,6 +75,14 @@ int main()
                 printf_currency(compound_interest(principal, rate, periods), "R$");
                 break;
             case 6:
+                printf("Future value: ");
+                printf_currency(future_value(principal, rate, periods), "R$");
+                break;
+            case 7:
+                printf("Present value: ");
+                printf_currency(present_value(future_value(principal, rate, periods), rate, periods), "R$");
+                break;
+            case 8:
                 printf("\nFor a period of %d months:\n\n", periods);
 
                 AmortizationTable __sched_table;

@@ -20,7 +20,7 @@ void printf_currency(double value, char* currency_str) {
         return;
     }
 
-    printf("%.2lf %s", value, currency_str);
+    printf("%s %.2lf", currency_str, value);
 }
 
 void fill_schedule_table(AmortizationTable* sched_table, AmortizationRow* row_array, int length) {
@@ -76,8 +76,6 @@ void tail_schedule_table(AmortizationTable sched_table) {
 enum errors_code check_variables(double principal, double rate, int periods) {
     int error_code = NO_ERROR;
 
-    printf("\n");
-
     if (principal < 0) {
         error_code += 1;
         printf("Error %d: principal can't be negative.\n", NEG_PRINCIPAL);
@@ -110,7 +108,7 @@ double simple_interest_amount(double principal, double rate, int periods) {
 
     if (valid_variables != NO_ERROR) exit(valid_variables);
 
-    return principal * (1 + rate * periods);
+    return simple_interest(principal, rate, periods) + principal;
 }
 
 double compound_interest_amount(double principal, double rate, int periods) {
@@ -122,10 +120,7 @@ double compound_interest_amount(double principal, double rate, int periods) {
 }
 
 double compound_interest(double principal, double rate, int periods) {
-    enum errors_code valid_variables = check_variables(principal, rate, periods);
-
-    if (valid_variables != NO_ERROR) exit(valid_variables);
-    
+    // Error checked on 'compound_interest_amount'
     return compound_interest_amount(principal, rate, periods) - principal;
 }
 
@@ -143,11 +138,7 @@ double fixed_installment(double principal, double monthly_rate, int months) {
 }
 
 double future_value(double pv, double rate, int periods) {
-    enum errors_code valid_variables = check_variables(pv, rate, periods);
-
-    if (valid_variables != NO_ERROR) exit(valid_variables);
-
-    return pv * pow((1 + rate), periods);
+    return compound_interest_amount(pv, rate, periods);
 }
 
 double present_value(double fv, double rate, int periods) {

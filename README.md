@@ -8,7 +8,9 @@ Functions for financial calculations, including:
 4. Compound interest;
 5. Fixed installment;
 6. Armotaization schedules;
-7. Future value (FV) and Present value (PV);
+7. Future value (FV) with compounding interest;
+8. Present value (PV);
+9. PV with compounding interest;
 
 This library, forked from [this repository](https://github.com/AlanEdward19/Teste-Desenvolvimento-C-BDS-), was developed as part of the interniship program evaluation of the company BDSDataSolutions. More info on what was expected on `INSTRUCTIONS.md` (formely `README.md`).
 
@@ -93,7 +95,7 @@ Here are the major sources and references for the making of this project:
 
 **Armotization**: https://www.investopedia.com/terms/a/amortization.asp
 
-**Future value e Present value**: https://www.investopedia.com/terms/f/futurevalue.asp
+**Future value e Present value**: https://corporatefinanceinstitute.com/resources/valuation/future-value-formula/
 
 ## Acknowledgments of AI
 

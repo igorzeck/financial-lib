@@ -1,12 +1,13 @@
 // TODO: Make validations for upper limit for values
 // TODO: Table to their own file
+// TODO: IRR and NPV
 
 // -- Error codes --
 
 /*
 ERRORS enum type
 
-NOTE: Some liberties were taken to account for ABC additive error code.
+NOTE: Some liberties were taken to account for additive error code.
 */
 enum errors_code{
     // Value errors
@@ -66,11 +67,6 @@ Codes follow a additive pattern (ABC) -> A for Rate; B for periods; C for princi
 */
 enum errors_code check_variables(double principal, double rate, int periods);
 
-/*
-Show error at exit of the program
-*/
-void throw_error(enum errors_code error);
-
 // - Finance related -
 
 /* 
@@ -87,7 +83,7 @@ double simple_interest(
 /*
 Simple interest amount
 
-Return: principal * (1 + rate * periods)
+Return: simple_interest() + principal
 */
 double simple_interest_amount(
     double principal, 
@@ -135,7 +131,9 @@ Future value (FV)
 
 pv: Present value
 
-Return: pv * (1 + rate) ^ periods
+Acts as a entry point for `compound_interest_amount`
+
+Return: compound_interest_amount(pv, rate, periods)
 */
 double future_value(
     double pv,
