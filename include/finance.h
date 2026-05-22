@@ -27,7 +27,7 @@ enum errors_code{
 };
 
 // -- Structs --
-// Structs declared here are meant to be visible for every calller
+// Structs declared here are meant to be visible for every caller
 
 typedef struct {
     int month;
@@ -44,7 +44,7 @@ typedef struct {
 } AmortizationTable;
 
 // -- Functions --
-// Functions declared here meant to be visibile for every caller
+// Functions declared here meant to be visible for every caller
 
 // - Helpers -
 
@@ -162,15 +162,15 @@ double present_value(
 );
 
 /*
-Armotization schedule generator
+Amortization schedule generator
 
 This function expects an already allocated schedule "AmortizationRow" struct.
 
-Monthly armotized schedule uses the following formulae:
+Monthly amortized schedule uses the following formulae:
 
 Total monthly payment (`monthly_due`):
 
-`loan_amount * (montlhy_interest_rate * (1 + montlhy_interest_rate) ^ number_payments) / ((1 + montlhy_interest_rate) ^ number_payments - 1))`
+`loan_amount * (monthly_interest_rate * (1 + monthly_interest_rate) ^ number_payments) / ((1 + monthly_interest_rate) ^ number_payments - 1))`
 
 Pay to interest (`monthly_interest_pay`):
 
@@ -180,7 +180,7 @@ Pay to principal (`monthly_principal_pay`):
 
  `monthly_due - monthly_interest_pay`
 
-Princpal balance (`principal_due`):
+Principal balance (`principal_due`):
 
 `principal_due_yestermonth - monthly_principal_pay`
 */

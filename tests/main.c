@@ -41,12 +41,12 @@ int main()
     // Threshold goes from "threshold_steps" to "max_threshold_steps"
     // At each step compares values in in.txt to values in out.txt
 
-    int thresold_counter = 0;
+    int threshold_counter = 0;
     double threshold_steps = 1.0f;
     double max_threshold_steps = 1e-18;
     
     do {
-        printf("\n\nThresold set to: 1-e%d\n", thresold_counter++);
+        printf("\n\nThresold set to: 1-e%d\n", threshold_counter++);
 
         FILE *file_in = fopen("tests/in.txt", "r");
         FILE *file_out = fopen("tests/out.txt", "r");
@@ -111,7 +111,7 @@ int main()
             _status += printf_comparison("Future value", _future_value, _exp_future_value, threshold_steps);
             _status += printf_comparison("Present value", _present_value, _exp_present_value, threshold_steps);
 
-            if (_status) printf("  Failed %d times with threshold of: %.*lf\n", _status, thresold_counter - 1, threshold_steps);
+            if (_status) printf("  Failed %d times with threshold of: %.*lf\n", _status, threshold_counter - 1, threshold_steps);
         }
         threshold_steps /= 10;
         

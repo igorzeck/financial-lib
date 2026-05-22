@@ -16,7 +16,7 @@ int input_menu(double *ptr_principal, double *ptr_rate, int *ptr_periods)
 
     int b_exit_input = 1;
 
-    // FIXME: Lots of repetiton on code below
+    // FIXME: Lots of repetition on code below
 
     do
     {
@@ -59,7 +59,7 @@ int input_menu(double *ptr_principal, double *ptr_rate, int *ptr_periods)
             
         } while(check_variables(*ptr_principal, *ptr_rate, *ptr_periods));
 
-        // TODO: Fomat this with F-string
+        // TODO: Format this with F-string
         printf("\n--- Values inserted ---\n\n");
         printf("| Principal         | Rate              | Periods     |\n");
         printf("=======================================================\n");
