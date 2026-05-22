@@ -1,6 +1,12 @@
 # README
 
-Functions for financial calculations, including:
+Functions for financial calculations.
+
+This library, forked from [this repository](https://github.com/AlanEdward19/Teste-Desenvolvimento-C-BDS-), was developed as part of the interniship program evaluation of the company BDSDataSolutions. More info on what was expected on `INSTRUCTIONS.md` (formely `README.md`).
+
+## Functionalities
+
+The library has the following financial functions:
 
 1. Simple interest;
 2. Simple interest amount;
@@ -8,13 +14,13 @@ Functions for financial calculations, including:
 4. Compound interest;
 5. Fixed installment;
 6. Armotaization schedules;
-7. Future value (FV) with compounding interest;
+7. Future value (FV);
 8. Present value (PV);
 9. PV with compounding interest;
 
-This library, forked from [this repository](https://github.com/AlanEdward19/Teste-Desenvolvimento-C-BDS-), was developed as part of the interniship program evaluation of the company BDSDataSolutions. More info on what was expected on `INSTRUCTIONS.md` (formely `README.md`).
+Those functions can be used upon inclusion from `include.h` header file. Some auxiliary functions are also included.
 
-## Running and testing
+## Dependencies
 
 This library is supported on both Linux and Windows machines.
 
@@ -55,6 +61,11 @@ Other distros:
 
 You may need to look into the [specific package manager for your distro]().
 
+
+**Note**: the file `compile_commands.josn` is used only if running the `clangd` language server on the IDE/editor of preference. If using another language server, one might need to create it's own files.
+
+## Tests
+
 Tests can be made using the provided `Makefile`:
 
 **Automated tests**: 
@@ -63,30 +74,66 @@ Tests can be made using the provided `Makefile`:
 make main && ./app/out
 ```
 
-**Interactive tests**: 
-```bash
-make interactive && ./app/interactive
-```
+For PowerShell terminals:
 
-#### For PowerShell terminal
+Tests can also be made using the provided `Makefile`. You may need to install `make` in your system: `winget install ezwinports.make`
 
-Tests can be made using the provided `Makefile`:
-
-You may need to install `make` in your system `winget install ezwinports.make`
-
-After installing it, if using `WinGM` the command may be `mingw32-make` instead of `make`:
-
-```shell
-mingw32-make interactive; ./bin/interactive
-```
-
-or,
+After installing it, if using `WinGM`, the command *may be* `mingw32-make` instead of `make`:
 
 ```shell
 mingw32-make main; ./bin/out
 ```
 
-### Make file internal commands
+### Methodology
+
+Tests are made by using the input inside `tests/in.txt`, calculating their values using some function, and then, comparing those values with the output inside `tests/out.txt` with a certain precision (`threshold`) initially at 1.0.
+
+Values from `out.txt` were obtained using Libre Office Calc:
+
+```text
+Version: 26.2.2.2 (X86_64)
+Locale: pt-BR (pt_BR.UTF-8); UI: pt-BR
+```
+
+The comparison is made line by line with each file.
+
+After all comparisons are made, the `threshold` is reduced by a factor of 10. This is repeated until the threshold gets below a minimun value `1-e18`.
+
+Here is an example of a comparison: 
+```text
+Thresold set to: 1-e17
+Comparison 53 (line 1):
+   (OK ) Simple interest: 600.00000000000000000 == 600.00000000000000000
+   (OK ) Simple interest amount: 1600.00000000000000000 == 1600.00000000000000000
+   (NOK) Compound interest amount: 1795.85632602213013342 == 1795.85632602212990605
+   (NOK) Compound interest: 795.85632602213013342 == 795.85632602213001974
+   (NOK) Fixed installment: 112.82541002081534032 == 112.82541002081499926
+   (NOK) Future value: 1795.85632602213013342 == 1795.85632602212990605
+   (OK ) Present value: 1000.00000000000000000 == 1000.00000000000000000
+  Failed 4 times with threshold of: 0.00000000000000001
+```
+
+`OK` for an exact match with the thrshold and `NOK` for an inexact match.
+
+With the defaults values and variables, the tests hold up to a threshold of `1-e11`.
+
+## Examples
+
+The interactive test allows the input of values for the `principal`, `rate` and `periods`. Those values can be used to calculate all values for the [functionalities](#functionalities) of this library.
+
+**Interactive tests**: 
+```bash
+make interactive && ./app/interactive
+```
+
+or,
+
+```shell
+mingw32-make interactive; ./bin/interactive
+```
+
+
+## Makefile
 
 The Makefile uses gcc for it's compilation:
 
@@ -124,6 +171,6 @@ Here are the major sources and references for the making of this project:
 
 ## Acknowledgments of AI
 
-AI was used in the making of this library as an evaluation and consultation tool. No code was generated and injected directly onto this project. However, the authors, conced that during the making of this project consultation directly (via Chatbots) and indirectly (via AI search engine functionalities) was made.
+AI was used in the making of this library as an evaluation and consultation tool. No code was generated directly and injected directly onto this project. However, the author conced that during the making of this project some code may have being generate directly (via Chatbots) and indirectly (via AI search engine functionalities), though it's usage and implementaion was human-made.
 
-The structure of the projecte, as well as some functions recomendations was made with AI's help, namely Anthropic's Claude and, indirectly, Google's Gemini.
+The structure of the project, as well as some functions recomendations was made under AI's help.

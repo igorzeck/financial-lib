@@ -111,7 +111,7 @@ int main()
             _status += printf_comparison("Future value", _future_value, _exp_future_value, threshold_steps);
             _status += printf_comparison("Present value", _present_value, _exp_present_value, threshold_steps);
 
-            if (_status) printf("  Failed %d times with threshold of: %lf\n", _status, threshold_steps);
+            if (_status) printf("  Failed %d times with threshold of: %.*lf\n", _status, thresold_counter - 1, threshold_steps);
         }
         threshold_steps /= 10;
         
