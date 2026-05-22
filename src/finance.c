@@ -1,12 +1,8 @@
-#ifndef FINANCE_H
-#define FINANCE_H
 // #define for header added for redundancy sake.
 
 // NOTE: Ideally table functions would be on their own.
 //       But due to limitations of scope they are not.
 // TODO: ADD variable to toggle if program exit on error
-#define LINE_WIDTH 92
-
 #include "finance.h"
 #include <math.h>
 #include <stdlib.h>
@@ -14,6 +10,9 @@
 #include <string.h>
 
 // - Helpers -
+
+int is_close(double n1, double n2) {return fabs(n1 - n2) < THRESHOLD;}
+
 void printf_currency(double value, char* currency_str) {
     if (strlen(currency_str) > 3) {
         fprintf(stderr, "printf_currency: currency code too long\n");
@@ -128,7 +127,7 @@ double fixed_installment(double principal, double monthly_rate, int months) {
     enum errors_code valid_variables = check_variables(principal, monthly_rate, months);
 
     if (valid_variables != NO_ERROR) exit(valid_variables);
-    if (fabs(monthly_rate) > 1e-21) {
+    if (!is_close(monthly_rate, 0)) {
         // TODO: Format this
         // TODO: Apply rule 3 of "Regras de Negócio"
         return principal * (monthly_rate * (pow((1 + monthly_rate), months)) / ((pow((1 + monthly_rate), months) - 1)));
@@ -188,5 +187,3 @@ int generate_amortization_schedule(double principal, double monthly_rate, int mo
 
     return 0;
 }
-
-#endif

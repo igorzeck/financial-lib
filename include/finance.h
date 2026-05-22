@@ -1,6 +1,11 @@
+#ifndef FINANCE_H
+#define FINANCE_H
 // TODO: Make validations for upper limit for values
 // TODO: Table to their own file
 // TODO: IRR and NPV
+
+#define LINE_WIDTH 92
+#define THRESHOLD 1e-9  // For now, immutable
 
 // -- Error codes --
 
@@ -42,6 +47,8 @@ typedef struct {
 // Functions declared here meant to be visibile for every caller
 
 // - Helpers -
+
+int is_close(double n1, double n2);
 
 /*
 currency_str: should be a NULL-TERMINATED currency stirng e.g. "USD" or "R$" and
@@ -183,3 +190,5 @@ int generate_amortization_schedule(
     int months,
     AmortizationTable* sched_table
 );
+
+#endif
