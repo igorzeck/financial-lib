@@ -16,7 +16,32 @@ This library, forked from [this repository](https://github.com/AlanEdward19/Test
 
 ## Running and testing
 
-### For bash terminal
+This library is supported on both Linux and Windows machines.
+
+### GCC
+
+To compile the code, `gcc` is needed:
+
+#### For linux:
+
+```bash
+sudo apt update
+sudo apt install build-essential -y
+```
+
+#### For Windows:
+
+The easier method is through VSCode with MinGW: https://code.visualstudio.com/docs/cpp/config-mingw
+
+#### Version
+The version used to make the library:
+
+```bash
+gcc version 13.3.0 (Ubuntu 13.3.0-6ubuntu2~24.04.1)
+```
+### Make
+
+#### For bash terminal
 
 You may need to install `make` in your system:
 
@@ -32,7 +57,7 @@ You may need to look into the [specific package manager for your distro]().
 
 Tests can be made using the provided `Makefile`:
 
-**Automatic tests**: 
+**Automated tests**: 
 
 ```bash
 make main && ./app/out
@@ -43,7 +68,7 @@ make main && ./app/out
 make interactive && ./app/interactive
 ```
 
-### For PowerShell terminal
+#### For PowerShell terminal
 
 Tests can be made using the provided `Makefile`:
 
@@ -52,16 +77,16 @@ You may need to install `make` in your system `winget install ezwinports.make`
 After installing it, if using `WinGM` the command may be `mingw32-make` instead of `make`:
 
 ```shell
-mingw32-make interactive; ./interactive
+mingw32-make interactive; ./bin/interactive
 ```
 
 or,
 
 ```shell
-mingw32-make main; ./out
+mingw32-make main; ./bin/out
 ```
 
-## Make file internal commands
+### Make file internal commands
 
 The Makefile uses gcc for it's compilation:
 
@@ -81,7 +106,7 @@ After the tests are made, run:
 make clean
 ```
 
-To clean the output executables.
+to clean the output executables.
 
 ## Sources and References
 

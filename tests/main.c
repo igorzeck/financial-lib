@@ -6,11 +6,11 @@ File for automated tests.
 #include <stdlib.h>
 #include "finance.h"
 #include "utils.h"
-// TODO: Judge
-// TODO: Link to images
 
 int main()
 {
+
+    // - Printing tests -
 
     double principal = 1000;
     double rate = 0.05;
@@ -37,6 +37,9 @@ int main()
     char buffer_out[1024];
 
     int counter = 1;
+
+    // Threshold goes from "threshold_steps" to "max_threshold_steps"
+    // At each step compares values in in.txt to values in out.txt
 
     int thresold_counter = 0;
     double threshold_steps = 1.0f;
