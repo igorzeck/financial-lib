@@ -14,8 +14,14 @@ int main()
 
     int option = 1;
     char user_input[3];
+    int result;
 
-    input_menu(&principal, &rate, &periods);
+    result = input_menu(&principal, &rate, &periods);
+
+    if (result != NO_ERROR) {
+        printf("Error %d\n", result);
+        exit(result);
+    }
 
     // TODO: pass this to the interface
     while(1) {
@@ -39,11 +45,15 @@ int main()
 
         printf("Option: ");
 
-        fgets(user_input, sizeof(user_input), stdin);
-        _result = sscanf(user_input, "%1d", &option);
+        _result = get_number_input(user_input, &option, "%d");
 
-        // Error validaiton
-        if (_result != 1) {
+        // Error validation
+        if (_result == VALUE_NOT_FOUND) {
+            printf("EOF input found.\n");
+            return _result;
+        }
+
+        if (_result != NO_ERROR) {
             option = 1;
             printf("Invalid value!\n");
             continue;

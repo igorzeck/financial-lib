@@ -70,6 +70,14 @@ Tests can be made using the provided `Makefile`:
 
 **Automated tests**: 
 
+Directly,
+
+```bash
+make
+```
+
+Or more explicitly,
+
 ```bash
 make main && ./bin/main
 ```

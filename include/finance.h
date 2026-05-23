@@ -12,18 +12,21 @@
 /*
 ERRORS enum type
 
-NOTE: Some liberties were taken to account for additive error code.
+NOTE: Some liberties were taken to emulate a binary mask on a enum.
 */
 enum errors_code{
     // Value errors
     NO_ERROR=0,
-    NEG_PRINCIPAL=1,
-    NEG_PERIODS=10,
-    NEG_PRINCIPAL_PERIODS=11,
-    NEG_RATE=100,
-    NEG_PRINCIPAL_RATE=101,
-    NEG_PERIODS_RATE=110,
-    NEG_PRINCIPAL_PERIODS_RATE=111,
+    NEG_PRINCIPAL=2,
+    NEG_PERIODS=4,
+    NEG_PRINCIPAL_PERIODS=6,
+    NEG_RATE=8,
+    NEG_PRINCIPAL_RATE=10,
+    NEG_PERIODS_RATE=12,
+    NEG_PRINCIPAL_PERIODS_RATE=14,
+    VALUE_NOT_FOUND=64,
+    VALUE_IS_INVALID=65,
+    VALUE_TYPE_NOT_FOUND=66,
 };
 
 // -- Structs --
@@ -68,7 +71,7 @@ void tail_schedule_table(AmortizationTable sched_table);
 /*
 Check common asked variables
 
-Returns: 0 if Ok, else error. 
+Return: 0 if Ok, else error. 
 
 Codes follow a additive pattern (ABC) -> A for Rate; B for periods; C for principal
 */
@@ -153,7 +156,7 @@ Present value (PV)
 
 fv: future value
 
-Return:
+Return: fv / ((1 + rate) ^ periods)
 */
 double present_value(
     double fv,
