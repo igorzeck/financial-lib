@@ -2,7 +2,6 @@
 
 // NOTE: Ideally table functions would be on their own.
 //       But due to limitations of scope they are not.
-// TODO: ADD variable to toggle if program exit on error
 #include "finance.h"
 #include <math.h>
 #include <stdlib.h>
@@ -13,13 +12,13 @@
 
 int is_close(double n1, double n2) {return fabs(n1 - n2) < THRESHOLD;}
 
-void printf_currency(double value, char* currency_str) {
+int printf_currency(double value, const char* currency_str) {
     if (strlen(currency_str) > 3) {
-        fprintf(stderr, "printf_currency: currency code too long\n");
-        return;
+        return CURRENCY_CODE_IS_TOO_LONG;
     }
 
     printf("%s %.2lf", currency_str, value);
+    return NO_ERROR;
 }
 
 void fill_schedule_table(AmortizationTable* sched_table, AmortizationRow* row_array, int length) {
@@ -38,7 +37,8 @@ void _print_schedule_header() {
     printf("\n");
 }
 
-void print_schedule_row(AmortizationRow sched_row) {
+// Prints a single schedule row
+void _print_schedule_row(AmortizationRow sched_row) {
     printf("| %-5d| %-19.2lf| %-19.2lf| %-19.2lf| %-19.2lf|\n", 
         sched_row.month,
         sched_row.installment,
@@ -51,7 +51,7 @@ void print_schedule_row(AmortizationRow sched_row) {
 void print_schedule_table(AmortizationTable sched_table) {    
     _print_schedule_header();
     for (int _m = 0; _m < sched_table.length; _m++) {
-        print_schedule_row(sched_table.row_array[_m]);
+        _print_schedule_row(sched_table.row_array[_m]);
     }
     printf("Length: %d\n\n", sched_table.length);
 }
@@ -59,7 +59,7 @@ void print_schedule_table(AmortizationTable sched_table) {
 void head_schedule_table(AmortizationTable sched_table) {
     _print_schedule_header();
     for (int _m = 0; (_m < 5) && (_m < sched_table.length); _m++) {
-        print_schedule_row(sched_table.row_array[_m]);
+        _print_schedule_row(sched_table.row_array[_m]);
     }
     printf("\n");
 }
@@ -67,28 +67,19 @@ void head_schedule_table(AmortizationTable sched_table) {
 void tail_schedule_table(AmortizationTable sched_table) {
     _print_schedule_header();
     for (int _m = sched_table.length - 1; (_m >= 0) && (_m >= (sched_table.length - 5)); _m--) {
-        print_schedule_row(sched_table.row_array[_m]);
+        _print_schedule_row(sched_table.row_array[_m]);
     }
     printf("\n");
 }
 
 enum errors_code check_variables(double principal, double rate, int periods) {
-    int error_code = NO_ERROR;
+    enum errors_code error_code = NO_ERROR;
 
-    if (principal < 0) {
-        error_code += 1;
-        printf("Error %d: principal can't be negative.\n", NEG_PRINCIPAL);
-    }
+    if (principal < 0)  error_code += NEG_PRINCIPAL;
 
-    if (periods < 0) {
-        error_code += 10;
-        printf("Error %d: period can't be negative.\n", NEG_PERIODS);
-    }
+    if (periods <= 0) error_code += NEG_PERIODS;
 
-    if (rate < 0) {
-        printf("Error %d: rate can't be negative.\n", NEG_RATE);
-        error_code += 100;
-    }
+    if (rate < 0) error_code += NEG_RATE;
 
     return error_code;
 }
@@ -97,7 +88,10 @@ enum errors_code check_variables(double principal, double rate, int periods) {
 double simple_interest(double principal, double rate, int periods) {
     enum errors_code valid_variables = check_variables(principal, rate, periods);
 
-    if (valid_variables != NO_ERROR) exit(valid_variables);
+    if (valid_variables != NO_ERROR) {
+        fprintf(stderr, "Error: %d\n", valid_variables);
+        return 0.0f;
+    }
 
     return principal * rate * periods;
 }
@@ -105,7 +99,10 @@ double simple_interest(double principal, double rate, int periods) {
 double simple_interest_amount(double principal, double rate, int periods) {
     enum errors_code valid_variables = check_variables(principal, rate, periods);
 
-    if (valid_variables != NO_ERROR) exit(valid_variables);
+    if (valid_variables != NO_ERROR) {
+        fprintf(stderr, "Error: %d\n", valid_variables);
+        return 0.0f;
+    }
 
     return simple_interest(principal, rate, periods) + principal;
 }
@@ -113,7 +110,10 @@ double simple_interest_amount(double principal, double rate, int periods) {
 double compound_interest_amount(double principal, double rate, int periods) {
     enum errors_code valid_variables = check_variables(principal, rate, periods);
 
-    if (valid_variables != NO_ERROR) exit(valid_variables);
+    if (valid_variables != NO_ERROR) {
+        fprintf(stderr, "Error: %d\n", valid_variables);
+        return 0.0f;
+    }
 
     return principal * (pow((1 + rate), periods));
 }
@@ -125,8 +125,12 @@ double compound_interest(double principal, double rate, int periods) {
 
 double fixed_installment(double principal, double monthly_rate, int months) {
     enum errors_code valid_variables = check_variables(principal, monthly_rate, months);
+    
+    if (valid_variables != NO_ERROR) {
+        fprintf(stderr, "Error: %d\n", valid_variables);
+        return 0;
+    }
 
-    if (valid_variables != NO_ERROR) exit(valid_variables);
     if (!is_close(monthly_rate, 0)) {
         // TODO: Format this
         // TODO: Apply rule 3 of "Regras de Negócio"
@@ -137,19 +141,23 @@ double fixed_installment(double principal, double monthly_rate, int months) {
 }
 
 double future_value(double pv, double rate, int periods) {
+    // Error checked on 'compound_interest_amount'
     return compound_interest_amount(pv, rate, periods);
 }
 
 double present_value(double fv, double rate, int periods) {
     enum errors_code valid_variables = check_variables(fv, rate, periods);
 
-    if (valid_variables != NO_ERROR) exit(valid_variables);
+    if (valid_variables != NO_ERROR) {
+        fprintf(stderr, "Error: %d\n", valid_variables);
+        return 0;
+    }
 
     return fv / pow((1 + rate), periods);
 }
 
 int generate_amortization_schedule(double principal, double monthly_rate, int months, AmortizationTable *sched_table) {
-    // (1+i)^n
+    // auxiliary for (1+i)^n
     double aux_1_p_rate_n;
     
     double monthly_due;  // Maybe const?
@@ -159,7 +167,7 @@ int generate_amortization_schedule(double principal, double monthly_rate, int mo
     double principal_due;
     double principal_due_yestermonth;
 
-    // - Values atributions -
+    // - Values attributions -
     principal_due = principal;
     principal_due_yestermonth = principal_due;
 

@@ -46,7 +46,7 @@ int main()
     double max_threshold_steps = 1e-18;
     
     do {
-        printf("\n\nThresold set to: 1-e%d\n", threshold_counter++);
+        printf("\n\nThreshold set to: 1-e%d\n", threshold_counter++);
 
         FILE *file_in = fopen("tests/in.txt", "r");
         FILE *file_out = fopen("tests/out.txt", "r");
@@ -59,6 +59,9 @@ int main()
 
         while (fgets(buffer_in, sizeof(buffer_in), file_in) != NULL &&
             fgets(buffer_out, sizeof(buffer_out), file_out) != NULL) {
+            // - Variables -
+            int _err;
+            
             printf("Comparison %d (line %d):\n", ++counter, ++line_counter);
 
             sscanf(
@@ -68,8 +71,16 @@ int main()
                 &rate,
                 &periods
             );
+
+            // Checks variables
+            _err = check_variables(principal, rate, periods);
             
-            // Atributions
+            if (_err != NO_ERROR) {
+                printf("Error: %d", _err);
+                continue;
+            }
+
+            // Attributions
             double _simple_interest          = simple_interest(principal, rate, periods);
             double _simple_interest_amount   = simple_interest_amount(principal, rate, periods);
             double _compound_interest_amount = compound_interest_amount(principal, rate, periods);

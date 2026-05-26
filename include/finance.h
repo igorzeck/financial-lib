@@ -1,5 +1,13 @@
 #ifndef FINANCE_H
 #define FINANCE_H
+/*
+File with definition of functions for calculation financial formulas.
+
+On error, those with int return the error code.
+While, those of other types may print to stderr and return 0.0f.
+
+Before calling any function, one should check the variables.
+*/
 // TODO: Make validations for upper limit for values
 // TODO: Table to their own file
 // TODO: IRR and NPV
@@ -27,6 +35,7 @@ enum errors_code{
     VALUE_NOT_FOUND=64,
     VALUE_IS_INVALID=65,
     VALUE_TYPE_NOT_FOUND=66,
+    CURRENCY_CODE_IS_TOO_LONG=128,
 };
 
 // -- Structs --
@@ -57,11 +66,11 @@ int is_close(double n1, double n2);
 currency_str: should be a NULL-TERMINATED currency stirng e.g. "USD" or "R$" and
               maximum length should be 3.
 */
-void printf_currency(double value, char* currency_str);
+int printf_currency(double value, const char* currency_str);
 
 void fill_schedule_table(AmortizationTable* table, AmortizationRow* row_array, int length);
 
-void print_schedule_row(AmortizationRow sched_row);
+void _print_schedule_row(AmortizationRow sched_row);
 void print_schedule_table(AmortizationTable sched_table);
 void head_schedule_table(AmortizationTable sched_table);
 void tail_schedule_table(AmortizationTable sched_table);
@@ -73,7 +82,9 @@ Check common asked variables
 
 Return: 0 if Ok, else error. 
 
-Codes follow a additive pattern (ABC) -> A for Rate; B for periods; C for principal
+Codes follow a additive pattern (ABC) -> A for Rate; B for periods; C for principal.
+
+NOTE: Ideally, use before calling the variables.
 */
 enum errors_code check_variables(double principal, double rate, int periods);
 
@@ -123,8 +134,6 @@ double compound_interest(
     int periods
 );
 
-// PMT = P * [ i * (1 + i)^n ] / [ (1 + i)^n - 1 ]
-// Here P = principal; i = monthly_rate; n = months
 /*
 Fixed installment
 
