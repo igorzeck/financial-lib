@@ -26,7 +26,7 @@ enum errors_code{
     // Value errors
     NO_ERROR=0,
     NEG_PRINCIPAL=2,
-    NEG_PERIODS=4,
+    NEG_PERIODS=4, // Also thrown if periods = zero
     NEG_PRINCIPAL_PERIODS=6,
     NEG_RATE=8,
     NEG_PRINCIPAL_RATE=10,
@@ -36,6 +36,7 @@ enum errors_code{
     VALUE_IS_INVALID=65,
     VALUE_TYPE_NOT_FOUND=66,
     CURRENCY_CODE_IS_TOO_LONG=128,
+    TABLE_ALREADY_ALLOCATED=256,
 };
 
 // -- Structs --
@@ -67,8 +68,6 @@ currency_str: should be a NULL-TERMINATED currency stirng e.g. "USD" or "R$" and
               maximum length should be 3.
 */
 int printf_currency(double value, const char* currency_str);
-
-void fill_schedule_table(AmortizationTable* table, AmortizationRow* row_array, int length);
 
 void _print_schedule_row(AmortizationRow sched_row);
 void print_schedule_table(AmortizationTable sched_table);
@@ -176,8 +175,6 @@ double present_value(
 /*
 Amortization schedule generator
 
-This function expects an already allocated schedule "AmortizationRow" struct.
-
 Monthly amortized schedule uses the following formulae:
 
 Total monthly payment (`monthly_due`):
@@ -195,6 +192,12 @@ Pay to principal (`monthly_principal_pay`):
 Principal balance (`principal_due`):
 
 `principal_due_yestermonth - monthly_principal_pay`
+
+This function allocate the necessary memory. If the called
+pass a filled table will return `TABLE_ALREADY_ALLOCATED` error.
+
+If you wish to use the same struct is advised that you free it before with
+`free_schedule_table`.
 */
 int generate_amortization_schedule(
     double principal,
@@ -202,5 +205,11 @@ int generate_amortization_schedule(
     int months,
     AmortizationTable* sched_table
 );
+
+/*
+    Frees memory allocated by schedule_table. Should be called after
+    `generate_amortization_schedule`.
+*/
+void free_schedule_table(AmortizationTable* sched_table);
 
 #endif

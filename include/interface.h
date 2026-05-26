@@ -5,7 +5,7 @@
 // Simple implementation for a static menu
 void clean_buffer();
 
-int get_number_input(char* buffer, void* variable, const char* type);
+int get_type_input(char* buffer, void* variable, const char* type);
 int input_menu(double *p_principal, double *p_rate, int *p_periods);
 int choice_menu(double principal, double rate, int periods);
 

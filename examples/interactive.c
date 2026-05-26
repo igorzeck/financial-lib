@@ -8,12 +8,10 @@ File for interactive tests and exploration of the library features.
 
 int main()
 {
-    double principal = 0;
-    double rate = 0;
+    double principal = 0.0f;
+    double rate = 0.0f;
     int periods = 0;
 
-    int option = 1;
-    char user_input[3];
     int result;
 
     result = input_menu(&principal, &rate, &periods);

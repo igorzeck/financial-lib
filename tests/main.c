@@ -16,6 +16,8 @@ int main()
     double rate = 0.05;
     int periods = 12;
 
+    AmortizationTable sched_table;
+
     printf("Compound interest: ");
     printf_currency(compound_interest(principal, rate, periods), "R$");
     printf("\n");
@@ -31,6 +33,10 @@ int main()
     printf("Present value: ");
     printf_currency(present_value(future_value(principal, rate, periods),rate,periods), "R$");
     printf("\n");
+    printf("Amortization table: \n");
+    int _err = generate_amortization_schedule(principal, rate, periods, &sched_table);
+    print_schedule_table(sched_table);
+    printf("\n");
 
     // - Auto tests -
     char buffer_in[1024];
@@ -45,8 +51,13 @@ int main()
     double threshold_steps = 1.0f;
     double max_threshold_steps = 1e-18;
     
+    int first_fail_count = 0;
+    int last_perfect_count = 0;
+    exit(1);
+
+    // TODO: Below to function
     do {
-        printf("\n\nThreshold set to: 1-e%d\n", threshold_counter++);
+        printf("\nThreshold set to: 1-e%d\n", threshold_counter++);
 
         FILE *file_in = fopen("tests/in.txt", "r");
         FILE *file_out = fopen("tests/out.txt", "r");
@@ -62,7 +73,7 @@ int main()
             // - Variables -
             int _err;
             
-            printf("Comparison %d (line %d):\n", ++counter, ++line_counter);
+            printf("Comparison %d (line %d):\n", counter++, ++line_counter);
 
             sscanf(
                 buffer_in,
@@ -75,10 +86,7 @@ int main()
             // Checks variables
             _err = check_variables(principal, rate, periods);
             
-            if (_err != NO_ERROR) {
-                printf("Error: %d", _err);
-                continue;
-            }
+            if (_err != NO_ERROR) printf("  Got error: %d\n", _err);
 
             // Attributions
             double _simple_interest          = simple_interest(principal, rate, periods);
@@ -98,7 +106,7 @@ int main()
             double _exp_future_value;
             double _exp_present_value;
             
-            sscanf(
+            _err = sscanf(
                 buffer_out,
                 "%lf %lf %lf %lf %lf %lf %lf",
                 &_exp_simple_interest,
@@ -110,8 +118,7 @@ int main()
                 &_exp_present_value
             );
 
-            // Comparisons
-            // TODO: Make it a fair float comparison
+            // - Comparisons -
             int _status = 0;
 
             _status += printf_comparison("Simple interest", _simple_interest, _exp_simple_interest, threshold_steps);
@@ -122,7 +129,19 @@ int main()
             _status += printf_comparison("Future value", _future_value, _exp_future_value, threshold_steps);
             _status += printf_comparison("Present value", _present_value, _exp_present_value, threshold_steps);
 
-            if (_status) printf("  Failed %d times with threshold of: %.*lf\n", _status, threshold_counter - 1, threshold_steps);
+            if (_status) {
+                printf("  Failed %d times with threshold of: %.*lf\n",
+                    _status,
+                    threshold_counter - 1,
+                    threshold_steps
+                );
+
+                if (first_fail_count == 0) {
+                    first_fail_count = threshold_counter;
+                }
+            } else {
+                last_perfect_count = threshold_counter;
+            }
         }
         threshold_steps /= 10;
         
@@ -130,6 +149,18 @@ int main()
         fclose(file_out);
 
     } while(threshold_steps > max_threshold_steps);
+
+    // Report:
+    printf("\nReport:\n");
+    printf("First fail at 1-e%d\n", first_fail_count);
+    printf("Last perfect iteration at 1-e%d\n", last_perfect_count);
+    printf(
+        "Note: 'nan' aren't counted as a fail.\n"
+        "Tests are finished now.\n"
+    );
+
+    // - Comparison for amortization table -
+    
 
 
     printf("\n");

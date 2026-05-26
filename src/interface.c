@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-int get_number_input(char* buffer, void* variable, const char* type) {
+int get_type_input(char* buffer, void* variable, const char* type) {
     char* _status;
     int _result = -1;
 
@@ -31,13 +31,13 @@ int input_menu(double *ptr_principal, double *ptr_rate, int *ptr_periods)
     do
     {
         int _result = 0;
-        printf("\n-- Data input --\n");
         do
         {
+            printf("\n-- Data input --\n");
             while(1) {
                 printf("Principal: ");
                 
-                _result = get_number_input(user_input, ptr_principal, "lf");
+                _result = get_type_input(user_input, ptr_principal, "lf");
 
                 if (_result == NO_ERROR) break; else return _result;
             }
@@ -46,7 +46,7 @@ int input_menu(double *ptr_principal, double *ptr_rate, int *ptr_periods)
             {
                 printf("Rate: ");
                 
-                _result = get_number_input(user_input, ptr_rate, "lf");
+                _result = get_type_input(user_input, ptr_rate, "lf");
 
                 if (_result == NO_ERROR) break; else return _result;
             }
@@ -55,7 +55,7 @@ int input_menu(double *ptr_principal, double *ptr_rate, int *ptr_periods)
             {
                 printf("Periods: ");
                 
-                _result = get_number_input(user_input, ptr_periods, "d");
+                _result = get_type_input(user_input, ptr_periods, "d");
 
                 if (_result == NO_ERROR) break; else return _result;
             }
@@ -70,7 +70,7 @@ int input_menu(double *ptr_principal, double *ptr_rate, int *ptr_periods)
         printf("-------------------------------------------------------\n");
         printf("\nConfirm \n0. Yes \n1. No:\nOption: ");
 
-        _result = get_number_input(user_input, &b_exit_input, "d");
+        _result = get_type_input(user_input, &b_exit_input, "d");
 
         if (_result != NO_ERROR) return _result;
     } while(b_exit_input == 1);
@@ -79,8 +79,8 @@ int input_menu(double *ptr_principal, double *ptr_rate, int *ptr_periods)
 }
 
 int choice_menu(double principal, double rate, int periods) {
-    int option;
     char user_input[16];
+    int option = 1;
 
     while(1) {
         int _result = 0;
@@ -103,7 +103,7 @@ int choice_menu(double principal, double rate, int periods) {
 
         printf("Option: ");
 
-        _result = get_number_input(user_input, &option, "%d");
+        _result = get_type_input(user_input, &option, "d");
 
         // Error validation
         if (_result == VALUE_NOT_FOUND) {
@@ -142,7 +142,7 @@ int choice_menu(double principal, double rate, int periods) {
                 break;
             // Compound interest
             case 5:
-                printf("Coumpound interest: ");
+                printf("Compound interest: ");
                 printf_currency(compound_interest(principal, rate, periods), "R$");
                 break;
             // FV
@@ -159,17 +159,14 @@ int choice_menu(double principal, double rate, int periods) {
             case 8:
                 printf("\nFor a period of %d months:\n\n", periods);
 
-                AmortizationTable __sched_table;
+                AmortizationTable _sched_table;
 
-                __sched_table.row_array = malloc(periods * sizeof(AmortizationRow));
-                __sched_table.length = periods;
+                generate_amortization_schedule(principal, rate, periods, &_sched_table);
 
-                generate_amortization_schedule(principal, rate, periods, &__sched_table);
-
-                print_schedule_table(__sched_table);
+                print_schedule_table(_sched_table);
 
                 // Deallocates memory
-                free(__sched_table.row_array);
+                free_schedule_table(&_sched_table);
                 break;
             // Re-input data
             case 9:
