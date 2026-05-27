@@ -36,7 +36,8 @@ enum errors_code{
     VALUE_IS_INVALID=65,
     VALUE_TYPE_NOT_FOUND=66,
     CURRENCY_CODE_IS_TOO_LONG=128,
-    TABLE_ALREADY_ALLOCATED=256,
+    TABLE_ALREADY_ALLOCATED=256, // Remove this error?
+    TABLE_MISSING_COLUMNS=257,
 };
 
 // -- Structs --
@@ -205,6 +206,26 @@ int generate_amortization_schedule(
     int months,
     AmortizationTable* sched_table
 );
+
+/*
+    Creates empty AmortizationTable object.
+    Safer than generating one by hand.
+*/
+AmortizationTable create_empty_schedule_table();
+
+/*
+    Loads table from CSV like file into sched_table.
+
+    Needs to pass path and a field separator parameter.
+*/
+int load_csv_schedule(const char* file_path, const char* sep, AmortizationTable* sched_table);
+
+/*
+    Saves table to CSV like file.
+
+    Needs to pass path and a field separator parameter.
+*/
+int save_csv_schedule(const char* file_path, const char* sep);
 
 /*
     Frees memory allocated by schedule_table. Should be called after

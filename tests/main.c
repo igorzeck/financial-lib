@@ -13,10 +13,13 @@ int main()
     // - Printing tests -
 
     double principal = 1000;
-    double rate = 0.05;
+    double rate = 0;
     int periods = 12;
 
     AmortizationTable sched_table;
+    // TODO: Function to initialize schedule tables
+    sched_table.row_array = NULL;
+    sched_table.length = 0;
 
     printf("Compound interest: ");
     printf_currency(compound_interest(principal, rate, periods), "R$");
@@ -53,7 +56,6 @@ int main()
     
     int first_fail_count = 0;
     int last_perfect_count = 0;
-    exit(1);
 
     // TODO: Below to function
     do {
@@ -160,8 +162,7 @@ int main()
     );
 
     // - Comparison for amortization table -
-    
-
+    amortization_comparison();
 
     printf("\n");
 

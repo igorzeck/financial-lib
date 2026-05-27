@@ -2,6 +2,7 @@
 #ifndef UTILS_H
 #define UTILS_H
 
+#include "finance.h"
 #include <stdio.h>
 #include <math.h>
 
@@ -40,7 +41,30 @@ static int printf_comparison(const char* comparison_str, double calc_value, doub
     Amortization table comparisons
 */
 void amortization_comparison() {
-    ;
+    char buf[1024];
+    char curr_file_path[64];
+    int status = NO_ERROR;
+    int curr_line = 1;
+
+    FILE *f_in = fopen("tests/in.txt", "r");
+
+    while (fgets(buf, sizeof(buf), f_in) != NULL) {
+        printf("\nTable %d:\n\n", curr_line);
+
+        // AmortizationTable sched_table_in = create_empty_schedule_table();
+        AmortizationTable sched_table_out = create_empty_schedule_table();
+        
+        snprintf(curr_file_path, 64, "tests/tables/tab%d.tsv", curr_line++);
+        
+        status = load_csv_schedule(curr_file_path, "\t", &sched_table_out);
+
+        // The comparison is made with two schedule_table objects
+        // One of them is loaded from tests/tables folder
+        // print_schedule_table(sched_table_in);
+        print_schedule_table(sched_table_out);
+
+        free_schedule_table(&sched_table_out);
+    }
 }
 
 #endif

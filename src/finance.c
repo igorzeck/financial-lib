@@ -139,7 +139,7 @@ double present_value(double fv, double rate, int periods) {
     return fv / pow((1 + rate), periods);
 }
 
-int generate_amortization_schedule(double principal, double monthly_rate, int months, AmortizationTable *sched_table) {
+int generate_amortization_schedule(double principal, double monthly_rate, int months, AmortizationTable* sched_table) {
     // Auxiliary variable for (1+i)^n
     double aux_1_p_rate_n;
     
@@ -187,6 +187,82 @@ int generate_amortization_schedule(double principal, double monthly_rate, int mo
         _sched_row->amortization      = monthly_principal_pay;
     }
 
+    return NO_ERROR;
+}
+
+AmortizationTable create_empty_schedule_table() {
+    // TODO: Look into alternatives to this mess
+    AmortizationTable sched_table;
+
+    sched_table.length = 0;
+    sched_table.row_array = NULL;
+
+    return sched_table;
+}
+
+int load_csv_schedule(const char *file_path, const char *sep, AmortizationTable* sched_table) {
+    // - Variables -
+    char buf[4096];
+    char format_string[128];
+    int n_rows = 0;
+    int i_row = 0;
+    FILE *file;
+
+    // - Preparations -
+    if (sched_table->length != 0) return TABLE_ALREADY_ALLOCATED;
+
+    sched_table->row_array = NULL;
+    sched_table->length = 0;
+
+    sprintf(format_string,
+        "%%d%s%%lf%s%%lf%s%%lf%s%%lf",
+        sep, sep, sep, sep);
+
+    // - Allocation -
+    sched_table->row_array = malloc(n_rows * sizeof(AmortizationRow));
+    sched_table->length = 0;
+
+    // - File reading -
+    file = fopen(file_path, "r");
+
+    while (fgets(buf, sizeof(buf), file) != NULL) {
+        int _n_read;
+
+        int _month;
+        double _installment;
+        double _interest;
+        double _amortization;
+        double _remaining;       
+
+        _n_read = sscanf(
+            buf,
+            format_string,
+            &_month,
+            &_installment,
+            &_interest,
+            &_amortization,
+            &_remaining
+        );
+
+        // If couldn't read all 5 columns
+        if (_n_read < 5) {
+            free_schedule_table(sched_table);
+
+            return TABLE_MISSING_COLUMNS;
+        }
+
+        sched_table->row_array[i_row].month             = _month;
+        sched_table->row_array[i_row].interest          = _interest;
+        sched_table->row_array[i_row].installment       = _installment;
+        sched_table->row_array[i_row].amortization      = _amortization;
+        sched_table->row_array[i_row].remaining_balance = _remaining;
+
+        // Length is updated per successful line read
+        sched_table->length = ++i_row;
+    }
+
+    fclose(file);
+    
     return NO_ERROR;
 }
 
