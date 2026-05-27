@@ -138,9 +138,7 @@ int main()
                     threshold_steps
                 );
 
-                if (first_fail_count == 0) {
-                    first_fail_count = threshold_counter;
-                }
+                if (first_fail_count == 0) first_fail_count = threshold_counter;
             } else {
                 last_perfect_count = threshold_counter;
             }

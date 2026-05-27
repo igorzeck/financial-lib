@@ -21,6 +21,21 @@ int printf_currency(double value, const char* currency_str) {
     return NO_ERROR;
 }
 
+int _count_file_lines(const char* file_path) {
+    int count = 0;
+    char buf[4096];
+    
+    FILE *file = fopen(file_path, "r");
+    
+    if (file == NULL) return -1;
+    
+    while (fgets(buf, sizeof(buf), file) != NULL) count++;
+
+    fclose(file);
+
+    return count;
+}
+
 // Prints Schedule table header
 void _print_schedule_header() {
     printf("| %-5s| %-19s| %-19s| %-19s| %-19s|\n",
@@ -219,6 +234,7 @@ int load_csv_schedule(const char *file_path, const char *sep, AmortizationTable*
         sep, sep, sep, sep);
 
     // - Allocation -
+    n_rows = _count_file_lines(file_path);
     sched_table->row_array = malloc(n_rows * sizeof(AmortizationRow));
     sched_table->length = 0;
 
@@ -267,7 +283,9 @@ int load_csv_schedule(const char *file_path, const char *sep, AmortizationTable*
 }
 
 void free_schedule_table(AmortizationTable *sched_table) {
-    free(sched_table->row_array);
-    sched_table->row_array = NULL;
+    if (sched_table->row_array != NULL) {
+        free(sched_table->row_array);
+        sched_table->row_array = NULL;
+    }
     sched_table->length = 0;
 }

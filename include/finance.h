@@ -62,6 +62,11 @@ typedef struct {
 
 // - Helpers -
 
+/*
+    Float comparison with THRESHOLD macro.
+
+    Return: 1 if |n1| - |n2| < Threshold.
+*/
 int is_close(double n1, double n2);
 
 /*
