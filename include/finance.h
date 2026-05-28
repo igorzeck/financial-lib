@@ -8,7 +8,7 @@ While, those of other types may print to stderr and return 0.0f.
 
 Before calling any function, one should check the variables.
 */
-// TODO: IRR and NPV
+// TODO: IRR
 // TODO: Use uint where periods should be positive?
 
 #include <sys/types.h>
@@ -190,9 +190,26 @@ double present_value(
 */
 double net_present_value(
     double capital,
-    double* cash_flow_arr,
+    const double* cash_flow_arr,
     double discount_rate,
     int periods
+);
+
+/*
+    Guesses best internal rate of return.
+
+    Tries max_iterations times to find root for the `net_present_value`.
+
+    As solving IRR correctly would involve solving a polynomial equation,
+    it was decided that a guess function would work best.
+
+    However, such a functions is CLEARLY not optimal. Use at own advise.
+*/
+double guess_internal_rate_of_return(
+    double capital,
+    const double* cash_flow_arr,
+    int periods,
+    int max_iterations
 );
 
 /*

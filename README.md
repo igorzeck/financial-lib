@@ -177,7 +177,9 @@ Here are the major sources and references for the making of this project:
 
 **Amortization**: https://www.investopedia.com/terms/a/amortization.asp
 
-**Future value e Present value**: https://corporatefinanceinstitute.com/resources/valuation/future-value-formula/
+**Future value and Present value**: https://corporatefinanceinstitute.com/resources/valuation/future-value-formula/
+
+**Net Present Value and Internal Rate of Return**: https://www.financialprofessionals.org/training-resources/resources/articles/details/net-present-value-vs.-internal-rate-of-return
 
 ## Acknowledgments of AI
 

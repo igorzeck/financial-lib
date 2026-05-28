@@ -42,10 +42,17 @@ int main()
     int _err = generate_amortization_schedule(principal, rate, periods, &sched_table);
     print_schedule_table(sched_table);
     printf("\n");
-    printf("Net Present Value: \n");
+    printf("Net Present Value:");
     double npv = net_present_value(principal, cash_flow_arr, rate, periods);
     printf_currency(npv, "R$");
     printf("\n");
+    printf("Internal Rate of Return guess: \n");
+    double irr = guess_internal_rate_of_return(principal, cash_flow_arr, periods, 100000);
+    printf("%lf", irr);
+    printf("\n");
+    printf("Error of: \n");
+    double npv_abs_error = net_present_value(principal, cash_flow_arr, irr, periods);
+    printf("%.9lf\n", npv_abs_error);
 
     exit(0);
 

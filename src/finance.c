@@ -1,6 +1,7 @@
 // NOTE: Ideally table functions would be on their own.
 //       But due to limitations of scope they are not.
 // TODO: Const to whatever isn't going to be changed on certain functions
+// TODO: NPV and IRR tests
 #include "finance.h"
 #include <math.h>
 #include <stdio.h>
@@ -153,7 +154,7 @@ double present_value(double fv, double rate, int periods) {
     return fv / pow((1 + rate), periods);
 }
 
-double net_present_value(double capital, double *cash_flow_arr, double discount_rate, int periods) {
+double net_present_value(double capital, const double *cash_flow_arr, double discount_rate, int periods) {
     // Note: The formula here used is somewhat flexible, so there is less variables check in place.
     double total;
 
@@ -164,6 +165,34 @@ double net_present_value(double capital, double *cash_flow_arr, double discount_
     }
 
     return total;
+}
+
+double guess_internal_rate_of_return(double capital, const double *cash_flow_arr, int periods, int max_iterations) {
+    float optimal_rate;
+    float curr_rate;
+    float rate_step;
+    float best_npv;
+
+    curr_rate = 0.0f;
+    rate_step = 1.0f / (float)max_iterations;
+    best_npv = capital;
+
+    for (int i = 0; i < max_iterations; i++) {
+        double _npv;
+
+        _npv = net_present_value(capital, cash_flow_arr, curr_rate, periods);
+
+        curr_rate += rate_step;
+
+        if (fabs(_npv) < fabs(best_npv)) {
+            best_npv = _npv;
+            optimal_rate = curr_rate;
+
+            if (is_close(best_npv, 0.0f)) break;
+        }
+    }
+
+    return optimal_rate;
 }
 
 int generate_amortization_schedule(double principal, double monthly_rate, int months, AmortizationTable* sched_table) {
