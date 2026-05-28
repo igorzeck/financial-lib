@@ -42,6 +42,129 @@ static int printf_comparison(const char* comparison_str, double calc_value, doub
 }
 
 /*
+    Function to compare financial function output.
+
+    Iterates through threshold to test when failure occurs.
+*/
+int financial_functions_comparison(double threshold_steps, double max_threshold_steps) {
+    // - Auto tests -
+    double principal = 0.0f;
+    double rate = 0.0f;
+    int periods = 0;
+    char buffer_in[1024];
+    char buffer_out[1024];
+
+    int counter = 1;
+
+    // Threshold goes from "threshold_steps" to "max_threshold_steps"
+    // At each step compares values in in.txt to values in out.txt
+
+    int threshold_counter = 0;
+    int first_fail_count = 0;
+    int last_perfect_count = 0;
+
+    do {
+        printf("\nThreshold set to: 1-e%d\n", threshold_counter++);
+
+        FILE *file_in = fopen("tests/in.txt", "r");
+        FILE *file_out = fopen("tests/out.txt", "r");
+        int line_counter = 0;
+
+        if (file_in == NULL || file_out == NULL) {
+            fprintf(stderr, "Couldn't open test files!\n");
+            return FILE_NOT_OPENED;
+        }
+
+        while (fgets(buffer_in, sizeof(buffer_in), file_in) != NULL &&
+            fgets(buffer_out, sizeof(buffer_out), file_out) != NULL) {
+            // - Variables -
+            int _err;
+            
+            printf("Comparison %d (line %d):\n", counter++, ++line_counter);
+
+            sscanf(
+                buffer_in,
+                "%lf %lf %d",
+                &principal,
+                &rate,
+                &periods
+            );
+
+            // Checks variables
+            _err = check_variables(principal, rate, periods);
+            
+            if (_err != NO_ERROR) printf("  Got error: %d\n", _err);
+
+            // Attributions
+            double _simple_interest          = simple_interest(principal, rate, periods);
+            double _simple_interest_amount   = simple_interest_amount(principal, rate, periods);
+            double _compound_interest_amount = compound_interest_amount(principal, rate, periods);
+            double _compound_interest        = compound_interest(principal, rate, periods);
+            double _fixed_installment        = fixed_installment(principal, rate, periods);
+            double _future_value             = future_value(principal, rate, periods);
+            double _present_value            = present_value(future_value(principal, rate, periods), rate, periods);
+
+            // Expected values
+            double _exp_simple_interest;
+            double _exp_simple_interest_amount;
+            double _exp_compound_interest_amount;
+            double _exp_compound_interest;
+            double _exp_fixed_installment;
+            double _exp_future_value;
+            double _exp_present_value;
+            
+            _err = sscanf(
+                buffer_out,
+                "%lf %lf %lf %lf %lf %lf %lf",
+                &_exp_simple_interest,
+                &_exp_simple_interest_amount,
+                &_exp_compound_interest_amount,
+                &_exp_compound_interest,
+                &_exp_fixed_installment,
+                &_exp_future_value,
+                &_exp_present_value
+            );
+
+            // - Comparisons -
+            int _status = 0;
+
+            _status += printf_comparison("Simple interest", _simple_interest, _exp_simple_interest, threshold_steps);
+            _status += printf_comparison("Simple interest amount", _simple_interest_amount, _exp_simple_interest_amount, threshold_steps);
+            _status += printf_comparison("Compound interest amount", _compound_interest_amount, _exp_compound_interest_amount, threshold_steps);
+            _status += printf_comparison("Compound interest", _compound_interest, _exp_compound_interest, threshold_steps);
+            _status += printf_comparison("Fixed installment", _fixed_installment, _exp_fixed_installment, threshold_steps);
+            _status += printf_comparison("Future value", _future_value, _exp_future_value, threshold_steps);
+            _status += printf_comparison("Present value", _present_value, _exp_present_value, threshold_steps);
+
+            if (_status) {
+                printf("  Failed %d times with threshold of: %.*lf\n",
+                    _status,
+                    threshold_counter - 1,
+                    threshold_steps
+                );
+
+                if (first_fail_count == 0) first_fail_count = threshold_counter;
+            } else {
+                last_perfect_count = threshold_counter;
+            }
+        }
+        threshold_steps /= 10;
+        
+        fclose(file_in);
+        fclose(file_out);
+
+    } while(threshold_steps > max_threshold_steps);
+
+    // Report:
+    printf("\nReport:\n");
+    printf("First fail at 1-e%d\n", first_fail_count);
+    printf("Last perfect iteration at 1-e%d\n", last_perfect_count);
+    printf("Note: 'nan' aren't counted as a fail.\n");
+
+    return NO_ERROR;
+}
+
+/*
     Amortization table comparisons.
 
     Tables are stores on tests/tables.
@@ -49,7 +172,6 @@ static int printf_comparison(const char* comparison_str, double calc_value, doub
     This also works as a usage example of the `load_csv_schedule` function.
 */
 void amortization_comparison() {
-    // TODO: Show only different rows. Maybe a function for slicing?
     char buf[1024];
     char curr_file_path[64];
     int curr_line = 1;
@@ -99,7 +221,7 @@ void amortization_comparison() {
         // - Loads 'Out' table -
         snprintf(curr_file_path, 64, "tests/tables/tab%d.tsv", curr_line++);
     
-        _err = load_csv_schedule(curr_file_path, "\t", &sched_table_out);
+        _err = load_schedule(curr_file_path, "\t", &sched_table_out);
 
         // - Compare row-wise both tables -
         int max_size = sched_table_out.length > sched_table_in.length ? sched_table_in.length : sched_table_out.length;

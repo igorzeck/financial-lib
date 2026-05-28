@@ -8,8 +8,6 @@ While, those of other types may print to stderr and return 0.0f.
 
 Before calling any function, one should check the variables.
 */
-// TODO: Make validations for upper limit for values
-// TODO: Table to their own file
 // TODO: IRR and NPV
 
 #include <sys/types.h>
@@ -39,6 +37,8 @@ enum errors_code{
     CURRENCY_CODE_IS_TOO_LONG=128,
     TABLE_ALREADY_ALLOCATED=256, // Remove this error?
     TABLE_MISSING_COLUMNS=257,
+    FILE_NOT_OPENED=512,
+    FILE_NOT_CREATED=513,
 };
 
 // -- Structs --
@@ -240,14 +240,14 @@ AmortizationTable slice_amortization_table(
 
     Needs to pass path and a field separator parameter.
 */
-int load_csv_schedule(const char* file_path, const char* sep, AmortizationTable* sched_table);
+int load_schedule(const char* file_path, const char* sep, AmortizationTable* sched_table);
 
 /*
     Saves table to CSV like file.
 
     Needs to pass path and a field separator parameter.
 */
-int save_csv_schedule(const char* file_path, const char* sep);
+int save_schedule(AmortizationTable sched_table, const char* file_path, const char* sep);
 
 /*
     Frees memory allocated by schedule_table. Should be called after

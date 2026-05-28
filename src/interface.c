@@ -62,18 +62,19 @@ int input_menu(double *ptr_principal, double *ptr_rate, int *ptr_periods)
             
         } while(check_variables(*ptr_principal, *ptr_rate, *ptr_periods));
 
-        // TODO: Format this with F-string
         printf("\n--- Values inserted ---\n\n");
         printf("| Principal         | Rate              | Periods     |\n");
-        printf("=======================================================\n");
+        for (int i = 0; i < 55; i++) putchar('=');
+        printf("\n");
         printf("| %-18.2lf| %-18.2lf| %-12d|\n", *ptr_principal, *ptr_rate, *ptr_periods);
-        printf("-------------------------------------------------------\n");
-        printf("\nConfirm \n0. Yes \n1. No:\nOption: ");
+        for (int i = 0; i < 55; i++) putchar('-');
+        printf("\n");
+        printf("\nConfirm \n1. Yes \n0. No:\nOption: ");
 
         _result = get_type_input(user_input, &b_exit_input, "d");
 
         if (_result != NO_ERROR) return _result;
-    } while(b_exit_input == 1);
+    } while(!b_exit_input);
 
     return 0;
 }

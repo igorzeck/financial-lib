@@ -2,6 +2,7 @@
 
 // NOTE: Ideally table functions would be on their own.
 //       But due to limitations of scope they are not.
+// TODO: Const to whatever isn't going to be changed on certain functions
 #include "finance.h"
 #include <math.h>
 #include <stdio.h>
@@ -232,13 +233,15 @@ AmortizationTable slice_amortization_table(const AmortizationTable* sched_origin
     return sched_sliced;
 }
 
-int load_csv_schedule(const char *file_path, const char *sep, AmortizationTable* sched_table) {
+int load_schedule(const char *file_path, const char *sep, AmortizationTable* sched_table) {
     // - Variables -
     char buf[4096];
     char format_string[128];
     int n_rows = 0;
     int i_row = 0;
-    FILE *file;
+    FILE *fin;
+
+    if (fin == NULL) return FILE_NOT_OPENED;
 
     // - Preparations -
     if (sched_table->length != 0) return TABLE_ALREADY_ALLOCATED;
@@ -256,9 +259,9 @@ int load_csv_schedule(const char *file_path, const char *sep, AmortizationTable*
     sched_table->length = 0;
 
     // - File reading -
-    file = fopen(file_path, "r");
+    fin = fopen(file_path, "r");
 
-    while (fgets(buf, sizeof(buf), file) != NULL) {
+    while (fgets(buf, sizeof(buf), fin) != NULL) {
         int _n_read;
 
         int _month;
@@ -294,8 +297,33 @@ int load_csv_schedule(const char *file_path, const char *sep, AmortizationTable*
         sched_table->length = ++i_row;
     }
 
-    fclose(file);
+    fclose(fin);
     
+    return NO_ERROR;
+}
+
+int save_schedule(AmortizationTable sched_table, const char *file_path, const char *sep) {
+    FILE *fout;
+
+    fout = fopen(file_path, "w");
+
+    if (fout == NULL) return FILE_NOT_CREATED;
+
+    char format_string[128];
+
+    sprintf(format_string,
+        "%%d%s%%lf%s%%lf%s%%lf%s%%lf\n",
+        sep, sep, sep, sep);
+
+    for (int l = 0; l < sched_table.length; l++) fprintf(
+        fout,
+        format_string,
+        sched_table.row_array[l].month,
+        sched_table.row_array[l].installment,
+        sched_table.row_array[l].interest,
+        sched_table.row_array[l].amortization,
+        sched_table.row_array[l].remaining_balance);
+
     return NO_ERROR;
 }
 
