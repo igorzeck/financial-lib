@@ -9,6 +9,7 @@ While, those of other types may print to stderr and return 0.0f.
 Before calling any function, one should check the variables.
 */
 // TODO: IRR and NPV
+// TODO: Use uint where periods should be positive?
 
 #include <sys/types.h>
 #define LINE_WIDTH 92
@@ -177,6 +178,20 @@ Return: fv / ((1 + rate) ^ periods)
 double present_value(
     double fv,
     double rate,
+    int periods
+);
+
+/*
+    Calculate the Net Present Value (NPV).
+
+    cash_flow_arr contains N = periods cash_flow values (positive/negative).
+
+    Return: sum((cash_flow_arr[i])/(1 - discount_rate)) - capital, for 0 < i < periods.
+*/
+double net_present_value(
+    double capital,
+    double* cash_flow_arr,
+    double discount_rate,
     int periods
 );
 

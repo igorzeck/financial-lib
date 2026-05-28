@@ -1,5 +1,3 @@
-// #define for header added for redundancy sake.
-
 // NOTE: Ideally table functions would be on their own.
 //       But due to limitations of scope they are not.
 // TODO: Const to whatever isn't going to be changed on certain functions
@@ -155,6 +153,19 @@ double present_value(double fv, double rate, int periods) {
     return fv / pow((1 + rate), periods);
 }
 
+double net_present_value(double capital, double *cash_flow_arr, double discount_rate, int periods) {
+    // Note: The formula here used is somewhat flexible, so there is less variables check in place.
+    double total;
+
+    total = -capital;
+
+    for (int p = 0; p < periods; p++) {
+        total += cash_flow_arr[p]/pow(1 + discount_rate, p + 1);
+    }
+
+    return total;
+}
+
 int generate_amortization_schedule(double principal, double monthly_rate, int months, AmortizationTable* sched_table) {
     // Auxiliary variable for (1+i)^n
     double aux_1_p_rate_n;
@@ -217,9 +228,9 @@ AmortizationTable create_empty_schedule_table() {
 }
 
 AmortizationTable slice_amortization_table(const AmortizationTable* sched_origin, uint start, uint steps) {
-    // Is it wise to use UINT here?
     AmortizationTable sched_sliced;
-    
+
+    // If uint underflows here the code will handle it, so it's "safe" to be used here.    
     int start_length = (start < sched_origin->length) ? start : sched_origin->length - 1;
     int steps_length = ((start + steps) <= sched_origin->length) ? steps : (sched_origin->length - start_length);
 

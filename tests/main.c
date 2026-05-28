@@ -9,9 +9,10 @@ File for automated tests.
 
 int main()
 {
-    double principal = 1000;
-    double rate = 0;
-    int periods = 12;
+    double principal = 100000;
+    double rate = 0.1;
+    double cash_flow_arr[5] = {30000,35000,40000,25000,20000};
+    int periods = 5;
 
     AmortizationTable sched_table;
     // TODO: Function to initialize schedule tables
@@ -41,8 +42,12 @@ int main()
     int _err = generate_amortization_schedule(principal, rate, periods, &sched_table);
     print_schedule_table(sched_table);
     printf("\n");
+    printf("Net Present Value: \n");
+    double npv = net_present_value(principal, cash_flow_arr, rate, periods);
+    printf_currency(npv, "R$");
+    printf("\n");
 
-    save_schedule(sched_table, "test.tsv", "\t");
+    exit(0);
 
     // - Auto tests -
     int _status; 

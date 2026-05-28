@@ -5,7 +5,7 @@
 
 int get_type_input(char* buffer, void* variable, const char* type) {
     char* _status;
-    int _result = -1;
+    int _result = -2;
 
     // This is made to limit input size (which scanf can't do)
     _status = fgets(buffer, sizeof(buffer), stdin);
@@ -17,7 +17,7 @@ int get_type_input(char* buffer, void* variable, const char* type) {
     
     if (_result == 0) return VALUE_IS_INVALID;
 
-    if(_result == -1) return VALUE_TYPE_NOT_FOUND;
+    if(_result == -2) return VALUE_TYPE_NOT_FOUND;
 
     return NO_ERROR;
 }
@@ -26,7 +26,7 @@ int input_menu(double *ptr_principal, double *ptr_rate, int *ptr_periods)
 {
     char user_input[32];
 
-    int b_exit_input = 1;
+    int b_exit_input = 0;
 
     do
     {
@@ -80,7 +80,7 @@ int input_menu(double *ptr_principal, double *ptr_rate, int *ptr_periods)
 }
 
 int choice_menu(double principal, double rate, int periods) {
-    char user_input[16];
+    char user_input[256];
     int option = 1;
 
     while(1) {
@@ -97,7 +97,8 @@ int choice_menu(double principal, double rate, int periods) {
                 "  6. FV\n"
                 "  7. PV\n"
                 "  8. Generate amortization schedule\n"
-                "  9. Re-input data\n"
+                "  9. NPV\n"
+                "  10. Re-input data\n"
                 "  0. Exit\n"
             );
         }
@@ -169,8 +170,33 @@ int choice_menu(double principal, double rate, int periods) {
                 // Deallocates memory
                 free_schedule_table(&_sched_table);
                 break;
-            // Re-input data
+            // NPV
             case 9:
+                printf("Cash flow per period:\n");
+                double* cash_flow_arr = NULL;
+                double npv_value = 0.0f;
+
+                cash_flow_arr = malloc(sizeof(double) * periods);
+
+                for (int p = 0; p < periods; p++) {
+                    printf("Period %d: ", p);
+                    double curr_value = 0.0f;
+
+                    get_type_input(user_input, &curr_value, "lf");
+
+                    cash_flow_arr[p] = curr_value;
+                }
+
+                printf("NPV: ");
+                npv_value = net_present_value(principal, cash_flow_arr, rate, periods);
+
+                if (cash_flow_arr != NULL) free(cash_flow_arr);
+                
+                printf_currency(npv_value, "R$");
+                
+                break;
+            // Re-input data
+            case 10:
                 _result = input_menu(&principal, &rate, &periods);
                 
 
