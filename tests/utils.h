@@ -5,6 +5,7 @@
 #include "finance.h"
 #include <stdio.h>
 #include <math.h>
+#include <sys/types.h>
 
 // Static so that it isn't included through multiple .c files
 // In case it's needed elsewhere
@@ -48,6 +49,7 @@ static int printf_comparison(const char* comparison_str, double calc_value, doub
     This also works as a usage example of the `load_csv_schedule` function.
 */
 void amortization_comparison() {
+    // TODO: Show only different rows. Maybe a function for slicing?
     char buf[1024];
     char curr_file_path[64];
     int curr_line = 1;
@@ -113,6 +115,19 @@ void amortization_comparison() {
             
         if (_cmp != 1) {
                 printf("   Difference on line: %d\n", _i + 1);
+                AmortizationTable _sliced_table;
+
+                _sliced_table = create_empty_schedule_table();
+
+                // Instead of printing the whole row, here prints a slice
+                // The row printing function is internal, therefore, shouldn't be used here
+                printf("GENERATED:\n");
+                _sliced_table = slice_amortization_table(&sched_table_in, _i, 1);
+                print_schedule_table(_sliced_table);
+                printf("EXPECTED:\n");
+                _sliced_table = slice_amortization_table(&sched_table_out, _i, 1);
+                print_schedule_table(_sliced_table);
+
                 line_diff++;
             }
         }

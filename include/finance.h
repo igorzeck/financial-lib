@@ -12,6 +12,7 @@ Before calling any function, one should check the variables.
 // TODO: Table to their own file
 // TODO: IRR and NPV
 
+#include <sys/types.h>
 #define LINE_WIDTH 92
 #define THRESHOLD 1e-9  // For now, immutable
 
@@ -51,6 +52,7 @@ typedef struct {
     double remaining_balance;
 } AmortizationRow;
 
+// TODO: Maybe variable indicating if it is a slice or not?
 // Table of AmortizationRows.
 typedef struct {
     int length;
@@ -217,6 +219,21 @@ int generate_amortization_schedule(
     Safer than generating one by hand.
 */
 AmortizationTable create_empty_schedule_table();
+
+/*
+    Slices and return new object with sliced Amortization Table.
+
+    The slice is by reference, therefore, data is not copied.
+
+    Note that start and steps are UINT not INT.
+
+    Returns: Amortization Table with sliced data. The slice is referencial.
+*/
+AmortizationTable slice_amortization_table(
+    const AmortizationTable* sched_origin,
+    uint start,
+    uint steps
+);
 
 /*
     Loads table from CSV like file into sched_table.

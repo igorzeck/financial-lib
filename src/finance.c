@@ -215,6 +215,23 @@ AmortizationTable create_empty_schedule_table() {
     return sched_table;
 }
 
+AmortizationTable slice_amortization_table(const AmortizationTable* sched_origin, uint start, uint steps) {
+    // Is it wise to use UINT here?
+    AmortizationTable sched_sliced;
+    
+    int start_length = (start < sched_origin->length) ? start : sched_origin->length - 1;
+    int steps_length = ((start + steps) <= sched_origin->length) ? steps : (sched_origin->length - start_length);
+
+    sched_sliced.length = steps_length;
+    if (steps_length > 0) {
+        sched_sliced.row_array = sched_origin->row_array + (start_length + (steps_length - 1));
+    } else {
+        sched_sliced.row_array = NULL;
+    }
+
+    return sched_sliced;
+}
+
 int load_csv_schedule(const char *file_path, const char *sep, AmortizationTable* sched_table) {
     // - Variables -
     char buf[4096];
