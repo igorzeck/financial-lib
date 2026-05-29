@@ -47,12 +47,12 @@ int main()
     printf_currency(npv, "R$");
     printf("\n");
     printf("Internal Rate of Return guess: \n");
-    double irr = guess_internal_rate_of_return(principal, cash_flow_arr, periods, 100000);
-    printf("%lf", irr);
+    double irr = guess_internal_rate_of_return(principal, cash_flow_arr, periods, 0, 1, 32);
+    printf("   %.13lf", irr);
     printf("\n");
-    printf("Error of: \n");
+    printf("  Absolute Error of: \n");
     double npv_abs_error = net_present_value(principal, cash_flow_arr, irr, periods);
-    printf("%.9lf\n", npv_abs_error);
+    printf("   %.9lf\n", npv_abs_error);
 
     exit(0);
 

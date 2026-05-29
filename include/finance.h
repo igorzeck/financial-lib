@@ -198,17 +198,20 @@ double net_present_value(
 /*
     Guesses best internal rate of return.
 
-    Tries max_iterations times to find root for the `net_present_value`.
+    Tries to split max_iterations times to find root for the `net_present_value`.
 
-    As solving IRR correctly would involve solving a polynomial equation,
+    As solving IRR "correctly" would involve solving a arbitrary polynomial equation,
     it was decided that a guess function would work best.
 
-    However, such a functions is CLEARLY not optimal. Use at own advise.
+    The function does a binary search between start and finish, however, it does in such a way that it may get
+    stuck on local minima.
 */
 double guess_internal_rate_of_return(
     double capital,
     const double* cash_flow_arr,
     int periods,
+    double start,
+    double finish,
     int max_iterations
 );
 

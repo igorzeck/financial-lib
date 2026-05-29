@@ -167,32 +167,28 @@ double net_present_value(double capital, const double *cash_flow_arr, double dis
     return total;
 }
 
-double guess_internal_rate_of_return(double capital, const double *cash_flow_arr, int periods, int max_iterations) {
-    float optimal_rate;
+double guess_internal_rate_of_return(double capital, const double *cash_flow_arr, int periods, double start, double end, int max_iterations) {
+    // NOTE: Assumes end >= start
+    // This method may get stuck on local minima
+    // TODO: Maybe return "error" if not root is findable (Intermediate theorem?)
     float curr_rate;
     float rate_step;
-    float best_npv;
+    float npv;
 
-    curr_rate = 0.0f;
-    rate_step = 1.0f / (float)max_iterations;
-    best_npv = capital;
+    curr_rate = (end + start) / 2;
+    rate_step = fabs(curr_rate);
 
     for (int i = 0; i < max_iterations; i++) {
-        double _npv;
+        npv = net_present_value(capital, cash_flow_arr, curr_rate, periods);
 
-        _npv = net_present_value(capital, cash_flow_arr, curr_rate, periods);
+        rate_step /= 2;
 
-        curr_rate += rate_step;
+        curr_rate += npv > 0 ? rate_step : -rate_step;
 
-        if (fabs(_npv) < fabs(best_npv)) {
-            best_npv = _npv;
-            optimal_rate = curr_rate;
-
-            if (is_close(best_npv, 0.0f)) break;
-        }
+        if (is_close(npv, 0)) break;
     }
 
-    return optimal_rate;
+    return curr_rate;
 }
 
 int generate_amortization_schedule(double principal, double monthly_rate, int months, AmortizationTable* sched_table) {
