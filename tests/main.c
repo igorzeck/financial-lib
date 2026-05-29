@@ -45,10 +45,11 @@ int main()
     printf("  Absolute error of: \n");
     double npv_abs_error = net_present_value(principal, cash_flow_arr, irr, periods);
     printf("   %.9lf\n", npv_abs_error);
+    
     // - Auto tests -
     int _status; 
 
-    // Tests up to 1e-14
+    // Tests from 1e0 to 1e-13
     _status = financial_functions_comparison(1.0, THRESHOLD * 1e-5);
     
     if (_status != NO_ERROR) {

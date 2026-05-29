@@ -193,8 +193,6 @@ double internal_rate_of_return(double capital, const double *cash_flow_arr, int 
 
         rate_step /= 2;
 
-        // printf("npv: %lf w/ %lf next by %lf\n", npv, curr_rate, rate_step);
-
         if (npv > 0) {
             curr_rate += capital > 0 ? rate_step : -rate_step;
 

@@ -2,7 +2,7 @@
 
 Functions for financial calculations.
 
-This library, forked from [this repository](https://github.com/AlanEdward19/Teste-Desenvolvimento-C-BDS-), was developed as part of the internship program evaluation of the company BDSDataSolutions. More info on what was expected on `INSTRUCTIONS.md` (formerly `README.md`).
+This library, forked from [this repository](https://github.com/AlanEdward19/Teste-Desenvolvimento-C-BDS-), was developed as part of the internship program evaluation of the company **BDSDataSolutions**. More info on what was expected on `INSTRUCTIONS.md` (formerly `README.md`).
 
 ## Functionalities
 
@@ -62,9 +62,6 @@ Other distros:
 
 You may need to look into the [specific package manager for your distro](https://distrowatch.com/dwres.php?resource=package-management).
 
-
-**Note**: the file `compile_commands.json` is used only if running the `clangd` language server on the IDE/editor of preference. If using another language server, one might need to create it's own files.
-
 ## Tests
 
 Tests can be made using the provided `Makefile`:
@@ -97,6 +94,8 @@ mingw32-make main; ./bin/main
 
 Tests are made by using the input inside `tests/in.txt`, calculating their values using some function, and then, comparing those values with the output inside `tests/out.txt` with a certain precision (`threshold`) initially at 1.0.
 
+For amortization table tests, there is an additional folder `tests/tables` with TSV table files that are loaded on demand during the tests.
+
 Values from `out.txt` were obtained using Libre Office Calc:
 
 ```text
@@ -104,14 +103,16 @@ Version: 26.2.2.2 (X86_64)
 Locale: pt-BR (pt_BR.UTF-8); UI: pt-BR
 ```
 
-The comparison is made line by line with each file.
+**Note**: Some liberty were taken to handle invalid values.
 
-After all comparisons are made, the `threshold` is reduced by a factor of 10. This is repeated until the threshold gets below a minimum value `1-e18`.
+The comparison is made line by line with each file, loading both IN and OUT line into their own `AmortizationTable` struct.
+
+After all comparisons are made, the `threshold` is reduced by a factor of 10. This is repeated until the threshold gets below a minimum value `1e-13`.
 
 Here is an example of a comparison: 
 ```text
-Threshold set to: 1-e17
-Comparison 53 (line 1):
+Threshold set to: 1-e13
+Comparison 183 (line 1):
    (OK ) Simple interest: 600.00000000000000000 == 600.00000000000000000
    (OK ) Simple interest amount: 1600.00000000000000000 == 1600.00000000000000000
    (NOK) Compound interest amount: 1795.85632602213013342 == 1795.85632602212990605
@@ -119,16 +120,22 @@ Comparison 53 (line 1):
    (NOK) Fixed installment: 112.82541002081534032 == 112.82541002081499926
    (NOK) Future value: 1795.85632602213013342 == 1795.85632602212990605
    (OK ) Present value: 1000.00000000000000000 == 1000.00000000000000000
-  Failed 4 times with threshold of: 0.00000000000000001
+   (NOK) Net present value: 1859.45471405699413481 == 1859.45471405699004208
+   (NOK) Internal rate of return: 1.00527633726596810 == 1.00527643664039990
+  Failed 6 times with threshold of: 0.0000000000001
 ```
 
 `OK` for an exact match with the threshold and `NOK` for an inexact match.
 
-With the defaults values and variables, the tests hold up to a threshold of `1-e11`.
+With the defaults values and variables, the tests should hold up to a threshold of `1-e7`.
+
+The accuracy is mainly held down by the `internal_return_rate` function with it's iterative approach. The functions parameters may be changed for better accuracy when needed.
 
 ## Examples
 
 The interactive test allows the input of values for the `principal`, `rate` and `periods`. Those values can be used to calculate all values for the [functionalities](#functionalities) of this library.
+
+If calculating the **NPV/IRR** is also necessary to supply a array of values, with the array size equaling to periods.
 
 **Interactive tests**: 
 ```bash
@@ -144,7 +151,7 @@ mingw32-make interactive; ./bin/interactive
 
 ## Makefile
 
-The Makefile uses gcc for it's compilation:
+The Makefile uses gcc for it's compilation. Without flags:
 
 ```bash
 gcc -g examples/interactive.c src/finance.c src/interface.c -I./include -lm -o interactive

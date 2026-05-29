@@ -62,7 +62,7 @@ int financial_functions_comparison(double threshold_steps, double max_threshold_
     int last_perfect_count = 0;
 
     do {
-        printf("\nThreshold set to: 1-e%d\n", threshold_counter++);
+        printf("\nThreshold set to: 1-e%d\n", threshold_counter);
 
         FILE *file_in = fopen("tests/in.txt", "r");
         FILE *file_out = fopen("tests/out.txt", "r");
@@ -174,7 +174,7 @@ int financial_functions_comparison(double threshold_steps, double max_threshold_
             if (_status) {
                 printf("  Failed %d times with threshold of: %.*lf\n",
                     _status,
-                    threshold_counter - 1,
+                    threshold_counter,
                     threshold_steps
                 );
 
@@ -184,6 +184,7 @@ int financial_functions_comparison(double threshold_steps, double max_threshold_
             }
         }
         threshold_steps /= 10;
+        threshold_counter++;
         
         fclose(file_in);
         fclose(file_out);
