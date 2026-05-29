@@ -97,7 +97,7 @@ int choice_menu(double principal, double rate, int periods) {
                 "  6. FV\n"
                 "  7. PV\n"
                 "  8. Generate amortization schedule\n"
-                "  9. NPV\n"
+                "  9. NPV & IRR\n"
                 "  10. Re-input data\n"
                 "  0. Exit\n"
             );
@@ -170,17 +170,18 @@ int choice_menu(double principal, double rate, int periods) {
                 // Deallocates memory
                 free_schedule_table(&_sched_table);
                 break;
-            // NPV
+            // NPV and IRR
             case 9:
-                printf("Cash flow per period:\n");
+                printf("Cash-flow per period:\n");
                 double* cash_flow_arr = NULL;
                 double npv_value = 0.0f;
+                double irr_value = 0.0f;
 
                 // Malloc here is slower, but keeps memory usage tight
                 cash_flow_arr = malloc(sizeof(double) * periods);
 
                 for (int p = 0; p < periods; p++) {
-                    printf("Period %d: ", p);
+                    printf("Period %d: ", p + 1);
                     double curr_value = 0.0f;
 
                     get_type_input(user_input, &curr_value, "lf");
@@ -190,11 +191,17 @@ int choice_menu(double principal, double rate, int periods) {
 
                 printf("NPV: ");
                 npv_value = net_present_value(principal, cash_flow_arr, rate, periods);
-
-                if (cash_flow_arr != NULL) free(cash_flow_arr);
                 
                 printf_currency(npv_value, "R$");
+
+                printf("\n");
                 
+                irr_value = internal_rate_of_return(principal, cash_flow_arr, periods, -2.0, 2.1, 28);
+                
+                printf("IRR: %.3lf", irr_value);
+
+                if (cash_flow_arr != NULL) free(cash_flow_arr);
+
                 break;
             // Re-input data
             case 10:

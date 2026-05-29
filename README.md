@@ -16,7 +16,8 @@ The library has the following financial functions:
 6. Amortization schedules;
 7. Future value (FV);
 8. Present value (PV);
-9. PV with compounding interest;
+9. Net Present Value (NPV);
+10. Internal Rate of Return (IRR);
 
 Those functions can be used upon inclusion from `include.h` header file. Some auxiliary functions are also included.
 
@@ -28,7 +29,7 @@ This library is supported on both Linux and Windows machines.
 
 To compile the code, `gcc` is needed:
 
-#### For linux:
+#### For Linux:
 
 ```bash
 sudo apt update

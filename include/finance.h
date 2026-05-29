@@ -207,7 +207,7 @@ double net_present_value(
     The function does a binary search between start and finish, however, it does in such a way that it may get
     stuck on local minima.
 
-    WARNING: The mean of start, end shouldn't equal zero. Otherwise, might return NAN.
+    WARNING: The mean of start, end shouldn't equal zero. Otherwise, it might return NAN.
 */
 double internal_rate_of_return(
     double capital,
