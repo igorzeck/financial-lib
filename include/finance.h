@@ -205,8 +205,10 @@ double net_present_value(
 
     The function does a binary search between start and finish, however, it does in such a way that it may get
     stuck on local minima.
+
+    WARNING: The mean of start, end shouldn't equal zero. Otherwise, might return NAN.
 */
-double guess_internal_rate_of_return(
+double internal_rate_of_return(
     double capital,
     const double* cash_flow_arr,
     int periods,

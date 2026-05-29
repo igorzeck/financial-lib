@@ -156,6 +156,7 @@ double present_value(double fv, double rate, int periods) {
 
 double net_present_value(double capital, const double *cash_flow_arr, double discount_rate, int periods) {
     // Note: The formula here used is somewhat flexible, so there is less variables check in place.
+    // FIXME: Handle discount_rate = 0
     double total;
 
     total = -capital;
@@ -167,27 +168,54 @@ double net_present_value(double capital, const double *cash_flow_arr, double dis
     return total;
 }
 
-double guess_internal_rate_of_return(double capital, const double *cash_flow_arr, int periods, double start, double end, int max_iterations) {
+double internal_rate_of_return(double capital, const double *cash_flow_arr, int periods, double start, double end, int max_iterations) {
     // NOTE: Assumes end >= start
     // This method may get stuck on local minima
     // TODO: Maybe return "error" if not root is findable (Intermediate theorem?)
-    float curr_rate;
-    float rate_step;
-    float npv;
+    //       Return NAN then!
+    // - Checks if there is convergence -
+    // Convergence is checked using the direction of change, if it doesn't change, then it don't converges
+    // This mean that values close to start and end might not be considered.
+    // Alternatively would be to use the Intermediate Value Theorem for polynomials,
+    // However, it might return no root in interval even if there is some for certain polynomials.
+    // Note: There are some bug with some values not converging.
+
+    double curr_rate;
+    double rate_step;
+    double npv;
+
+    int curr_direction = 0; // > (-1) and < (1)
+    int b_direction_changed = 0;
 
     curr_rate = (end + start) / 2;
-    rate_step = fabs(curr_rate);
+    rate_step = (end - start) / 2;
 
     for (int i = 0; i < max_iterations; i++) {
+        int old_curr_direction = curr_direction;
+
         npv = net_present_value(capital, cash_flow_arr, curr_rate, periods);
 
         rate_step /= 2;
 
-        curr_rate += npv > 0 ? rate_step : -rate_step;
+        // printf("npv: %lf w/ %lf next by %lf\n", npv, curr_rate, rate_step);
 
+        if (npv > 0) {
+            curr_rate += capital > 0 ? rate_step : -rate_step;
+
+            curr_direction = 1;
+        } else {
+            curr_rate += capital > 0 ? -rate_step : rate_step;
+
+            curr_direction = -1;
+        }
+
+        if ((old_curr_direction != 0) && (old_curr_direction != curr_direction)) b_direction_changed = 1;
+        
         if (is_close(npv, 0)) break;
     }
 
+    if (!b_direction_changed) return NAN;
+    
     return curr_rate;
 }
 

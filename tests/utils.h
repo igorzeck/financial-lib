@@ -5,7 +5,10 @@
 #include "finance.h"
 #include <stdio.h>
 #include <math.h>
+#include <stdlib.h>
 #include <sys/types.h>
+
+// TODO: Change iterations of malloc to realloc
 
 // Static so that it isn't included through multiple .c files
 // In case it's needed elsewhere
@@ -69,6 +72,8 @@ int financial_functions_comparison(double threshold_steps, double max_threshold_
         FILE *file_in = fopen("tests/in.txt", "r");
         FILE *file_out = fopen("tests/out.txt", "r");
         int line_counter = 0;
+        double* cash_flow_arr = NULL;
+        int max_cash_arr_size = 0;
 
         if (file_in == NULL || file_out == NULL) {
             fprintf(stderr, "Couldn't open test files!\n");
@@ -79,21 +84,48 @@ int financial_functions_comparison(double threshold_steps, double max_threshold_
             fgets(buffer_out, sizeof(buffer_out), file_out) != NULL) {
             // - Variables -
             int _err;
+            int _chars_read;
             
             printf("Comparison %d (line %d):\n", counter++, ++line_counter);
 
+            // Fixed size variables
             sscanf(
                 buffer_in,
-                "%lf %lf %d",
+                "%lf %lf %d%n",
                 &principal,
                 &rate,
-                &periods
+                &periods,
+                &_chars_read
             );
 
             // Checks variables
             _err = check_variables(principal, rate, periods);
             
             if (_err != NO_ERROR) printf("  Got error: %d\n", _err);
+
+            // Dynamically allocates memory for double array
+            if (periods >= 0) {
+                // Reallocates only when cash_flow_arr size increases.
+                if (periods > max_cash_arr_size) {
+                    cash_flow_arr = realloc(cash_flow_arr, periods * sizeof(double));
+                    max_cash_arr_size = periods;
+                }
+            }
+
+            // Fills cash flow array
+            char *ptr = buffer_in + _chars_read;
+            char *end;
+            int i = 0;
+
+            while (*ptr != '\0') {
+                double value = strtod(ptr, &end);
+
+                if (ptr == end) break;
+
+                cash_flow_arr[i++] = value;
+                
+                ptr = end;
+            }
 
             // Attributions
             double _simple_interest          = simple_interest(principal, rate, periods);
@@ -103,6 +135,8 @@ int financial_functions_comparison(double threshold_steps, double max_threshold_
             double _fixed_installment        = fixed_installment(principal, rate, periods);
             double _future_value             = future_value(principal, rate, periods);
             double _present_value            = present_value(future_value(principal, rate, periods), rate, periods);
+            double _net_present_value        = net_present_value(principal, cash_flow_arr,rate, periods);
+            double _internal_rate_of_return  = internal_rate_of_return(principal, cash_flow_arr, periods, -2, 2.1, 32);
 
             // Expected values
             double _exp_simple_interest;
@@ -112,17 +146,21 @@ int financial_functions_comparison(double threshold_steps, double max_threshold_
             double _exp_fixed_installment;
             double _exp_future_value;
             double _exp_present_value;
+            double _exp_net_present_value;
+            double _exp_internal_rate_of_return;
             
             _err = sscanf(
                 buffer_out,
-                "%lf %lf %lf %lf %lf %lf %lf",
+                "%lf %lf %lf %lf %lf %lf %lf %lf %lf",
                 &_exp_simple_interest,
                 &_exp_simple_interest_amount,
                 &_exp_compound_interest_amount,
                 &_exp_compound_interest,
                 &_exp_fixed_installment,
                 &_exp_future_value,
-                &_exp_present_value
+                &_exp_present_value,
+                &_exp_net_present_value,
+                &_exp_internal_rate_of_return
             );
 
             // - Comparisons -
@@ -135,6 +173,8 @@ int financial_functions_comparison(double threshold_steps, double max_threshold_
             _status += printf_comparison("Fixed installment", _fixed_installment, _exp_fixed_installment, threshold_steps);
             _status += printf_comparison("Future value", _future_value, _exp_future_value, threshold_steps);
             _status += printf_comparison("Present value", _present_value, _exp_present_value, threshold_steps);
+            _status += printf_comparison("Net present value", _net_present_value, _exp_net_present_value, threshold_steps);
+            _status += printf_comparison("Internal rate of return", _internal_rate_of_return, _exp_internal_rate_of_return, threshold_steps);
 
             if (_status) {
                 printf("  Failed %d times with threshold of: %.*lf\n",
@@ -152,6 +192,8 @@ int financial_functions_comparison(double threshold_steps, double max_threshold_
         
         fclose(file_in);
         fclose(file_out);
+
+        free(cash_flow_arr);
 
     } while(threshold_steps > max_threshold_steps);
 

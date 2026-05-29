@@ -9,10 +9,10 @@ File for automated tests.
 
 int main()
 {
-    double principal = 100000;
-    double rate = 0.1;
-    double cash_flow_arr[5] = {30000,35000,40000,25000,20000};
-    int periods = 5;
+    double principal = -1000;
+    double rate = -0.02;
+    int periods = 24;
+    double cash_flow_arr[24] = {1, 0, 300, 400, 500, 600, 700, 15, 17, 19, 21, 2100, 2101, 2102, 2103, 26, 27, 28, 29, 30, 17, 19, 21, 23};
 
     AmortizationTable sched_table;
     // TODO: Function to initialize schedule tables
@@ -22,7 +22,6 @@ int main()
     sched_table.length = 0;
 
     // - Printing tests -
-
     printf("Compound interest: ");
     printf_currency(compound_interest(principal, rate, periods), "R$");
     printf("\n");
@@ -38,29 +37,23 @@ int main()
     printf("Present value: ");
     printf_currency(present_value(future_value(principal, rate, periods),rate,periods), "R$");
     printf("\n");
-    printf("Amortization table: \n");
-    int _err = generate_amortization_schedule(principal, rate, periods, &sched_table);
-    print_schedule_table(sched_table);
-    printf("\n");
     printf("Net Present Value:");
     double npv = net_present_value(principal, cash_flow_arr, rate, periods);
     printf_currency(npv, "R$");
     printf("\n");
-    printf("Internal Rate of Return guess: \n");
-    double irr = guess_internal_rate_of_return(principal, cash_flow_arr, periods, 0, 1, 32);
+    printf("Internal rate of return guess: \n");
+    double irr = internal_rate_of_return(principal, cash_flow_arr, periods, -2, 2.1, 32);
     printf("   %.13lf", irr);
     printf("\n");
-    printf("  Absolute Error of: \n");
+    printf("  Absolute error of: \n");
     double npv_abs_error = net_present_value(principal, cash_flow_arr, irr, periods);
     printf("   %.9lf\n", npv_abs_error);
-
-    exit(0);
-
+    // exit(0);
     // - Auto tests -
     int _status; 
 
     // Tests up to 1e-14
-    _status = financial_functions_comparison(1.0, THRESHOLD / 1e-5);
+    _status = financial_functions_comparison(1.0, THRESHOLD * 1e-5);
     
     if (_status != NO_ERROR) {
         printf("Unexpected error %d.\nEnding Test Routine.", _status);

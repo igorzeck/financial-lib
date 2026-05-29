@@ -1,0 +1,2244 @@
+gcc -g tests/main.c src/finance.c src/interface.c -I./include -lm -o ./bin/main
+./bin/main
+Compound interest: R$ nan
+Compound interest amount: R$ nan
+Fixed installment: R$ nan
+Future value: R$ nan
+Present value: R$ nan
+Net Present Value:R$ 15250.58
+Internal rate of return guess: 
+   -1.6254252062994
+  Absolute error of: 
+   0.006149041
+
+Threshold set to: 1-e0
+Comparison 1 (line 1):
+   (OK ) Simple interest: 600.00000000000000000 == 600.00000000000000000
+   (OK ) Simple interest amount: 1600.00000000000000000 == 1600.00000000000000000
+   (OK ) Compound interest amount: 1795.85632602213013342 == 1795.85632602212990605
+   (OK ) Compound interest: 795.85632602213013342 == 795.85632602213001974
+   (OK ) Fixed installment: 112.82541002081534032 == 112.82541002081499926
+   (OK ) Future value: 1795.85632602213013342 == 1795.85632602212990605
+   (OK ) Present value: 1000.00000000000000000 == 1000.00000000000000000
+   (OK ) Net present value: 1859.45471405699413481 == 1859.45471405699004208
+   (OK ) Internal rate of return: 1.00527643702225711 == 1.00527643664039990
+Comparison 2 (line 2):
+   (OK ) Simple interest: 3600.00000000000000000 == 3600.00000000000000000
+   (OK ) Simple interest amount: 33600.00000000000000000 == 33600.00000000000000000
+   (OK ) Compound interest amount: 33819.84063119792699581 == 33819.84063119789789198
+   (OK ) Compound interest: 3819.84063119792699581 == 3819.84063119793017904
+   (OK ) Fixed installment: 664.02980967935911849 == 664.02980967934502132
+   (OK ) Future value: 33819.84063119792699581 == 33819.84063119789789198
+   (OK ) Present value: 29999.99999999999636202 == 30000.00000000000000000
+   (OK ) Net present value: 268396.02616732823662460 == 268396.02616732800379395
+   (OK ) Internal rate of return: 1.01328181432327247 == 1.01328115767993010
+Comparison 3 (line 3):
+   (OK ) Simple interest: 1800.00000000000000000 == 1800.00000000000000000
+   (OK ) Simple interest amount: 11800.00000000000000000 == 11800.00000000000000000
+   (OK ) Compound interest amount: 11966.80524823414634739 == 11966.80524823410087265
+   (OK ) Compound interest: 1966.80524823414634739 == 1966.80524823414998536
+   (OK ) Fixed installment: 304.21937451555720600 == 304.21937451555101006
+   (OK ) Future value: 11966.80524823414634739 == 11966.80524823410087265
+   (OK ) Present value: 10000.00000000000000000 == 10000.00000000000000000
+   (OK ) Net present value: 1992.30204759475691390 == 1992.30204759476009713
+   (OK ) Internal rate of return: 0.11332102868473161 == 0.11332102823625900
+Comparison 4 (line 4):
+   (OK ) Simple interest: 0.00000000000000000 == 0.00000000000000000
+   (OK ) Simple interest amount: 12000.00000000000000000 == 12000.00000000000000000
+   (OK ) Compound interest amount: 12000.00000000000000000 == 12000.00000000000000000
+   (OK ) Compound interest: 0.00000000000000000 == 0.00000000000000000
+   (OK ) Fixed installment: 1000.00000000000000000 == 1000.00000000000000000
+   (OK ) Future value: 12000.00000000000000000 == 12000.00000000000000000
+   (OK ) Present value: 12000.00000000000000000 == 12000.00000000000000000
+   (OK ) Net present value: -5204.00000000000000000 == -5204.00000000000000000
+   (OK ) Internal rate of return: -0.10671310821780929 == -0.10671310795446499
+Comparison 5 (line 5):
+   (OK ) Simple interest: 50000.00000000000000000 == 50000.00000000000000000
+   (OK ) Simple interest amount: 150000.00000000000000000 == 150000.00000000000000000
+   (OK ) Compound interest amount: 161051.00000000005820766 == 161051.00000000000000000
+   (OK ) Compound interest: 61051.00000000005820766 == 61051.00000000010186341
+   (OK ) Fixed installment: 26379.74807947452427470 == 26379.74807947449880885
+   (OK ) Future value: 161051.00000000005820766 == 161051.00000000000000000
+   (OK ) Present value: 100000.00000000000000000 == 100000.00000000000000000
+   (OK ) Net present value: 15744.70198881097167032 == 15744.70198881100077415
+   (OK ) Internal rate of return: 0.16375658378237865 == 0.16375658348671901
+Comparison 6 (line 6):
+  Got error: 2
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: 979.05765817798589978 == 979.05765817798601347
+   (OK ) Internal rate of return: 0.00798824256053199 == 0.00798824290299200
+Comparison 7 (line 7):
+  Got error: 8
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: -526.67411846419770427 == -526.67411846419804533
+   (OK ) Internal rate of return: -0.03890144898323339 == -0.03890144858176260
+Comparison 8 (line 8):
+  Got error: 4
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: -20000.00000000000000000 == -20000.00000000000000000
+   (OK ) Internal rate of return: nan == nan
+Comparison 9 (line 9):
+  Got error: 4
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: -20.00000000000000000 == -20.00000000000000000
+   (OK ) Internal rate of return: nan == nan
+Comparison 10 (line 10):
+  Got error: 10
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: 15250.58176129287494405 == 15250.58176129290040990
+   (OK ) Internal rate of return: -1.62542520629940523 == -1.62542520668527990
+Comparison 11 (line 11):
+  Got error: 6
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: 1000.00000000000000000 == 1000.00000000000000000
+   (OK ) Internal rate of return: nan == nan
+Comparison 12 (line 12):
+  Got error: 12
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: -3000.00000000000000000 == -3000.00000000000000000
+   (OK ) Internal rate of return: nan == nan
+Comparison 13 (line 13):
+  Got error: 14
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: 1000.00000000000000000 == 1000.00000000000000000
+   (OK ) Internal rate of return: nan == nan
+
+Threshold set to: 1-e1
+Comparison 14 (line 1):
+   (OK ) Simple interest: 600.00000000000000000 == 600.00000000000000000
+   (OK ) Simple interest amount: 1600.00000000000000000 == 1600.00000000000000000
+   (OK ) Compound interest amount: 1795.85632602213013342 == 1795.85632602212990605
+   (OK ) Compound interest: 795.85632602213013342 == 795.85632602213001974
+   (OK ) Fixed installment: 112.82541002081534032 == 112.82541002081499926
+   (OK ) Future value: 1795.85632602213013342 == 1795.85632602212990605
+   (OK ) Present value: 1000.00000000000000000 == 1000.00000000000000000
+   (OK ) Net present value: 1859.45471405699413481 == 1859.45471405699004208
+   (OK ) Internal rate of return: 1.00527643702225711 == 1.00527643664039990
+Comparison 15 (line 2):
+   (OK ) Simple interest: 3600.00000000000000000 == 3600.00000000000000000
+   (OK ) Simple interest amount: 33600.00000000000000000 == 33600.00000000000000000
+   (OK ) Compound interest amount: 33819.84063119792699581 == 33819.84063119789789198
+   (OK ) Compound interest: 3819.84063119792699581 == 3819.84063119793017904
+   (OK ) Fixed installment: 664.02980967935911849 == 664.02980967934502132
+   (OK ) Future value: 33819.84063119792699581 == 33819.84063119789789198
+   (OK ) Present value: 29999.99999999999636202 == 30000.00000000000000000
+   (OK ) Net present value: 268396.02616732823662460 == 268396.02616732800379395
+   (OK ) Internal rate of return: 1.01328181432327247 == 1.01328115767993010
+Comparison 16 (line 3):
+   (OK ) Simple interest: 1800.00000000000000000 == 1800.00000000000000000
+   (OK ) Simple interest amount: 11800.00000000000000000 == 11800.00000000000000000
+   (OK ) Compound interest amount: 11966.80524823414634739 == 11966.80524823410087265
+   (OK ) Compound interest: 1966.80524823414634739 == 1966.80524823414998536
+   (OK ) Fixed installment: 304.21937451555720600 == 304.21937451555101006
+   (OK ) Future value: 11966.80524823414634739 == 11966.80524823410087265
+   (OK ) Present value: 10000.00000000000000000 == 10000.00000000000000000
+   (OK ) Net present value: 1992.30204759475691390 == 1992.30204759476009713
+   (OK ) Internal rate of return: 0.11332102868473161 == 0.11332102823625900
+Comparison 17 (line 4):
+   (OK ) Simple interest: 0.00000000000000000 == 0.00000000000000000
+   (OK ) Simple interest amount: 12000.00000000000000000 == 12000.00000000000000000
+   (OK ) Compound interest amount: 12000.00000000000000000 == 12000.00000000000000000
+   (OK ) Compound interest: 0.00000000000000000 == 0.00000000000000000
+   (OK ) Fixed installment: 1000.00000000000000000 == 1000.00000000000000000
+   (OK ) Future value: 12000.00000000000000000 == 12000.00000000000000000
+   (OK ) Present value: 12000.00000000000000000 == 12000.00000000000000000
+   (OK ) Net present value: -5204.00000000000000000 == -5204.00000000000000000
+   (OK ) Internal rate of return: -0.10671310821780929 == -0.10671310795446499
+Comparison 18 (line 5):
+   (OK ) Simple interest: 50000.00000000000000000 == 50000.00000000000000000
+   (OK ) Simple interest amount: 150000.00000000000000000 == 150000.00000000000000000
+   (OK ) Compound interest amount: 161051.00000000005820766 == 161051.00000000000000000
+   (OK ) Compound interest: 61051.00000000005820766 == 61051.00000000010186341
+   (OK ) Fixed installment: 26379.74807947452427470 == 26379.74807947449880885
+   (OK ) Future value: 161051.00000000005820766 == 161051.00000000000000000
+   (OK ) Present value: 100000.00000000000000000 == 100000.00000000000000000
+   (OK ) Net present value: 15744.70198881097167032 == 15744.70198881100077415
+   (OK ) Internal rate of return: 0.16375658378237865 == 0.16375658348671901
+Comparison 19 (line 6):
+  Got error: 2
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: 979.05765817798589978 == 979.05765817798601347
+   (OK ) Internal rate of return: 0.00798824256053199 == 0.00798824290299200
+Comparison 20 (line 7):
+  Got error: 8
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: -526.67411846419770427 == -526.67411846419804533
+   (OK ) Internal rate of return: -0.03890144898323339 == -0.03890144858176260
+Comparison 21 (line 8):
+  Got error: 4
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: -20000.00000000000000000 == -20000.00000000000000000
+   (OK ) Internal rate of return: nan == nan
+Comparison 22 (line 9):
+  Got error: 4
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: -20.00000000000000000 == -20.00000000000000000
+   (OK ) Internal rate of return: nan == nan
+Comparison 23 (line 10):
+  Got error: 10
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: 15250.58176129287494405 == 15250.58176129290040990
+   (OK ) Internal rate of return: -1.62542520629940523 == -1.62542520668527990
+Comparison 24 (line 11):
+  Got error: 6
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: 1000.00000000000000000 == 1000.00000000000000000
+   (OK ) Internal rate of return: nan == nan
+Comparison 25 (line 12):
+  Got error: 12
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: -3000.00000000000000000 == -3000.00000000000000000
+   (OK ) Internal rate of return: nan == nan
+Comparison 26 (line 13):
+  Got error: 14
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: 1000.00000000000000000 == 1000.00000000000000000
+   (OK ) Internal rate of return: nan == nan
+
+Threshold set to: 1-e2
+Comparison 27 (line 1):
+   (OK ) Simple interest: 600.00000000000000000 == 600.00000000000000000
+   (OK ) Simple interest amount: 1600.00000000000000000 == 1600.00000000000000000
+   (OK ) Compound interest amount: 1795.85632602213013342 == 1795.85632602212990605
+   (OK ) Compound interest: 795.85632602213013342 == 795.85632602213001974
+   (OK ) Fixed installment: 112.82541002081534032 == 112.82541002081499926
+   (OK ) Future value: 1795.85632602213013342 == 1795.85632602212990605
+   (OK ) Present value: 1000.00000000000000000 == 1000.00000000000000000
+   (OK ) Net present value: 1859.45471405699413481 == 1859.45471405699004208
+   (OK ) Internal rate of return: 1.00527643702225711 == 1.00527643664039990
+Comparison 28 (line 2):
+   (OK ) Simple interest: 3600.00000000000000000 == 3600.00000000000000000
+   (OK ) Simple interest amount: 33600.00000000000000000 == 33600.00000000000000000
+   (OK ) Compound interest amount: 33819.84063119792699581 == 33819.84063119789789198
+   (OK ) Compound interest: 3819.84063119792699581 == 3819.84063119793017904
+   (OK ) Fixed installment: 664.02980967935911849 == 664.02980967934502132
+   (OK ) Future value: 33819.84063119792699581 == 33819.84063119789789198
+   (OK ) Present value: 29999.99999999999636202 == 30000.00000000000000000
+   (OK ) Net present value: 268396.02616732823662460 == 268396.02616732800379395
+   (OK ) Internal rate of return: 1.01328181432327247 == 1.01328115767993010
+Comparison 29 (line 3):
+   (OK ) Simple interest: 1800.00000000000000000 == 1800.00000000000000000
+   (OK ) Simple interest amount: 11800.00000000000000000 == 11800.00000000000000000
+   (OK ) Compound interest amount: 11966.80524823414634739 == 11966.80524823410087265
+   (OK ) Compound interest: 1966.80524823414634739 == 1966.80524823414998536
+   (OK ) Fixed installment: 304.21937451555720600 == 304.21937451555101006
+   (OK ) Future value: 11966.80524823414634739 == 11966.80524823410087265
+   (OK ) Present value: 10000.00000000000000000 == 10000.00000000000000000
+   (OK ) Net present value: 1992.30204759475691390 == 1992.30204759476009713
+   (OK ) Internal rate of return: 0.11332102868473161 == 0.11332102823625900
+Comparison 30 (line 4):
+   (OK ) Simple interest: 0.00000000000000000 == 0.00000000000000000
+   (OK ) Simple interest amount: 12000.00000000000000000 == 12000.00000000000000000
+   (OK ) Compound interest amount: 12000.00000000000000000 == 12000.00000000000000000
+   (OK ) Compound interest: 0.00000000000000000 == 0.00000000000000000
+   (OK ) Fixed installment: 1000.00000000000000000 == 1000.00000000000000000
+   (OK ) Future value: 12000.00000000000000000 == 12000.00000000000000000
+   (OK ) Present value: 12000.00000000000000000 == 12000.00000000000000000
+   (OK ) Net present value: -5204.00000000000000000 == -5204.00000000000000000
+   (OK ) Internal rate of return: -0.10671310821780929 == -0.10671310795446499
+Comparison 31 (line 5):
+   (OK ) Simple interest: 50000.00000000000000000 == 50000.00000000000000000
+   (OK ) Simple interest amount: 150000.00000000000000000 == 150000.00000000000000000
+   (OK ) Compound interest amount: 161051.00000000005820766 == 161051.00000000000000000
+   (OK ) Compound interest: 61051.00000000005820766 == 61051.00000000010186341
+   (OK ) Fixed installment: 26379.74807947452427470 == 26379.74807947449880885
+   (OK ) Future value: 161051.00000000005820766 == 161051.00000000000000000
+   (OK ) Present value: 100000.00000000000000000 == 100000.00000000000000000
+   (OK ) Net present value: 15744.70198881097167032 == 15744.70198881100077415
+   (OK ) Internal rate of return: 0.16375658378237865 == 0.16375658348671901
+Comparison 32 (line 6):
+  Got error: 2
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: 979.05765817798589978 == 979.05765817798601347
+   (OK ) Internal rate of return: 0.00798824256053199 == 0.00798824290299200
+Comparison 33 (line 7):
+  Got error: 8
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: -526.67411846419770427 == -526.67411846419804533
+   (OK ) Internal rate of return: -0.03890144898323339 == -0.03890144858176260
+Comparison 34 (line 8):
+  Got error: 4
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: -20000.00000000000000000 == -20000.00000000000000000
+   (OK ) Internal rate of return: nan == nan
+Comparison 35 (line 9):
+  Got error: 4
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: -20.00000000000000000 == -20.00000000000000000
+   (OK ) Internal rate of return: nan == nan
+Comparison 36 (line 10):
+  Got error: 10
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: 15250.58176129287494405 == 15250.58176129290040990
+   (OK ) Internal rate of return: -1.62542520629940523 == -1.62542520668527990
+Comparison 37 (line 11):
+  Got error: 6
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: 1000.00000000000000000 == 1000.00000000000000000
+   (OK ) Internal rate of return: nan == nan
+Comparison 38 (line 12):
+  Got error: 12
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: -3000.00000000000000000 == -3000.00000000000000000
+   (OK ) Internal rate of return: nan == nan
+Comparison 39 (line 13):
+  Got error: 14
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: 1000.00000000000000000 == 1000.00000000000000000
+   (OK ) Internal rate of return: nan == nan
+
+Threshold set to: 1-e3
+Comparison 40 (line 1):
+   (OK ) Simple interest: 600.00000000000000000 == 600.00000000000000000
+   (OK ) Simple interest amount: 1600.00000000000000000 == 1600.00000000000000000
+   (OK ) Compound interest amount: 1795.85632602213013342 == 1795.85632602212990605
+   (OK ) Compound interest: 795.85632602213013342 == 795.85632602213001974
+   (OK ) Fixed installment: 112.82541002081534032 == 112.82541002081499926
+   (OK ) Future value: 1795.85632602213013342 == 1795.85632602212990605
+   (OK ) Present value: 1000.00000000000000000 == 1000.00000000000000000
+   (OK ) Net present value: 1859.45471405699413481 == 1859.45471405699004208
+   (OK ) Internal rate of return: 1.00527643702225711 == 1.00527643664039990
+Comparison 41 (line 2):
+   (OK ) Simple interest: 3600.00000000000000000 == 3600.00000000000000000
+   (OK ) Simple interest amount: 33600.00000000000000000 == 33600.00000000000000000
+   (OK ) Compound interest amount: 33819.84063119792699581 == 33819.84063119789789198
+   (OK ) Compound interest: 3819.84063119792699581 == 3819.84063119793017904
+   (OK ) Fixed installment: 664.02980967935911849 == 664.02980967934502132
+   (OK ) Future value: 33819.84063119792699581 == 33819.84063119789789198
+   (OK ) Present value: 29999.99999999999636202 == 30000.00000000000000000
+   (OK ) Net present value: 268396.02616732823662460 == 268396.02616732800379395
+   (OK ) Internal rate of return: 1.01328181432327247 == 1.01328115767993010
+Comparison 42 (line 3):
+   (OK ) Simple interest: 1800.00000000000000000 == 1800.00000000000000000
+   (OK ) Simple interest amount: 11800.00000000000000000 == 11800.00000000000000000
+   (OK ) Compound interest amount: 11966.80524823414634739 == 11966.80524823410087265
+   (OK ) Compound interest: 1966.80524823414634739 == 1966.80524823414998536
+   (OK ) Fixed installment: 304.21937451555720600 == 304.21937451555101006
+   (OK ) Future value: 11966.80524823414634739 == 11966.80524823410087265
+   (OK ) Present value: 10000.00000000000000000 == 10000.00000000000000000
+   (OK ) Net present value: 1992.30204759475691390 == 1992.30204759476009713
+   (OK ) Internal rate of return: 0.11332102868473161 == 0.11332102823625900
+Comparison 43 (line 4):
+   (OK ) Simple interest: 0.00000000000000000 == 0.00000000000000000
+   (OK ) Simple interest amount: 12000.00000000000000000 == 12000.00000000000000000
+   (OK ) Compound interest amount: 12000.00000000000000000 == 12000.00000000000000000
+   (OK ) Compound interest: 0.00000000000000000 == 0.00000000000000000
+   (OK ) Fixed installment: 1000.00000000000000000 == 1000.00000000000000000
+   (OK ) Future value: 12000.00000000000000000 == 12000.00000000000000000
+   (OK ) Present value: 12000.00000000000000000 == 12000.00000000000000000
+   (OK ) Net present value: -5204.00000000000000000 == -5204.00000000000000000
+   (OK ) Internal rate of return: -0.10671310821780929 == -0.10671310795446499
+Comparison 44 (line 5):
+   (OK ) Simple interest: 50000.00000000000000000 == 50000.00000000000000000
+   (OK ) Simple interest amount: 150000.00000000000000000 == 150000.00000000000000000
+   (OK ) Compound interest amount: 161051.00000000005820766 == 161051.00000000000000000
+   (OK ) Compound interest: 61051.00000000005820766 == 61051.00000000010186341
+   (OK ) Fixed installment: 26379.74807947452427470 == 26379.74807947449880885
+   (OK ) Future value: 161051.00000000005820766 == 161051.00000000000000000
+   (OK ) Present value: 100000.00000000000000000 == 100000.00000000000000000
+   (OK ) Net present value: 15744.70198881097167032 == 15744.70198881100077415
+   (OK ) Internal rate of return: 0.16375658378237865 == 0.16375658348671901
+Comparison 45 (line 6):
+  Got error: 2
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: 979.05765817798589978 == 979.05765817798601347
+   (OK ) Internal rate of return: 0.00798824256053199 == 0.00798824290299200
+Comparison 46 (line 7):
+  Got error: 8
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: -526.67411846419770427 == -526.67411846419804533
+   (OK ) Internal rate of return: -0.03890144898323339 == -0.03890144858176260
+Comparison 47 (line 8):
+  Got error: 4
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: -20000.00000000000000000 == -20000.00000000000000000
+   (OK ) Internal rate of return: nan == nan
+Comparison 48 (line 9):
+  Got error: 4
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: -20.00000000000000000 == -20.00000000000000000
+   (OK ) Internal rate of return: nan == nan
+Comparison 49 (line 10):
+  Got error: 10
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: 15250.58176129287494405 == 15250.58176129290040990
+   (OK ) Internal rate of return: -1.62542520629940523 == -1.62542520668527990
+Comparison 50 (line 11):
+  Got error: 6
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: 1000.00000000000000000 == 1000.00000000000000000
+   (OK ) Internal rate of return: nan == nan
+Comparison 51 (line 12):
+  Got error: 12
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: -3000.00000000000000000 == -3000.00000000000000000
+   (OK ) Internal rate of return: nan == nan
+Comparison 52 (line 13):
+  Got error: 14
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: 1000.00000000000000000 == 1000.00000000000000000
+   (OK ) Internal rate of return: nan == nan
+
+Threshold set to: 1-e4
+Comparison 53 (line 1):
+   (OK ) Simple interest: 600.00000000000000000 == 600.00000000000000000
+   (OK ) Simple interest amount: 1600.00000000000000000 == 1600.00000000000000000
+   (OK ) Compound interest amount: 1795.85632602213013342 == 1795.85632602212990605
+   (OK ) Compound interest: 795.85632602213013342 == 795.85632602213001974
+   (OK ) Fixed installment: 112.82541002081534032 == 112.82541002081499926
+   (OK ) Future value: 1795.85632602213013342 == 1795.85632602212990605
+   (OK ) Present value: 1000.00000000000000000 == 1000.00000000000000000
+   (OK ) Net present value: 1859.45471405699413481 == 1859.45471405699004208
+   (OK ) Internal rate of return: 1.00527643702225711 == 1.00527643664039990
+Comparison 54 (line 2):
+   (OK ) Simple interest: 3600.00000000000000000 == 3600.00000000000000000
+   (OK ) Simple interest amount: 33600.00000000000000000 == 33600.00000000000000000
+   (OK ) Compound interest amount: 33819.84063119792699581 == 33819.84063119789789198
+   (OK ) Compound interest: 3819.84063119792699581 == 3819.84063119793017904
+   (OK ) Fixed installment: 664.02980967935911849 == 664.02980967934502132
+   (OK ) Future value: 33819.84063119792699581 == 33819.84063119789789198
+   (OK ) Present value: 29999.99999999999636202 == 30000.00000000000000000
+   (OK ) Net present value: 268396.02616732823662460 == 268396.02616732800379395
+   (OK ) Internal rate of return: 1.01328181432327247 == 1.01328115767993010
+Comparison 55 (line 3):
+   (OK ) Simple interest: 1800.00000000000000000 == 1800.00000000000000000
+   (OK ) Simple interest amount: 11800.00000000000000000 == 11800.00000000000000000
+   (OK ) Compound interest amount: 11966.80524823414634739 == 11966.80524823410087265
+   (OK ) Compound interest: 1966.80524823414634739 == 1966.80524823414998536
+   (OK ) Fixed installment: 304.21937451555720600 == 304.21937451555101006
+   (OK ) Future value: 11966.80524823414634739 == 11966.80524823410087265
+   (OK ) Present value: 10000.00000000000000000 == 10000.00000000000000000
+   (OK ) Net present value: 1992.30204759475691390 == 1992.30204759476009713
+   (OK ) Internal rate of return: 0.11332102868473161 == 0.11332102823625900
+Comparison 56 (line 4):
+   (OK ) Simple interest: 0.00000000000000000 == 0.00000000000000000
+   (OK ) Simple interest amount: 12000.00000000000000000 == 12000.00000000000000000
+   (OK ) Compound interest amount: 12000.00000000000000000 == 12000.00000000000000000
+   (OK ) Compound interest: 0.00000000000000000 == 0.00000000000000000
+   (OK ) Fixed installment: 1000.00000000000000000 == 1000.00000000000000000
+   (OK ) Future value: 12000.00000000000000000 == 12000.00000000000000000
+   (OK ) Present value: 12000.00000000000000000 == 12000.00000000000000000
+   (OK ) Net present value: -5204.00000000000000000 == -5204.00000000000000000
+   (OK ) Internal rate of return: -0.10671310821780929 == -0.10671310795446499
+Comparison 57 (line 5):
+   (OK ) Simple interest: 50000.00000000000000000 == 50000.00000000000000000
+   (OK ) Simple interest amount: 150000.00000000000000000 == 150000.00000000000000000
+   (OK ) Compound interest amount: 161051.00000000005820766 == 161051.00000000000000000
+   (OK ) Compound interest: 61051.00000000005820766 == 61051.00000000010186341
+   (OK ) Fixed installment: 26379.74807947452427470 == 26379.74807947449880885
+   (OK ) Future value: 161051.00000000005820766 == 161051.00000000000000000
+   (OK ) Present value: 100000.00000000000000000 == 100000.00000000000000000
+   (OK ) Net present value: 15744.70198881097167032 == 15744.70198881100077415
+   (OK ) Internal rate of return: 0.16375658378237865 == 0.16375658348671901
+Comparison 58 (line 6):
+  Got error: 2
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: 979.05765817798589978 == 979.05765817798601347
+   (OK ) Internal rate of return: 0.00798824256053199 == 0.00798824290299200
+Comparison 59 (line 7):
+  Got error: 8
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: -526.67411846419770427 == -526.67411846419804533
+   (OK ) Internal rate of return: -0.03890144898323339 == -0.03890144858176260
+Comparison 60 (line 8):
+  Got error: 4
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: -20000.00000000000000000 == -20000.00000000000000000
+   (OK ) Internal rate of return: nan == nan
+Comparison 61 (line 9):
+  Got error: 4
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: -20.00000000000000000 == -20.00000000000000000
+   (OK ) Internal rate of return: nan == nan
+Comparison 62 (line 10):
+  Got error: 10
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: 15250.58176129287494405 == 15250.58176129290040990
+   (OK ) Internal rate of return: -1.62542520629940523 == -1.62542520668527990
+Comparison 63 (line 11):
+  Got error: 6
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: 1000.00000000000000000 == 1000.00000000000000000
+   (OK ) Internal rate of return: nan == nan
+Comparison 64 (line 12):
+  Got error: 12
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: -3000.00000000000000000 == -3000.00000000000000000
+   (OK ) Internal rate of return: nan == nan
+Comparison 65 (line 13):
+  Got error: 14
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: 1000.00000000000000000 == 1000.00000000000000000
+   (OK ) Internal rate of return: nan == nan
+
+Threshold set to: 1-e5
+Comparison 66 (line 1):
+   (OK ) Simple interest: 600.00000000000000000 == 600.00000000000000000
+   (OK ) Simple interest amount: 1600.00000000000000000 == 1600.00000000000000000
+   (OK ) Compound interest amount: 1795.85632602213013342 == 1795.85632602212990605
+   (OK ) Compound interest: 795.85632602213013342 == 795.85632602213001974
+   (OK ) Fixed installment: 112.82541002081534032 == 112.82541002081499926
+   (OK ) Future value: 1795.85632602213013342 == 1795.85632602212990605
+   (OK ) Present value: 1000.00000000000000000 == 1000.00000000000000000
+   (OK ) Net present value: 1859.45471405699413481 == 1859.45471405699004208
+   (OK ) Internal rate of return: 1.00527643702225711 == 1.00527643664039990
+Comparison 67 (line 2):
+   (OK ) Simple interest: 3600.00000000000000000 == 3600.00000000000000000
+   (OK ) Simple interest amount: 33600.00000000000000000 == 33600.00000000000000000
+   (OK ) Compound interest amount: 33819.84063119792699581 == 33819.84063119789789198
+   (OK ) Compound interest: 3819.84063119792699581 == 3819.84063119793017904
+   (OK ) Fixed installment: 664.02980967935911849 == 664.02980967934502132
+   (OK ) Future value: 33819.84063119792699581 == 33819.84063119789789198
+   (OK ) Present value: 29999.99999999999636202 == 30000.00000000000000000
+   (OK ) Net present value: 268396.02616732823662460 == 268396.02616732800379395
+   (OK ) Internal rate of return: 1.01328181432327247 == 1.01328115767993010
+Comparison 68 (line 3):
+   (OK ) Simple interest: 1800.00000000000000000 == 1800.00000000000000000
+   (OK ) Simple interest amount: 11800.00000000000000000 == 11800.00000000000000000
+   (OK ) Compound interest amount: 11966.80524823414634739 == 11966.80524823410087265
+   (OK ) Compound interest: 1966.80524823414634739 == 1966.80524823414998536
+   (OK ) Fixed installment: 304.21937451555720600 == 304.21937451555101006
+   (OK ) Future value: 11966.80524823414634739 == 11966.80524823410087265
+   (OK ) Present value: 10000.00000000000000000 == 10000.00000000000000000
+   (OK ) Net present value: 1992.30204759475691390 == 1992.30204759476009713
+   (OK ) Internal rate of return: 0.11332102868473161 == 0.11332102823625900
+Comparison 69 (line 4):
+   (OK ) Simple interest: 0.00000000000000000 == 0.00000000000000000
+   (OK ) Simple interest amount: 12000.00000000000000000 == 12000.00000000000000000
+   (OK ) Compound interest amount: 12000.00000000000000000 == 12000.00000000000000000
+   (OK ) Compound interest: 0.00000000000000000 == 0.00000000000000000
+   (OK ) Fixed installment: 1000.00000000000000000 == 1000.00000000000000000
+   (OK ) Future value: 12000.00000000000000000 == 12000.00000000000000000
+   (OK ) Present value: 12000.00000000000000000 == 12000.00000000000000000
+   (OK ) Net present value: -5204.00000000000000000 == -5204.00000000000000000
+   (OK ) Internal rate of return: -0.10671310821780929 == -0.10671310795446499
+Comparison 70 (line 5):
+   (OK ) Simple interest: 50000.00000000000000000 == 50000.00000000000000000
+   (OK ) Simple interest amount: 150000.00000000000000000 == 150000.00000000000000000
+   (OK ) Compound interest amount: 161051.00000000005820766 == 161051.00000000000000000
+   (OK ) Compound interest: 61051.00000000005820766 == 61051.00000000010186341
+   (OK ) Fixed installment: 26379.74807947452427470 == 26379.74807947449880885
+   (OK ) Future value: 161051.00000000005820766 == 161051.00000000000000000
+   (OK ) Present value: 100000.00000000000000000 == 100000.00000000000000000
+   (OK ) Net present value: 15744.70198881097167032 == 15744.70198881100077415
+   (OK ) Internal rate of return: 0.16375658378237865 == 0.16375658348671901
+Comparison 71 (line 6):
+  Got error: 2
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: 979.05765817798589978 == 979.05765817798601347
+   (OK ) Internal rate of return: 0.00798824256053199 == 0.00798824290299200
+Comparison 72 (line 7):
+  Got error: 8
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: -526.67411846419770427 == -526.67411846419804533
+   (OK ) Internal rate of return: -0.03890144898323339 == -0.03890144858176260
+Comparison 73 (line 8):
+  Got error: 4
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: -20000.00000000000000000 == -20000.00000000000000000
+   (OK ) Internal rate of return: nan == nan
+Comparison 74 (line 9):
+  Got error: 4
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: -20.00000000000000000 == -20.00000000000000000
+   (OK ) Internal rate of return: nan == nan
+Comparison 75 (line 10):
+  Got error: 10
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: 15250.58176129287494405 == 15250.58176129290040990
+   (OK ) Internal rate of return: -1.62542520629940523 == -1.62542520668527990
+Comparison 76 (line 11):
+  Got error: 6
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: 1000.00000000000000000 == 1000.00000000000000000
+   (OK ) Internal rate of return: nan == nan
+Comparison 77 (line 12):
+  Got error: 12
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: -3000.00000000000000000 == -3000.00000000000000000
+   (OK ) Internal rate of return: nan == nan
+Comparison 78 (line 13):
+  Got error: 14
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: 1000.00000000000000000 == 1000.00000000000000000
+   (OK ) Internal rate of return: nan == nan
+
+Threshold set to: 1-e6
+Comparison 79 (line 1):
+   (OK ) Simple interest: 600.00000000000000000 == 600.00000000000000000
+   (OK ) Simple interest amount: 1600.00000000000000000 == 1600.00000000000000000
+   (OK ) Compound interest amount: 1795.85632602213013342 == 1795.85632602212990605
+   (OK ) Compound interest: 795.85632602213013342 == 795.85632602213001974
+   (OK ) Fixed installment: 112.82541002081534032 == 112.82541002081499926
+   (OK ) Future value: 1795.85632602213013342 == 1795.85632602212990605
+   (OK ) Present value: 1000.00000000000000000 == 1000.00000000000000000
+   (OK ) Net present value: 1859.45471405699413481 == 1859.45471405699004208
+   (OK ) Internal rate of return: 1.00527643702225711 == 1.00527643664039990
+Comparison 80 (line 2):
+   (OK ) Simple interest: 3600.00000000000000000 == 3600.00000000000000000
+   (OK ) Simple interest amount: 33600.00000000000000000 == 33600.00000000000000000
+   (OK ) Compound interest amount: 33819.84063119792699581 == 33819.84063119789789198
+   (OK ) Compound interest: 3819.84063119792699581 == 3819.84063119793017904
+   (OK ) Fixed installment: 664.02980967935911849 == 664.02980967934502132
+   (OK ) Future value: 33819.84063119792699581 == 33819.84063119789789198
+   (OK ) Present value: 29999.99999999999636202 == 30000.00000000000000000
+   (OK ) Net present value: 268396.02616732823662460 == 268396.02616732800379395
+   (OK ) Internal rate of return: 1.01328181432327247 == 1.01328115767993010
+Comparison 81 (line 3):
+   (OK ) Simple interest: 1800.00000000000000000 == 1800.00000000000000000
+   (OK ) Simple interest amount: 11800.00000000000000000 == 11800.00000000000000000
+   (OK ) Compound interest amount: 11966.80524823414634739 == 11966.80524823410087265
+   (OK ) Compound interest: 1966.80524823414634739 == 1966.80524823414998536
+   (OK ) Fixed installment: 304.21937451555720600 == 304.21937451555101006
+   (OK ) Future value: 11966.80524823414634739 == 11966.80524823410087265
+   (OK ) Present value: 10000.00000000000000000 == 10000.00000000000000000
+   (OK ) Net present value: 1992.30204759475691390 == 1992.30204759476009713
+   (OK ) Internal rate of return: 0.11332102868473161 == 0.11332102823625900
+Comparison 82 (line 4):
+   (OK ) Simple interest: 0.00000000000000000 == 0.00000000000000000
+   (OK ) Simple interest amount: 12000.00000000000000000 == 12000.00000000000000000
+   (OK ) Compound interest amount: 12000.00000000000000000 == 12000.00000000000000000
+   (OK ) Compound interest: 0.00000000000000000 == 0.00000000000000000
+   (OK ) Fixed installment: 1000.00000000000000000 == 1000.00000000000000000
+   (OK ) Future value: 12000.00000000000000000 == 12000.00000000000000000
+   (OK ) Present value: 12000.00000000000000000 == 12000.00000000000000000
+   (OK ) Net present value: -5204.00000000000000000 == -5204.00000000000000000
+   (OK ) Internal rate of return: -0.10671310821780929 == -0.10671310795446499
+Comparison 83 (line 5):
+   (OK ) Simple interest: 50000.00000000000000000 == 50000.00000000000000000
+   (OK ) Simple interest amount: 150000.00000000000000000 == 150000.00000000000000000
+   (OK ) Compound interest amount: 161051.00000000005820766 == 161051.00000000000000000
+   (OK ) Compound interest: 61051.00000000005820766 == 61051.00000000010186341
+   (OK ) Fixed installment: 26379.74807947452427470 == 26379.74807947449880885
+   (OK ) Future value: 161051.00000000005820766 == 161051.00000000000000000
+   (OK ) Present value: 100000.00000000000000000 == 100000.00000000000000000
+   (OK ) Net present value: 15744.70198881097167032 == 15744.70198881100077415
+   (OK ) Internal rate of return: 0.16375658378237865 == 0.16375658348671901
+Comparison 84 (line 6):
+  Got error: 2
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: 979.05765817798589978 == 979.05765817798601347
+   (OK ) Internal rate of return: 0.00798824256053199 == 0.00798824290299200
+Comparison 85 (line 7):
+  Got error: 8
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: -526.67411846419770427 == -526.67411846419804533
+   (OK ) Internal rate of return: -0.03890144898323339 == -0.03890144858176260
+Comparison 86 (line 8):
+  Got error: 4
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: -20000.00000000000000000 == -20000.00000000000000000
+   (OK ) Internal rate of return: nan == nan
+Comparison 87 (line 9):
+  Got error: 4
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: -20.00000000000000000 == -20.00000000000000000
+   (OK ) Internal rate of return: nan == nan
+Comparison 88 (line 10):
+  Got error: 10
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: 15250.58176129287494405 == 15250.58176129290040990
+   (OK ) Internal rate of return: -1.62542520629940523 == -1.62542520668527990
+Comparison 89 (line 11):
+  Got error: 6
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: 1000.00000000000000000 == 1000.00000000000000000
+   (OK ) Internal rate of return: nan == nan
+Comparison 90 (line 12):
+  Got error: 12
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: -3000.00000000000000000 == -3000.00000000000000000
+   (OK ) Internal rate of return: nan == nan
+Comparison 91 (line 13):
+  Got error: 14
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: 1000.00000000000000000 == 1000.00000000000000000
+   (OK ) Internal rate of return: nan == nan
+
+Threshold set to: 1-e7
+Comparison 92 (line 1):
+   (OK ) Simple interest: 600.00000000000000000 == 600.00000000000000000
+   (OK ) Simple interest amount: 1600.00000000000000000 == 1600.00000000000000000
+   (OK ) Compound interest amount: 1795.85632602213013342 == 1795.85632602212990605
+   (OK ) Compound interest: 795.85632602213013342 == 795.85632602213001974
+   (OK ) Fixed installment: 112.82541002081534032 == 112.82541002081499926
+   (OK ) Future value: 1795.85632602213013342 == 1795.85632602212990605
+   (OK ) Present value: 1000.00000000000000000 == 1000.00000000000000000
+   (OK ) Net present value: 1859.45471405699413481 == 1859.45471405699004208
+   (OK ) Internal rate of return: 1.00527643702225711 == 1.00527643664039990
+Comparison 93 (line 2):
+   (OK ) Simple interest: 3600.00000000000000000 == 3600.00000000000000000
+   (OK ) Simple interest amount: 33600.00000000000000000 == 33600.00000000000000000
+   (OK ) Compound interest amount: 33819.84063119792699581 == 33819.84063119789789198
+   (OK ) Compound interest: 3819.84063119792699581 == 3819.84063119793017904
+   (OK ) Fixed installment: 664.02980967935911849 == 664.02980967934502132
+   (OK ) Future value: 33819.84063119792699581 == 33819.84063119789789198
+   (OK ) Present value: 29999.99999999999636202 == 30000.00000000000000000
+   (OK ) Net present value: 268396.02616732823662460 == 268396.02616732800379395
+   (NOK) Internal rate of return: 1.01328181432327247 == 1.01328115767993010
+  Failed 1 times with threshold of: 0.0000001
+Comparison 94 (line 3):
+   (OK ) Simple interest: 1800.00000000000000000 == 1800.00000000000000000
+   (OK ) Simple interest amount: 11800.00000000000000000 == 11800.00000000000000000
+   (OK ) Compound interest amount: 11966.80524823414634739 == 11966.80524823410087265
+   (OK ) Compound interest: 1966.80524823414634739 == 1966.80524823414998536
+   (OK ) Fixed installment: 304.21937451555720600 == 304.21937451555101006
+   (OK ) Future value: 11966.80524823414634739 == 11966.80524823410087265
+   (OK ) Present value: 10000.00000000000000000 == 10000.00000000000000000
+   (OK ) Net present value: 1992.30204759475691390 == 1992.30204759476009713
+   (OK ) Internal rate of return: 0.11332102868473161 == 0.11332102823625900
+Comparison 95 (line 4):
+   (OK ) Simple interest: 0.00000000000000000 == 0.00000000000000000
+   (OK ) Simple interest amount: 12000.00000000000000000 == 12000.00000000000000000
+   (OK ) Compound interest amount: 12000.00000000000000000 == 12000.00000000000000000
+   (OK ) Compound interest: 0.00000000000000000 == 0.00000000000000000
+   (OK ) Fixed installment: 1000.00000000000000000 == 1000.00000000000000000
+   (OK ) Future value: 12000.00000000000000000 == 12000.00000000000000000
+   (OK ) Present value: 12000.00000000000000000 == 12000.00000000000000000
+   (OK ) Net present value: -5204.00000000000000000 == -5204.00000000000000000
+   (OK ) Internal rate of return: -0.10671310821780929 == -0.10671310795446499
+Comparison 96 (line 5):
+   (OK ) Simple interest: 50000.00000000000000000 == 50000.00000000000000000
+   (OK ) Simple interest amount: 150000.00000000000000000 == 150000.00000000000000000
+   (OK ) Compound interest amount: 161051.00000000005820766 == 161051.00000000000000000
+   (OK ) Compound interest: 61051.00000000005820766 == 61051.00000000010186341
+   (OK ) Fixed installment: 26379.74807947452427470 == 26379.74807947449880885
+   (OK ) Future value: 161051.00000000005820766 == 161051.00000000000000000
+   (OK ) Present value: 100000.00000000000000000 == 100000.00000000000000000
+   (OK ) Net present value: 15744.70198881097167032 == 15744.70198881100077415
+   (OK ) Internal rate of return: 0.16375658378237865 == 0.16375658348671901
+Comparison 97 (line 6):
+  Got error: 2
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: 979.05765817798589978 == 979.05765817798601347
+   (OK ) Internal rate of return: 0.00798824256053199 == 0.00798824290299200
+Comparison 98 (line 7):
+  Got error: 8
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: -526.67411846419770427 == -526.67411846419804533
+   (OK ) Internal rate of return: -0.03890144898323339 == -0.03890144858176260
+Comparison 99 (line 8):
+  Got error: 4
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: -20000.00000000000000000 == -20000.00000000000000000
+   (OK ) Internal rate of return: nan == nan
+Comparison 100 (line 9):
+  Got error: 4
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: -20.00000000000000000 == -20.00000000000000000
+   (OK ) Internal rate of return: nan == nan
+Comparison 101 (line 10):
+  Got error: 10
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: 15250.58176129287494405 == 15250.58176129290040990
+   (OK ) Internal rate of return: -1.62542520629940523 == -1.62542520668527990
+Comparison 102 (line 11):
+  Got error: 6
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: 1000.00000000000000000 == 1000.00000000000000000
+   (OK ) Internal rate of return: nan == nan
+Comparison 103 (line 12):
+  Got error: 12
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: -3000.00000000000000000 == -3000.00000000000000000
+   (OK ) Internal rate of return: nan == nan
+Comparison 104 (line 13):
+  Got error: 14
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: 1000.00000000000000000 == 1000.00000000000000000
+   (OK ) Internal rate of return: nan == nan
+
+Threshold set to: 1-e8
+Comparison 105 (line 1):
+   (OK ) Simple interest: 600.00000000000000000 == 600.00000000000000000
+   (OK ) Simple interest amount: 1600.00000000000000000 == 1600.00000000000000000
+   (OK ) Compound interest amount: 1795.85632602213013342 == 1795.85632602212990605
+   (OK ) Compound interest: 795.85632602213013342 == 795.85632602213001974
+   (OK ) Fixed installment: 112.82541002081534032 == 112.82541002081499926
+   (OK ) Future value: 1795.85632602213013342 == 1795.85632602212990605
+   (OK ) Present value: 1000.00000000000000000 == 1000.00000000000000000
+   (OK ) Net present value: 1859.45471405699413481 == 1859.45471405699004208
+   (OK ) Internal rate of return: 1.00527643702225711 == 1.00527643664039990
+Comparison 106 (line 2):
+   (OK ) Simple interest: 3600.00000000000000000 == 3600.00000000000000000
+   (OK ) Simple interest amount: 33600.00000000000000000 == 33600.00000000000000000
+   (OK ) Compound interest amount: 33819.84063119792699581 == 33819.84063119789789198
+   (OK ) Compound interest: 3819.84063119792699581 == 3819.84063119793017904
+   (OK ) Fixed installment: 664.02980967935911849 == 664.02980967934502132
+   (OK ) Future value: 33819.84063119792699581 == 33819.84063119789789198
+   (OK ) Present value: 29999.99999999999636202 == 30000.00000000000000000
+   (OK ) Net present value: 268396.02616732823662460 == 268396.02616732800379395
+   (NOK) Internal rate of return: 1.01328181432327247 == 1.01328115767993010
+  Failed 1 times with threshold of: 0.00000001
+Comparison 107 (line 3):
+   (OK ) Simple interest: 1800.00000000000000000 == 1800.00000000000000000
+   (OK ) Simple interest amount: 11800.00000000000000000 == 11800.00000000000000000
+   (OK ) Compound interest amount: 11966.80524823414634739 == 11966.80524823410087265
+   (OK ) Compound interest: 1966.80524823414634739 == 1966.80524823414998536
+   (OK ) Fixed installment: 304.21937451555720600 == 304.21937451555101006
+   (OK ) Future value: 11966.80524823414634739 == 11966.80524823410087265
+   (OK ) Present value: 10000.00000000000000000 == 10000.00000000000000000
+   (OK ) Net present value: 1992.30204759475691390 == 1992.30204759476009713
+   (OK ) Internal rate of return: 0.11332102868473161 == 0.11332102823625900
+Comparison 108 (line 4):
+   (OK ) Simple interest: 0.00000000000000000 == 0.00000000000000000
+   (OK ) Simple interest amount: 12000.00000000000000000 == 12000.00000000000000000
+   (OK ) Compound interest amount: 12000.00000000000000000 == 12000.00000000000000000
+   (OK ) Compound interest: 0.00000000000000000 == 0.00000000000000000
+   (OK ) Fixed installment: 1000.00000000000000000 == 1000.00000000000000000
+   (OK ) Future value: 12000.00000000000000000 == 12000.00000000000000000
+   (OK ) Present value: 12000.00000000000000000 == 12000.00000000000000000
+   (OK ) Net present value: -5204.00000000000000000 == -5204.00000000000000000
+   (OK ) Internal rate of return: -0.10671310821780929 == -0.10671310795446499
+Comparison 109 (line 5):
+   (OK ) Simple interest: 50000.00000000000000000 == 50000.00000000000000000
+   (OK ) Simple interest amount: 150000.00000000000000000 == 150000.00000000000000000
+   (OK ) Compound interest amount: 161051.00000000005820766 == 161051.00000000000000000
+   (OK ) Compound interest: 61051.00000000005820766 == 61051.00000000010186341
+   (OK ) Fixed installment: 26379.74807947452427470 == 26379.74807947449880885
+   (OK ) Future value: 161051.00000000005820766 == 161051.00000000000000000
+   (OK ) Present value: 100000.00000000000000000 == 100000.00000000000000000
+   (OK ) Net present value: 15744.70198881097167032 == 15744.70198881100077415
+   (OK ) Internal rate of return: 0.16375658378237865 == 0.16375658348671901
+Comparison 110 (line 6):
+  Got error: 2
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: 979.05765817798589978 == 979.05765817798601347
+   (OK ) Internal rate of return: 0.00798824256053199 == 0.00798824290299200
+Comparison 111 (line 7):
+  Got error: 8
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: -526.67411846419770427 == -526.67411846419804533
+   (OK ) Internal rate of return: -0.03890144898323339 == -0.03890144858176260
+Comparison 112 (line 8):
+  Got error: 4
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: -20000.00000000000000000 == -20000.00000000000000000
+   (OK ) Internal rate of return: nan == nan
+Comparison 113 (line 9):
+  Got error: 4
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: -20.00000000000000000 == -20.00000000000000000
+   (OK ) Internal rate of return: nan == nan
+Comparison 114 (line 10):
+  Got error: 10
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: 15250.58176129287494405 == 15250.58176129290040990
+   (OK ) Internal rate of return: -1.62542520629940523 == -1.62542520668527990
+Comparison 115 (line 11):
+  Got error: 6
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: 1000.00000000000000000 == 1000.00000000000000000
+   (OK ) Internal rate of return: nan == nan
+Comparison 116 (line 12):
+  Got error: 12
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: -3000.00000000000000000 == -3000.00000000000000000
+   (OK ) Internal rate of return: nan == nan
+Comparison 117 (line 13):
+  Got error: 14
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: 1000.00000000000000000 == 1000.00000000000000000
+   (OK ) Internal rate of return: nan == nan
+
+Threshold set to: 1-e9
+Comparison 118 (line 1):
+   (OK ) Simple interest: 600.00000000000000000 == 600.00000000000000000
+   (OK ) Simple interest amount: 1600.00000000000000000 == 1600.00000000000000000
+   (OK ) Compound interest amount: 1795.85632602213013342 == 1795.85632602212990605
+   (OK ) Compound interest: 795.85632602213013342 == 795.85632602213001974
+   (OK ) Fixed installment: 112.82541002081534032 == 112.82541002081499926
+   (OK ) Future value: 1795.85632602213013342 == 1795.85632602212990605
+   (OK ) Present value: 1000.00000000000000000 == 1000.00000000000000000
+   (OK ) Net present value: 1859.45471405699413481 == 1859.45471405699004208
+   (OK ) Internal rate of return: 1.00527643702225711 == 1.00527643664039990
+Comparison 119 (line 2):
+   (OK ) Simple interest: 3600.00000000000000000 == 3600.00000000000000000
+   (OK ) Simple interest amount: 33600.00000000000000000 == 33600.00000000000000000
+   (OK ) Compound interest amount: 33819.84063119792699581 == 33819.84063119789789198
+   (OK ) Compound interest: 3819.84063119792699581 == 3819.84063119793017904
+   (OK ) Fixed installment: 664.02980967935911849 == 664.02980967934502132
+   (OK ) Future value: 33819.84063119792699581 == 33819.84063119789789198
+   (OK ) Present value: 29999.99999999999636202 == 30000.00000000000000000
+   (OK ) Net present value: 268396.02616732823662460 == 268396.02616732800379395
+   (NOK) Internal rate of return: 1.01328181432327247 == 1.01328115767993010
+  Failed 1 times with threshold of: 0.000000001
+Comparison 120 (line 3):
+   (OK ) Simple interest: 1800.00000000000000000 == 1800.00000000000000000
+   (OK ) Simple interest amount: 11800.00000000000000000 == 11800.00000000000000000
+   (OK ) Compound interest amount: 11966.80524823414634739 == 11966.80524823410087265
+   (OK ) Compound interest: 1966.80524823414634739 == 1966.80524823414998536
+   (OK ) Fixed installment: 304.21937451555720600 == 304.21937451555101006
+   (OK ) Future value: 11966.80524823414634739 == 11966.80524823410087265
+   (OK ) Present value: 10000.00000000000000000 == 10000.00000000000000000
+   (OK ) Net present value: 1992.30204759475691390 == 1992.30204759476009713
+   (OK ) Internal rate of return: 0.11332102868473161 == 0.11332102823625900
+Comparison 121 (line 4):
+   (OK ) Simple interest: 0.00000000000000000 == 0.00000000000000000
+   (OK ) Simple interest amount: 12000.00000000000000000 == 12000.00000000000000000
+   (OK ) Compound interest amount: 12000.00000000000000000 == 12000.00000000000000000
+   (OK ) Compound interest: 0.00000000000000000 == 0.00000000000000000
+   (OK ) Fixed installment: 1000.00000000000000000 == 1000.00000000000000000
+   (OK ) Future value: 12000.00000000000000000 == 12000.00000000000000000
+   (OK ) Present value: 12000.00000000000000000 == 12000.00000000000000000
+   (OK ) Net present value: -5204.00000000000000000 == -5204.00000000000000000
+   (OK ) Internal rate of return: -0.10671310821780929 == -0.10671310795446499
+Comparison 122 (line 5):
+   (OK ) Simple interest: 50000.00000000000000000 == 50000.00000000000000000
+   (OK ) Simple interest amount: 150000.00000000000000000 == 150000.00000000000000000
+   (OK ) Compound interest amount: 161051.00000000005820766 == 161051.00000000000000000
+   (OK ) Compound interest: 61051.00000000005820766 == 61051.00000000010186341
+   (OK ) Fixed installment: 26379.74807947452427470 == 26379.74807947449880885
+   (OK ) Future value: 161051.00000000005820766 == 161051.00000000000000000
+   (OK ) Present value: 100000.00000000000000000 == 100000.00000000000000000
+   (OK ) Net present value: 15744.70198881097167032 == 15744.70198881100077415
+   (OK ) Internal rate of return: 0.16375658378237865 == 0.16375658348671901
+Comparison 123 (line 6):
+  Got error: 2
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: 979.05765817798589978 == 979.05765817798601347
+   (OK ) Internal rate of return: 0.00798824256053199 == 0.00798824290299200
+Comparison 124 (line 7):
+  Got error: 8
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: -526.67411846419770427 == -526.67411846419804533
+   (OK ) Internal rate of return: -0.03890144898323339 == -0.03890144858176260
+Comparison 125 (line 8):
+  Got error: 4
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: -20000.00000000000000000 == -20000.00000000000000000
+   (OK ) Internal rate of return: nan == nan
+Comparison 126 (line 9):
+  Got error: 4
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: -20.00000000000000000 == -20.00000000000000000
+   (OK ) Internal rate of return: nan == nan
+Comparison 127 (line 10):
+  Got error: 10
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: 15250.58176129287494405 == 15250.58176129290040990
+   (OK ) Internal rate of return: -1.62542520629940523 == -1.62542520668527990
+Comparison 128 (line 11):
+  Got error: 6
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: 1000.00000000000000000 == 1000.00000000000000000
+   (OK ) Internal rate of return: nan == nan
+Comparison 129 (line 12):
+  Got error: 12
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: -3000.00000000000000000 == -3000.00000000000000000
+   (OK ) Internal rate of return: nan == nan
+Comparison 130 (line 13):
+  Got error: 14
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: 1000.00000000000000000 == 1000.00000000000000000
+   (OK ) Internal rate of return: nan == nan
+
+Threshold set to: 1-e10
+Comparison 131 (line 1):
+   (OK ) Simple interest: 600.00000000000000000 == 600.00000000000000000
+   (OK ) Simple interest amount: 1600.00000000000000000 == 1600.00000000000000000
+   (OK ) Compound interest amount: 1795.85632602213013342 == 1795.85632602212990605
+   (OK ) Compound interest: 795.85632602213013342 == 795.85632602213001974
+   (OK ) Fixed installment: 112.82541002081534032 == 112.82541002081499926
+   (OK ) Future value: 1795.85632602213013342 == 1795.85632602212990605
+   (OK ) Present value: 1000.00000000000000000 == 1000.00000000000000000
+   (OK ) Net present value: 1859.45471405699413481 == 1859.45471405699004208
+   (NOK) Internal rate of return: 1.00527643702225711 == 1.00527643664039990
+  Failed 1 times with threshold of: 0.0000000001
+Comparison 132 (line 2):
+   (OK ) Simple interest: 3600.00000000000000000 == 3600.00000000000000000
+   (OK ) Simple interest amount: 33600.00000000000000000 == 33600.00000000000000000
+   (OK ) Compound interest amount: 33819.84063119792699581 == 33819.84063119789789198
+   (OK ) Compound interest: 3819.84063119792699581 == 3819.84063119793017904
+   (OK ) Fixed installment: 664.02980967935911849 == 664.02980967934502132
+   (OK ) Future value: 33819.84063119792699581 == 33819.84063119789789198
+   (OK ) Present value: 29999.99999999999636202 == 30000.00000000000000000
+   (NOK) Net present value: 268396.02616732823662460 == 268396.02616732800379395
+   (NOK) Internal rate of return: 1.01328181432327247 == 1.01328115767993010
+  Failed 2 times with threshold of: 0.0000000001
+Comparison 133 (line 3):
+   (OK ) Simple interest: 1800.00000000000000000 == 1800.00000000000000000
+   (OK ) Simple interest amount: 11800.00000000000000000 == 11800.00000000000000000
+   (OK ) Compound interest amount: 11966.80524823414634739 == 11966.80524823410087265
+   (OK ) Compound interest: 1966.80524823414634739 == 1966.80524823414998536
+   (OK ) Fixed installment: 304.21937451555720600 == 304.21937451555101006
+   (OK ) Future value: 11966.80524823414634739 == 11966.80524823410087265
+   (OK ) Present value: 10000.00000000000000000 == 10000.00000000000000000
+   (OK ) Net present value: 1992.30204759475691390 == 1992.30204759476009713
+   (NOK) Internal rate of return: 0.11332102868473161 == 0.11332102823625900
+  Failed 1 times with threshold of: 0.0000000001
+Comparison 134 (line 4):
+   (OK ) Simple interest: 0.00000000000000000 == 0.00000000000000000
+   (OK ) Simple interest amount: 12000.00000000000000000 == 12000.00000000000000000
+   (OK ) Compound interest amount: 12000.00000000000000000 == 12000.00000000000000000
+   (OK ) Compound interest: 0.00000000000000000 == 0.00000000000000000
+   (OK ) Fixed installment: 1000.00000000000000000 == 1000.00000000000000000
+   (OK ) Future value: 12000.00000000000000000 == 12000.00000000000000000
+   (OK ) Present value: 12000.00000000000000000 == 12000.00000000000000000
+   (OK ) Net present value: -5204.00000000000000000 == -5204.00000000000000000
+   (NOK) Internal rate of return: -0.10671310821780929 == -0.10671310795446499
+  Failed 1 times with threshold of: 0.0000000001
+Comparison 135 (line 5):
+   (OK ) Simple interest: 50000.00000000000000000 == 50000.00000000000000000
+   (OK ) Simple interest amount: 150000.00000000000000000 == 150000.00000000000000000
+   (OK ) Compound interest amount: 161051.00000000005820766 == 161051.00000000000000000
+   (OK ) Compound interest: 61051.00000000005820766 == 61051.00000000010186341
+   (OK ) Fixed installment: 26379.74807947452427470 == 26379.74807947449880885
+   (OK ) Future value: 161051.00000000005820766 == 161051.00000000000000000
+   (OK ) Present value: 100000.00000000000000000 == 100000.00000000000000000
+   (OK ) Net present value: 15744.70198881097167032 == 15744.70198881100077415
+   (NOK) Internal rate of return: 0.16375658378237865 == 0.16375658348671901
+  Failed 1 times with threshold of: 0.0000000001
+Comparison 136 (line 6):
+  Got error: 2
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: 979.05765817798589978 == 979.05765817798601347
+   (NOK) Internal rate of return: 0.00798824256053199 == 0.00798824290299200
+  Failed 1 times with threshold of: 0.0000000001
+Comparison 137 (line 7):
+  Got error: 8
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: -526.67411846419770427 == -526.67411846419804533
+   (NOK) Internal rate of return: -0.03890144898323339 == -0.03890144858176260
+  Failed 1 times with threshold of: 0.0000000001
+Comparison 138 (line 8):
+  Got error: 4
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: -20000.00000000000000000 == -20000.00000000000000000
+   (OK ) Internal rate of return: nan == nan
+Comparison 139 (line 9):
+  Got error: 4
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: -20.00000000000000000 == -20.00000000000000000
+   (OK ) Internal rate of return: nan == nan
+Comparison 140 (line 10):
+  Got error: 10
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: 15250.58176129287494405 == 15250.58176129290040990
+   (NOK) Internal rate of return: -1.62542520629940523 == -1.62542520668527990
+  Failed 1 times with threshold of: 0.0000000001
+Comparison 141 (line 11):
+  Got error: 6
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: 1000.00000000000000000 == 1000.00000000000000000
+   (OK ) Internal rate of return: nan == nan
+Comparison 142 (line 12):
+  Got error: 12
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: -3000.00000000000000000 == -3000.00000000000000000
+   (OK ) Internal rate of return: nan == nan
+Comparison 143 (line 13):
+  Got error: 14
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: 1000.00000000000000000 == 1000.00000000000000000
+   (OK ) Internal rate of return: nan == nan
+
+Threshold set to: 1-e11
+Comparison 144 (line 1):
+   (OK ) Simple interest: 600.00000000000000000 == 600.00000000000000000
+   (OK ) Simple interest amount: 1600.00000000000000000 == 1600.00000000000000000
+   (OK ) Compound interest amount: 1795.85632602213013342 == 1795.85632602212990605
+   (OK ) Compound interest: 795.85632602213013342 == 795.85632602213001974
+   (OK ) Fixed installment: 112.82541002081534032 == 112.82541002081499926
+   (OK ) Future value: 1795.85632602213013342 == 1795.85632602212990605
+   (OK ) Present value: 1000.00000000000000000 == 1000.00000000000000000
+   (OK ) Net present value: 1859.45471405699413481 == 1859.45471405699004208
+   (NOK) Internal rate of return: 1.00527643702225711 == 1.00527643664039990
+  Failed 1 times with threshold of: 0.00000000001
+Comparison 145 (line 2):
+   (OK ) Simple interest: 3600.00000000000000000 == 3600.00000000000000000
+   (OK ) Simple interest amount: 33600.00000000000000000 == 33600.00000000000000000
+   (NOK) Compound interest amount: 33819.84063119792699581 == 33819.84063119789789198
+   (OK ) Compound interest: 3819.84063119792699581 == 3819.84063119793017904
+   (NOK) Fixed installment: 664.02980967935911849 == 664.02980967934502132
+   (NOK) Future value: 33819.84063119792699581 == 33819.84063119789789198
+   (OK ) Present value: 29999.99999999999636202 == 30000.00000000000000000
+   (NOK) Net present value: 268396.02616732823662460 == 268396.02616732800379395
+   (NOK) Internal rate of return: 1.01328181432327247 == 1.01328115767993010
+  Failed 5 times with threshold of: 0.00000000001
+Comparison 146 (line 3):
+   (OK ) Simple interest: 1800.00000000000000000 == 1800.00000000000000000
+   (OK ) Simple interest amount: 11800.00000000000000000 == 11800.00000000000000000
+   (NOK) Compound interest amount: 11966.80524823414634739 == 11966.80524823410087265
+   (OK ) Compound interest: 1966.80524823414634739 == 1966.80524823414998536
+   (OK ) Fixed installment: 304.21937451555720600 == 304.21937451555101006
+   (NOK) Future value: 11966.80524823414634739 == 11966.80524823410087265
+   (OK ) Present value: 10000.00000000000000000 == 10000.00000000000000000
+   (OK ) Net present value: 1992.30204759475691390 == 1992.30204759476009713
+   (NOK) Internal rate of return: 0.11332102868473161 == 0.11332102823625900
+  Failed 3 times with threshold of: 0.00000000001
+Comparison 147 (line 4):
+   (OK ) Simple interest: 0.00000000000000000 == 0.00000000000000000
+   (OK ) Simple interest amount: 12000.00000000000000000 == 12000.00000000000000000
+   (OK ) Compound interest amount: 12000.00000000000000000 == 12000.00000000000000000
+   (OK ) Compound interest: 0.00000000000000000 == 0.00000000000000000
+   (OK ) Fixed installment: 1000.00000000000000000 == 1000.00000000000000000
+   (OK ) Future value: 12000.00000000000000000 == 12000.00000000000000000
+   (OK ) Present value: 12000.00000000000000000 == 12000.00000000000000000
+   (OK ) Net present value: -5204.00000000000000000 == -5204.00000000000000000
+   (NOK) Internal rate of return: -0.10671310821780929 == -0.10671310795446499
+  Failed 1 times with threshold of: 0.00000000001
+Comparison 148 (line 5):
+   (OK ) Simple interest: 50000.00000000000000000 == 50000.00000000000000000
+   (OK ) Simple interest amount: 150000.00000000000000000 == 150000.00000000000000000
+   (NOK) Compound interest amount: 161051.00000000005820766 == 161051.00000000000000000
+   (NOK) Compound interest: 61051.00000000005820766 == 61051.00000000010186341
+   (NOK) Fixed installment: 26379.74807947452427470 == 26379.74807947449880885
+   (NOK) Future value: 161051.00000000005820766 == 161051.00000000000000000
+   (OK ) Present value: 100000.00000000000000000 == 100000.00000000000000000
+   (NOK) Net present value: 15744.70198881097167032 == 15744.70198881100077415
+   (NOK) Internal rate of return: 0.16375658378237865 == 0.16375658348671901
+  Failed 6 times with threshold of: 0.00000000001
+Comparison 149 (line 6):
+  Got error: 2
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: 979.05765817798589978 == 979.05765817798601347
+   (NOK) Internal rate of return: 0.00798824256053199 == 0.00798824290299200
+  Failed 1 times with threshold of: 0.00000000001
+Comparison 150 (line 7):
+  Got error: 8
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: -526.67411846419770427 == -526.67411846419804533
+   (NOK) Internal rate of return: -0.03890144898323339 == -0.03890144858176260
+  Failed 1 times with threshold of: 0.00000000001
+Comparison 151 (line 8):
+  Got error: 4
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: -20000.00000000000000000 == -20000.00000000000000000
+   (OK ) Internal rate of return: nan == nan
+Comparison 152 (line 9):
+  Got error: 4
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: -20.00000000000000000 == -20.00000000000000000
+   (OK ) Internal rate of return: nan == nan
+Comparison 153 (line 10):
+  Got error: 10
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (NOK) Net present value: 15250.58176129287494405 == 15250.58176129290040990
+   (NOK) Internal rate of return: -1.62542520629940523 == -1.62542520668527990
+  Failed 2 times with threshold of: 0.00000000001
+Comparison 154 (line 11):
+  Got error: 6
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: 1000.00000000000000000 == 1000.00000000000000000
+   (OK ) Internal rate of return: nan == nan
+Comparison 155 (line 12):
+  Got error: 12
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: -3000.00000000000000000 == -3000.00000000000000000
+   (OK ) Internal rate of return: nan == nan
+Comparison 156 (line 13):
+  Got error: 14
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: 1000.00000000000000000 == 1000.00000000000000000
+   (OK ) Internal rate of return: nan == nan
+
+Threshold set to: 1-e12
+Comparison 157 (line 1):
+   (OK ) Simple interest: 600.00000000000000000 == 600.00000000000000000
+   (OK ) Simple interest amount: 1600.00000000000000000 == 1600.00000000000000000
+   (OK ) Compound interest amount: 1795.85632602213013342 == 1795.85632602212990605
+   (OK ) Compound interest: 795.85632602213013342 == 795.85632602213001974
+   (OK ) Fixed installment: 112.82541002081534032 == 112.82541002081499926
+   (OK ) Future value: 1795.85632602213013342 == 1795.85632602212990605
+   (OK ) Present value: 1000.00000000000000000 == 1000.00000000000000000
+   (NOK) Net present value: 1859.45471405699413481 == 1859.45471405699004208
+   (NOK) Internal rate of return: 1.00527643702225711 == 1.00527643664039990
+  Failed 2 times with threshold of: 0.000000000001
+Comparison 158 (line 2):
+   (OK ) Simple interest: 3600.00000000000000000 == 3600.00000000000000000
+   (OK ) Simple interest amount: 33600.00000000000000000 == 33600.00000000000000000
+   (NOK) Compound interest amount: 33819.84063119792699581 == 33819.84063119789789198
+   (NOK) Compound interest: 3819.84063119792699581 == 3819.84063119793017904
+   (NOK) Fixed installment: 664.02980967935911849 == 664.02980967934502132
+   (NOK) Future value: 33819.84063119792699581 == 33819.84063119789789198
+   (NOK) Present value: 29999.99999999999636202 == 30000.00000000000000000
+   (NOK) Net present value: 268396.02616732823662460 == 268396.02616732800379395
+   (NOK) Internal rate of return: 1.01328181432327247 == 1.01328115767993010
+  Failed 7 times with threshold of: 0.000000000001
+Comparison 159 (line 3):
+   (OK ) Simple interest: 1800.00000000000000000 == 1800.00000000000000000
+   (OK ) Simple interest amount: 11800.00000000000000000 == 11800.00000000000000000
+   (NOK) Compound interest amount: 11966.80524823414634739 == 11966.80524823410087265
+   (NOK) Compound interest: 1966.80524823414634739 == 1966.80524823414998536
+   (NOK) Fixed installment: 304.21937451555720600 == 304.21937451555101006
+   (NOK) Future value: 11966.80524823414634739 == 11966.80524823410087265
+   (OK ) Present value: 10000.00000000000000000 == 10000.00000000000000000
+   (NOK) Net present value: 1992.30204759475691390 == 1992.30204759476009713
+   (NOK) Internal rate of return: 0.11332102868473161 == 0.11332102823625900
+  Failed 6 times with threshold of: 0.000000000001
+Comparison 160 (line 4):
+   (OK ) Simple interest: 0.00000000000000000 == 0.00000000000000000
+   (OK ) Simple interest amount: 12000.00000000000000000 == 12000.00000000000000000
+   (OK ) Compound interest amount: 12000.00000000000000000 == 12000.00000000000000000
+   (OK ) Compound interest: 0.00000000000000000 == 0.00000000000000000
+   (OK ) Fixed installment: 1000.00000000000000000 == 1000.00000000000000000
+   (OK ) Future value: 12000.00000000000000000 == 12000.00000000000000000
+   (OK ) Present value: 12000.00000000000000000 == 12000.00000000000000000
+   (OK ) Net present value: -5204.00000000000000000 == -5204.00000000000000000
+   (NOK) Internal rate of return: -0.10671310821780929 == -0.10671310795446499
+  Failed 1 times with threshold of: 0.000000000001
+Comparison 161 (line 5):
+   (OK ) Simple interest: 50000.00000000000000000 == 50000.00000000000000000
+   (OK ) Simple interest amount: 150000.00000000000000000 == 150000.00000000000000000
+   (NOK) Compound interest amount: 161051.00000000005820766 == 161051.00000000000000000
+   (NOK) Compound interest: 61051.00000000005820766 == 61051.00000000010186341
+   (NOK) Fixed installment: 26379.74807947452427470 == 26379.74807947449880885
+   (NOK) Future value: 161051.00000000005820766 == 161051.00000000000000000
+   (OK ) Present value: 100000.00000000000000000 == 100000.00000000000000000
+   (NOK) Net present value: 15744.70198881097167032 == 15744.70198881100077415
+   (NOK) Internal rate of return: 0.16375658378237865 == 0.16375658348671901
+  Failed 6 times with threshold of: 0.000000000001
+Comparison 162 (line 6):
+  Got error: 2
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: 979.05765817798589978 == 979.05765817798601347
+   (NOK) Internal rate of return: 0.00798824256053199 == 0.00798824290299200
+  Failed 1 times with threshold of: 0.000000000001
+Comparison 163 (line 7):
+  Got error: 8
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: -526.67411846419770427 == -526.67411846419804533
+   (NOK) Internal rate of return: -0.03890144898323339 == -0.03890144858176260
+  Failed 1 times with threshold of: 0.000000000001
+Comparison 164 (line 8):
+  Got error: 4
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: -20000.00000000000000000 == -20000.00000000000000000
+   (OK ) Internal rate of return: nan == nan
+Comparison 165 (line 9):
+  Got error: 4
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: -20.00000000000000000 == -20.00000000000000000
+   (OK ) Internal rate of return: nan == nan
+Comparison 166 (line 10):
+  Got error: 10
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (NOK) Net present value: 15250.58176129287494405 == 15250.58176129290040990
+   (NOK) Internal rate of return: -1.62542520629940523 == -1.62542520668527990
+  Failed 2 times with threshold of: 0.000000000001
+Comparison 167 (line 11):
+  Got error: 6
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: 1000.00000000000000000 == 1000.00000000000000000
+   (OK ) Internal rate of return: nan == nan
+Comparison 168 (line 12):
+  Got error: 12
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: -3000.00000000000000000 == -3000.00000000000000000
+   (OK ) Internal rate of return: nan == nan
+Comparison 169 (line 13):
+  Got error: 14
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: 1000.00000000000000000 == 1000.00000000000000000
+   (OK ) Internal rate of return: nan == nan
+
+Threshold set to: 1-e13
+Comparison 170 (line 1):
+   (OK ) Simple interest: 600.00000000000000000 == 600.00000000000000000
+   (OK ) Simple interest amount: 1600.00000000000000000 == 1600.00000000000000000
+   (NOK) Compound interest amount: 1795.85632602213013342 == 1795.85632602212990605
+   (NOK) Compound interest: 795.85632602213013342 == 795.85632602213001974
+   (NOK) Fixed installment: 112.82541002081534032 == 112.82541002081499926
+   (NOK) Future value: 1795.85632602213013342 == 1795.85632602212990605
+   (OK ) Present value: 1000.00000000000000000 == 1000.00000000000000000
+   (NOK) Net present value: 1859.45471405699413481 == 1859.45471405699004208
+   (NOK) Internal rate of return: 1.00527643702225711 == 1.00527643664039990
+  Failed 6 times with threshold of: 0.0000000000001
+Comparison 171 (line 2):
+   (OK ) Simple interest: 3600.00000000000000000 == 3600.00000000000000000
+   (OK ) Simple interest amount: 33600.00000000000000000 == 33600.00000000000000000
+   (NOK) Compound interest amount: 33819.84063119792699581 == 33819.84063119789789198
+   (NOK) Compound interest: 3819.84063119792699581 == 3819.84063119793017904
+   (NOK) Fixed installment: 664.02980967935911849 == 664.02980967934502132
+   (NOK) Future value: 33819.84063119792699581 == 33819.84063119789789198
+   (NOK) Present value: 29999.99999999999636202 == 30000.00000000000000000
+   (NOK) Net present value: 268396.02616732823662460 == 268396.02616732800379395
+   (NOK) Internal rate of return: 1.01328181432327247 == 1.01328115767993010
+  Failed 7 times with threshold of: 0.0000000000001
+Comparison 172 (line 3):
+   (OK ) Simple interest: 1800.00000000000000000 == 1800.00000000000000000
+   (OK ) Simple interest amount: 11800.00000000000000000 == 11800.00000000000000000
+   (NOK) Compound interest amount: 11966.80524823414634739 == 11966.80524823410087265
+   (NOK) Compound interest: 1966.80524823414634739 == 1966.80524823414998536
+   (NOK) Fixed installment: 304.21937451555720600 == 304.21937451555101006
+   (NOK) Future value: 11966.80524823414634739 == 11966.80524823410087265
+   (OK ) Present value: 10000.00000000000000000 == 10000.00000000000000000
+   (NOK) Net present value: 1992.30204759475691390 == 1992.30204759476009713
+   (NOK) Internal rate of return: 0.11332102868473161 == 0.11332102823625900
+  Failed 6 times with threshold of: 0.0000000000001
+Comparison 173 (line 4):
+   (OK ) Simple interest: 0.00000000000000000 == 0.00000000000000000
+   (OK ) Simple interest amount: 12000.00000000000000000 == 12000.00000000000000000
+   (OK ) Compound interest amount: 12000.00000000000000000 == 12000.00000000000000000
+   (OK ) Compound interest: 0.00000000000000000 == 0.00000000000000000
+   (OK ) Fixed installment: 1000.00000000000000000 == 1000.00000000000000000
+   (OK ) Future value: 12000.00000000000000000 == 12000.00000000000000000
+   (OK ) Present value: 12000.00000000000000000 == 12000.00000000000000000
+   (OK ) Net present value: -5204.00000000000000000 == -5204.00000000000000000
+   (NOK) Internal rate of return: -0.10671310821780929 == -0.10671310795446499
+  Failed 1 times with threshold of: 0.0000000000001
+Comparison 174 (line 5):
+   (OK ) Simple interest: 50000.00000000000000000 == 50000.00000000000000000
+   (OK ) Simple interest amount: 150000.00000000000000000 == 150000.00000000000000000
+   (NOK) Compound interest amount: 161051.00000000005820766 == 161051.00000000000000000
+   (NOK) Compound interest: 61051.00000000005820766 == 61051.00000000010186341
+   (NOK) Fixed installment: 26379.74807947452427470 == 26379.74807947449880885
+   (NOK) Future value: 161051.00000000005820766 == 161051.00000000000000000
+   (OK ) Present value: 100000.00000000000000000 == 100000.00000000000000000
+   (NOK) Net present value: 15744.70198881097167032 == 15744.70198881100077415
+   (NOK) Internal rate of return: 0.16375658378237865 == 0.16375658348671901
+  Failed 6 times with threshold of: 0.0000000000001
+Comparison 175 (line 6):
+  Got error: 2
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (NOK) Net present value: 979.05765817798589978 == 979.05765817798601347
+   (NOK) Internal rate of return: 0.00798824256053199 == 0.00798824290299200
+  Failed 2 times with threshold of: 0.0000000000001
+Comparison 176 (line 7):
+  Got error: 8
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (NOK) Net present value: -526.67411846419770427 == -526.67411846419804533
+   (NOK) Internal rate of return: -0.03890144898323339 == -0.03890144858176260
+  Failed 2 times with threshold of: 0.0000000000001
+Comparison 177 (line 8):
+  Got error: 4
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: -20000.00000000000000000 == -20000.00000000000000000
+   (OK ) Internal rate of return: nan == nan
+Comparison 178 (line 9):
+  Got error: 4
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: -20.00000000000000000 == -20.00000000000000000
+   (OK ) Internal rate of return: nan == nan
+Comparison 179 (line 10):
+  Got error: 10
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (NOK) Net present value: 15250.58176129287494405 == 15250.58176129290040990
+   (NOK) Internal rate of return: -1.62542520629940523 == -1.62542520668527990
+  Failed 2 times with threshold of: 0.0000000000001
+Comparison 180 (line 11):
+  Got error: 6
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: 1000.00000000000000000 == 1000.00000000000000000
+   (OK ) Internal rate of return: nan == nan
+Comparison 181 (line 12):
+  Got error: 12
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: -3000.00000000000000000 == -3000.00000000000000000
+   (OK ) Internal rate of return: nan == nan
+Comparison 182 (line 13):
+  Got error: 14
+   (OK ) Simple interest: nan == nan
+   (OK ) Simple interest amount: nan == nan
+   (OK ) Compound interest amount: nan == nan
+   (OK ) Compound interest: nan == nan
+   (OK ) Fixed installment: nan == nan
+   (OK ) Future value: nan == nan
+   (OK ) Present value: nan == nan
+   (OK ) Net present value: 1000.00000000000000000 == 1000.00000000000000000
+   (OK ) Internal rate of return: nan == nan
+
+Report:
+First fail at 1-e8
+Last perfect iteration at 1-e14
+Note: 'nan' aren't counted as a fail.
+
+- Amortization tables comparison -
+Using default Threshold: 0.000000001
+
+
+Table 1:
+
+| Month| Installment        | Interest           | Amortization       | Remaining          |
+--------------------------------------------------------------------------------------------
+| 1    | 112.83             | 50.00              | 62.83              | 937.17             |
+| 2    | 112.83             | 46.86              | 65.97              | 871.21             |
+| 3    | 112.83             | 43.56              | 69.27              | 801.94             |
+| 4    | 112.83             | 40.10              | 72.73              | 729.21             |
+| 5    | 112.83             | 36.46              | 76.36              | 652.85             |
+| 6    | 112.83             | 32.64              | 80.18              | 572.67             |
+| 7    | 112.83             | 28.63              | 84.19              | 488.47             |
+| 8    | 112.83             | 24.42              | 88.40              | 400.07             |
+| 9    | 112.83             | 20.00              | 92.82              | 307.25             |
+| 10   | 112.83             | 15.36              | 97.46              | 209.79             |
+| 11   | 112.83             | 10.49              | 102.34             | 107.45             |
+| 12   | 112.83             | 5.37               | 107.45             | 0.00               |
+____________________________________________________________________________________________
+Length: 12
+
+
+Table 2:
+
+| Month| Installment        | Interest           | Amortization       | Remaining          |
+--------------------------------------------------------------------------------------------
+| 1    | 664.03             | 75.00              | 589.03             | 29410.97           |
+| 2    | 664.03             | 73.53              | 590.50             | 28820.47           |
+| 3    | 664.03             | 72.05              | 591.98             | 28228.49           |
+| 4    | 664.03             | 70.57              | 593.46             | 27635.03           |
+| 5    | 664.03             | 69.09              | 594.94             | 27040.09           |
+| 6    | 664.03             | 67.60              | 596.43             | 26443.66           |
+| 7    | 664.03             | 66.11              | 597.92             | 25845.74           |
+| 8    | 664.03             | 64.61              | 599.42             | 25246.32           |
+| 9    | 664.03             | 63.12              | 600.91             | 24645.41           |
+| 10   | 664.03             | 61.61              | 602.42             | 24042.99           |
+| 11   | 664.03             | 60.11              | 603.92             | 23439.07           |
+| 12   | 664.03             | 58.60              | 605.43             | 22833.64           |
+| 13   | 664.03             | 57.08              | 606.95             | 22226.69           |
+| 14   | 664.03             | 55.57              | 608.46             | 21618.23           |
+| 15   | 664.03             | 54.05              | 609.98             | 21008.24           |
+| 16   | 664.03             | 52.52              | 611.51             | 20396.74           |
+| 17   | 664.03             | 50.99              | 613.04             | 19783.70           |
+| 18   | 664.03             | 49.46              | 614.57             | 19169.13           |
+| 19   | 664.03             | 47.92              | 616.11             | 18553.02           |
+| 20   | 664.03             | 46.38              | 617.65             | 17935.37           |
+| 21   | 664.03             | 44.84              | 619.19             | 17316.18           |
+| 22   | 664.03             | 43.29              | 620.74             | 16695.44           |
+| 23   | 664.03             | 41.74              | 622.29             | 16073.15           |
+| 24   | 664.03             | 40.18              | 623.85             | 15449.30           |
+| 25   | 664.03             | 38.62              | 625.41             | 14823.90           |
+| 26   | 664.03             | 37.06              | 626.97             | 14196.93           |
+| 27   | 664.03             | 35.49              | 628.54             | 13568.39           |
+| 28   | 664.03             | 33.92              | 630.11             | 12938.28           |
+| 29   | 664.03             | 32.35              | 631.68             | 12306.60           |
+| 30   | 664.03             | 30.77              | 633.26             | 11673.33           |
+| 31   | 664.03             | 29.18              | 634.85             | 11038.49           |
+| 32   | 664.03             | 27.60              | 636.43             | 10402.05           |
+| 33   | 664.03             | 26.01              | 638.02             | 9764.03            |
+| 34   | 664.03             | 24.41              | 639.62             | 9124.41            |
+| 35   | 664.03             | 22.81              | 641.22             | 8483.19            |
+| 36   | 664.03             | 21.21              | 642.82             | 7840.37            |
+| 37   | 664.03             | 19.60              | 644.43             | 7195.94            |
+| 38   | 664.03             | 17.99              | 646.04             | 6549.90            |
+| 39   | 664.03             | 16.37              | 647.66             | 5902.24            |
+| 40   | 664.03             | 14.76              | 649.27             | 5252.97            |
+| 41   | 664.03             | 13.13              | 650.90             | 4602.07            |
+| 42   | 664.03             | 11.51              | 652.52             | 3949.55            |
+| 43   | 664.03             | 9.87               | 654.16             | 3295.39            |
+| 44   | 664.03             | 8.24               | 655.79             | 2639.60            |
+| 45   | 664.03             | 6.60               | 657.43             | 1982.17            |
+| 46   | 664.03             | 4.96               | 659.07             | 1323.10            |
+| 47   | 664.03             | 3.31               | 660.72             | 662.37             |
+| 48   | 664.03             | 1.66               | 662.37             | -0.00              |
+____________________________________________________________________________________________
+Length: 48
+
+
+Table 3:
+
+| Month| Installment        | Interest           | Amortization       | Remaining          |
+--------------------------------------------------------------------------------------------
+| 1    | 304.22             | 50.00              | 254.22             | 9745.78            |
+| 2    | 304.22             | 48.73              | 255.49             | 9490.29            |
+| 3    | 304.22             | 47.45              | 256.77             | 9233.52            |
+| 4    | 304.22             | 46.17              | 258.05             | 8975.47            |
+| 5    | 304.22             | 44.88              | 259.34             | 8716.13            |
+| 6    | 304.22             | 43.58              | 260.64             | 8455.49            |
+| 7    | 304.22             | 42.28              | 261.94             | 8193.55            |
+| 8    | 304.22             | 40.97              | 263.25             | 7930.30            |
+| 9    | 304.22             | 39.65              | 264.57             | 7665.73            |
+| 10   | 304.22             | 38.33              | 265.89             | 7399.84            |
+| 11   | 304.22             | 37.00              | 267.22             | 7132.62            |
+| 12   | 304.22             | 35.66              | 268.56             | 6864.06            |
+| 13   | 304.22             | 34.32              | 269.90             | 6594.16            |
+| 14   | 304.22             | 32.97              | 271.25             | 6322.91            |
+| 15   | 304.22             | 31.61              | 272.60             | 6050.31            |
+| 16   | 304.22             | 30.25              | 273.97             | 5776.34            |
+| 17   | 304.22             | 28.88              | 275.34             | 5501.00            |
+| 18   | 304.22             | 27.51              | 276.71             | 5224.29            |
+| 19   | 304.22             | 26.12              | 278.10             | 4946.19            |
+| 20   | 304.22             | 24.73              | 279.49             | 4666.70            |
+| 21   | 304.22             | 23.33              | 280.89             | 4385.82            |
+| 22   | 304.22             | 21.93              | 282.29             | 4103.53            |
+| 23   | 304.22             | 20.52              | 283.70             | 3819.82            |
+| 24   | 304.22             | 19.10              | 285.12             | 3534.70            |
+| 25   | 304.22             | 17.67              | 286.55             | 3248.16            |
+| 26   | 304.22             | 16.24              | 287.98             | 2960.18            |
+| 27   | 304.22             | 14.80              | 289.42             | 2670.76            |
+| 28   | 304.22             | 13.35              | 290.87             | 2379.90            |
+| 29   | 304.22             | 11.90              | 292.32             | 2087.58            |
+| 30   | 304.22             | 10.44              | 293.78             | 1793.79            |
+| 31   | 304.22             | 8.97               | 295.25             | 1498.54            |
+| 32   | 304.22             | 7.49               | 296.73             | 1201.82            |
+| 33   | 304.22             | 6.01               | 298.21             | 903.61             |
+| 34   | 304.22             | 4.52               | 299.70             | 603.91             |
+| 35   | 304.22             | 3.02               | 301.20             | 302.71             |
+| 36   | 304.22             | 1.51               | 302.71             | -0.00              |
+____________________________________________________________________________________________
+Length: 36
+
+
+Table 4:
+
+| Month| Installment        | Interest           | Amortization       | Remaining          |
+--------------------------------------------------------------------------------------------
+| 1    | -nan               | 0.00               | -nan               | -nan               |
+| 2    | -nan               | -nan               | -nan               | -nan               |
+| 3    | -nan               | -nan               | -nan               | -nan               |
+| 4    | -nan               | -nan               | -nan               | -nan               |
+| 5    | -nan               | -nan               | -nan               | -nan               |
+| 6    | -nan               | -nan               | -nan               | -nan               |
+| 7    | -nan               | -nan               | -nan               | -nan               |
+| 8    | -nan               | -nan               | -nan               | -nan               |
+| 9    | -nan               | -nan               | -nan               | -nan               |
+| 10   | -nan               | -nan               | -nan               | -nan               |
+| 11   | -nan               | -nan               | -nan               | -nan               |
+| 12   | -nan               | -nan               | -nan               | -nan               |
+____________________________________________________________________________________________
+Length: 12
+
+
+Table 5:
+
+| Month| Installment        | Interest           | Amortization       | Remaining          |
+--------------------------------------------------------------------------------------------
+| 1    | 26379.75           | 10000.00           | 16379.75           | 83620.25           |
+| 2    | 26379.75           | 8362.03            | 18017.72           | 65602.53           |
+| 3    | 26379.75           | 6560.25            | 19819.50           | 45783.03           |
+| 4    | 26379.75           | 4578.30            | 21801.44           | 23981.59           |
+| 5    | 26379.75           | 2398.16            | 23981.59           | 0.00               |
+____________________________________________________________________________________________
+Length: 5
+
+
+Table 6:
+
+  Got error: 2
+| Month| Installment        | Interest           | Amortization       | Remaining          |
+--------------------------------------------------------------------------------------------
+____________________________________________________________________________________________
+Length: 0
+
+
+Table 7:
+
+  Got error: 8
+| Month| Installment        | Interest           | Amortization       | Remaining          |
+--------------------------------------------------------------------------------------------
+____________________________________________________________________________________________
+Length: 0
+
+
+Table 8:
+
+  Got error: 4
+| Month| Installment        | Interest           | Amortization       | Remaining          |
+--------------------------------------------------------------------------------------------
+____________________________________________________________________________________________
+Length: 0
+
+
+Table 9:
+
+  Got error: 4
+| Month| Installment        | Interest           | Amortization       | Remaining          |
+--------------------------------------------------------------------------------------------
+____________________________________________________________________________________________
+Length: 0
+
+
+Table 10:
+
+  Got error: 10
+| Month| Installment        | Interest           | Amortization       | Remaining          |
+--------------------------------------------------------------------------------------------
+____________________________________________________________________________________________
+Length: 0
+
+
+Table 11:
+
+  Got error: 6
+| Month| Installment        | Interest           | Amortization       | Remaining          |
+--------------------------------------------------------------------------------------------
+____________________________________________________________________________________________
+Length: 0
+
+
+Table 12:
+
+  Got error: 12
+| Month| Installment        | Interest           | Amortization       | Remaining          |
+--------------------------------------------------------------------------------------------
+____________________________________________________________________________________________
+Length: 0
+
+
+Table 13:
+
+  Got error: 14
+| Month| Installment        | Interest           | Amortization       | Remaining          |
+--------------------------------------------------------------------------------------------
+____________________________________________________________________________________________
+Length: 0
+
+
+Tests have been finished.
+rm -f ./bin/main ./bin/interactive
