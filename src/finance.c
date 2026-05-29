@@ -1,7 +1,5 @@
 // NOTE: Ideally table functions would be on their own.
 //       But due to limitations of scope they are not.
-// TODO: Const to whatever isn't going to be changed on certain functions
-// TODO: NPV and IRR tests
 #include "finance.h"
 #include <math.h>
 #include <stdio.h>
@@ -155,15 +153,15 @@ double present_value(double fv, double rate, int periods) {
 }
 
 double net_present_value(double capital, const double *cash_flow_arr, double discount_rate, int periods) {
-    // Note: The formula here used is somewhat flexible, so there is less variables check in place.
-    // FIXME: Handle discount_rate = 0
+    // Note: The formula here used is somewhat flexible, so there is less need for variables checks.
     double total;
+
+    if (discount_rate == -1) return NAN;
 
     total = -capital;
 
-    for (int p = 0; p < periods; p++) {
+    for (int p = 0; p < periods; p++)
         total += cash_flow_arr[p]/pow(1 + discount_rate, p + 1);
-    }
 
     return total;
 }
@@ -171,8 +169,6 @@ double net_present_value(double capital, const double *cash_flow_arr, double dis
 double internal_rate_of_return(double capital, const double *cash_flow_arr, int periods, double start, double end, int max_iterations) {
     // NOTE: Assumes end >= start
     // This method may get stuck on local minima
-    // TODO: Maybe return "error" if not root is findable (Intermediate theorem?)
-    //       Return NAN then!
     // - Checks if there is convergence -
     // Convergence is checked using the direction of change, if it doesn't change, then it don't converges
     // This mean that values close to start and end might not be considered.
@@ -240,6 +236,7 @@ int generate_amortization_schedule(double principal, double monthly_rate, int mo
     // - Memory allocation --
     sched_table->row_array = malloc(months * sizeof(AmortizationRow));
     sched_table->length = months;
+    sched_table->type = SCHEDULE_TABLE;
 
     // - Values attributions -
     principal_due = principal;
@@ -271,17 +268,13 @@ int generate_amortization_schedule(double principal, double monthly_rate, int mo
 }
 
 AmortizationTable create_empty_schedule_table() {
-    // TODO: Look into alternatives to this mess
-    AmortizationTable sched_table;
-
-    sched_table.length = 0;
-    sched_table.row_array = NULL;
-
-    return sched_table;
+    return (AmortizationTable){.length = 0, .type = SCHEDULE_TABLE, .row_array = NULL};
 }
 
 AmortizationTable slice_amortization_table(const AmortizationTable* sched_origin, uint start, uint steps) {
     AmortizationTable sched_sliced;
+
+    sched_sliced.type = SCHEDULE_SLICE;
 
     // If uint underflows here the code will handle it, so it's "safe" to be used here.    
     int start_length = (start < sched_origin->length) ? start : sched_origin->length - 1;
@@ -312,6 +305,7 @@ int load_schedule(const char *file_path, const char *sep, AmortizationTable* sch
 
     sched_table->row_array = NULL;
     sched_table->length = 0;
+    sched_table->type = SCHEDULE_TABLE;
 
     sprintf(format_string,
         "%%d%s%%lf%s%%lf%s%%lf%s%%lf",
@@ -393,7 +387,9 @@ int save_schedule(AmortizationTable sched_table, const char *file_path, const ch
 
 void free_schedule_table(AmortizationTable *sched_table) {
     if (sched_table->row_array != NULL) {
-        free(sched_table->row_array);
+        
+        if (sched_table->type == SCHEDULE_TABLE) free(sched_table->row_array);
+
         sched_table->row_array = NULL;
     }
     sched_table->length = 0;

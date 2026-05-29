@@ -176,6 +176,7 @@ int choice_menu(double principal, double rate, int periods) {
                 double* cash_flow_arr = NULL;
                 double npv_value = 0.0f;
 
+                // Malloc here is slower, but keeps memory usage tight
                 cash_flow_arr = malloc(sizeof(double) * periods);
 
                 for (int p = 0; p < periods; p++) {

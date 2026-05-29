@@ -9,17 +9,14 @@ File for automated tests.
 
 int main()
 {
-    double principal = -1000;
-    double rate = -0.02;
-    int periods = 24;
-    double cash_flow_arr[24] = {1, 0, 300, 400, 500, 600, 700, 15, 17, 19, 21, 2100, 2101, 2102, 2103, 26, 27, 28, 29, 30, 17, 19, 21, 23};
-
-    AmortizationTable sched_table;
-    // TODO: Function to initialize schedule tables
     // NOTE: There is a bug that make intallmemnet show as 0.0 when it should be nan for rate = 0
     //       This bug was not fixed to show the slice function on the tests.
-    sched_table.row_array = NULL;
-    sched_table.length = 0;
+    double principal = 100000;
+    double rate = -1;
+    int periods = 5;
+    double cash_flow_arr[5] = {30000, 35000, 40000, 25000, 20000};
+
+    AmortizationTable sched_table = create_empty_schedule_table();
 
     // - Printing tests -
     printf("Compound interest: ");
@@ -48,7 +45,6 @@ int main()
     printf("  Absolute error of: \n");
     double npv_abs_error = net_present_value(principal, cash_flow_arr, irr, periods);
     printf("   %.9lf\n", npv_abs_error);
-    // exit(0);
     // - Auto tests -
     int _status; 
 

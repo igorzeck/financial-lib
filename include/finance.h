@@ -8,8 +8,6 @@ While, those of other types may print to stderr and return 0.0f.
 
 Before calling any function, one should check the variables.
 */
-// TODO: IRR
-// TODO: Use uint where periods should be positive?
 
 #include <sys/types.h>
 #define LINE_WIDTH 92
@@ -42,6 +40,11 @@ enum errors_code{
     FILE_NOT_CREATED=513,
 };
 
+enum table_type{
+    SCHEDULE_TABLE,
+    SCHEDULE_SLICE,
+};
+
 // -- Structs --
 // Structs declared here are meant to be visible for every caller
 
@@ -53,10 +56,10 @@ typedef struct {
     double remaining_balance;
 } AmortizationRow;
 
-// TODO: Maybe variable indicating if it is a slice or not?
 // Table of AmortizationRows.
 typedef struct {
     int length;
+    enum table_type type;
     AmortizationRow *row_array;
 } AmortizationTable;
 
@@ -82,8 +85,6 @@ void _print_schedule_row(AmortizationRow sched_row);
 void print_schedule_table(AmortizationTable sched_table);
 void head_schedule_table(AmortizationTable sched_table);
 void tail_schedule_table(AmortizationTable sched_table);
-
-// TODO: Maybe an aggregator between 3 functions?
 
 /*
 Check common asked variables
@@ -277,14 +278,22 @@ AmortizationTable slice_amortization_table(
 
     Needs to pass path and a field separator parameter.
 */
-int load_schedule(const char* file_path, const char* sep, AmortizationTable* sched_table);
+int load_schedule(
+    const char* file_path,
+    const char* sep,
+    AmortizationTable* sched_table
+);
 
 /*
     Saves table to CSV like file.
 
     Needs to pass path and a field separator parameter.
 */
-int save_schedule(AmortizationTable sched_table, const char* file_path, const char* sep);
+int save_schedule(
+    AmortizationTable sched_table,
+    const char* file_path,
+    const char* sep
+);
 
 /*
     Frees memory allocated by schedule_table. Should be called after

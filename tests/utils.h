@@ -8,11 +8,6 @@
 #include <stdlib.h>
 #include <sys/types.h>
 
-// TODO: Change iterations of malloc to realloc
-
-// Static so that it isn't included through multiple .c files
-// In case it's needed elsewhere
-
 /*
 Variable threshold is_close
 */
@@ -26,7 +21,7 @@ Prints comparison between two double (long-floats) values
 
 Returns 0 if comparison is exact, else another value.
 */
-static int printf_comparison(const char* comparison_str, double calc_value, double exp_value, double threshold) {
+int printf_comparison(const char* comparison_str, double calc_value, double exp_value, double threshold) {
     int b_comp;
 
     b_comp = is_close_threshold(calc_value, exp_value, threshold)
@@ -136,7 +131,7 @@ int financial_functions_comparison(double threshold_steps, double max_threshold_
             double _future_value             = future_value(principal, rate, periods);
             double _present_value            = present_value(future_value(principal, rate, periods), rate, periods);
             double _net_present_value        = net_present_value(principal, cash_flow_arr,rate, periods);
-            double _internal_rate_of_return  = internal_rate_of_return(principal, cash_flow_arr, periods, -2, 2.1, 32);
+            double _internal_rate_of_return  = internal_rate_of_return(principal, cash_flow_arr, periods, -2, 2.1, 24);
 
             // Expected values
             double _exp_simple_interest;
@@ -201,7 +196,10 @@ int financial_functions_comparison(double threshold_steps, double max_threshold_
     printf("\nReport:\n");
     printf("First fail at 1-e%d\n", first_fail_count);
     printf("Last perfect iteration at 1-e%d\n", last_perfect_count);
-    printf("Note: 'nan' aren't counted as a fail.\n");
+    printf(
+        "Note: 'nan' aren't counted as a fail.\n"
+        "Note: 'internal_rate_of_return' interval used was -2 to 2.1, with 32 iterations.\n"
+    );
 
     return NO_ERROR;
 }
