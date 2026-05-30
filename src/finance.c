@@ -79,7 +79,8 @@ void head_schedule_table(AmortizationTable sched_table) {
 
 void tail_schedule_table(AmortizationTable sched_table) {
     _print_schedule_header();
-    for (unsigned int _m = sched_table.length - 1; _m >= (sched_table.length - 5); _m--) {
+    unsigned int max_val = (sched_table.length >= 5)  ? (sched_table.length - 5) : sched_table.length;
+    for (unsigned int _m = sched_table.length - 1; _m >= max_val; _m--) {
         _print_schedule_row(sched_table.row_array[_m]);
     }
     printf("\n");
@@ -153,7 +154,8 @@ double present_value(double fv, double rate, int periods) {
 }
 
 double net_present_value(double capital, const double *cash_flow_arr, double discount_rate, int periods) {
-    double total = 0.0f;
+    double total = -capital;
+
     int _err = check_variables(capital, discount_rate, periods);
 
     // NOTE: This work here because the only values are those less than 16.
