@@ -160,7 +160,7 @@ double net_present_value(double capital, const double *cash_flow_arr, double dis
 
     // NOTE: This work here because the only values are those less than 16.
     //        However, a better system would need to be used in order to generalize this logic further.
-    if (NEG_PERIODS & _err) return NEG_PERIODS;
+    if (NEG_PERIODS & _err) return NAN;
 
     if (is_close(discount_rate, -1)) return NAN;
 
