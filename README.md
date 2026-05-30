@@ -19,7 +19,7 @@ The library has the following financial functions:
 9. Net Present Value (NPV);
 10. Internal Rate of Return (IRR);
 
-Those functions can be used upon inclusion from `include.h` header file. Some auxiliary functions are also included.
+Those functions can be used upon inclusion from `finance.h` header file. Some auxiliary functions are also included.
 
 ## Dependencies
 
@@ -137,9 +137,17 @@ The interactive test allows the input of values for the `principal`, `rate` and 
 
 If calculating the **NPV/IRR** is also necessary to supply a array of values, with the array size equaling to periods.
 
-**Interactive tests**: 
+**Interactive tests**:
+Run with:
+
+```shell
+make launch
+```
+
+If you wish, you can run the targets and executables separately, too:
+
 ```bash
-make interactive && ./app/interactive
+make interactive && ./bin/interactive
 ```
 
 or,
@@ -148,10 +156,9 @@ or,
 mingw32-make interactive; ./bin/interactive
 ```
 
-
 ## Makefile
 
-The Makefile uses gcc for it's compilation. Without flags:
+The Makefile uses gcc for it's compilation. But you can run them directly with:
 
 ```bash
 gcc -g examples/interactive.c src/finance.c src/interface.c -I./include -lm -o interactive
@@ -171,17 +178,23 @@ make clean
 
 to clean the output executables.
 
+Or, if you only want to run the `main` routine, do everything at once with a simple:
+
+```shell
+make
+```
+
 ## Sources and References
 
 Here are the major sources and references for the making of this project:
 
-**Basic C consultation**: https://beej.us/guide/bgclr/ (and others)
+**Basic C consultation**: https://beej.us/guide/bgclr/
 
 **Makefile tutorial**: https://makefiletutorial.com/
 
 **Basic financial formulae**: `INSTRUCTIONS.md`
 
-**Library structure**: https://github.com/curl/curl/blob/master/include/curl/curl.h (and others)
+**Library structure**: https://github.com/curl/curl/blob/master/include/curl/curl.h
 
 **Amortization**: https://www.investopedia.com/terms/a/amortization.asp
 

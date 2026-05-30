@@ -76,7 +76,7 @@ typedef struct {
 int is_close(double n1, double n2);
 
 /*
-currency_str: should be a NULL-TERMINATED currency stirng e.g. "USD" or "R$" and
+currency_str: should be a NULL-TERMINATED currency string e.g. "USD" or "R$" and
               maximum length should be 3.
 */
 int printf_currency(double value, const char* currency_str);
@@ -239,7 +239,7 @@ Principal balance (`principal_due`):
 
 `principal_due_yestermonth - monthly_principal_pay`
 
-This function allocate the necessary memory. If the called
+This function allocate the necessary memory. If the caller
 pass a filled table will return `TABLE_ALREADY_ALLOCATED` error.
 
 If you wish to use the same struct is advised that you free it before with
