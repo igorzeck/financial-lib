@@ -236,6 +236,8 @@ int generate_amortization_schedule(double principal, double monthly_rate, int mo
     sched_table->length = months;
     sched_table->type = SCHEDULE_TABLE;
 
+    if (sched_table->row_array == NULL) return MALLOC_FAILED;
+
     // - Values attributions -
     principal_due = principal;
     principal_due_yestermonth = principal_due;
@@ -311,6 +313,8 @@ int load_schedule(const char *file_path, const char *sep, AmortizationTable* sch
     n_rows = _count_file_lines(file_path);
     sched_table->row_array = malloc(n_rows * sizeof(AmortizationRow));
     sched_table->length = 0;
+
+    if (sched_table->row_array == NULL) return MALLOC_FAILED;
 
     // - File reading -
     fin = fopen(file_path, "r");

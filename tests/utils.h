@@ -45,13 +45,12 @@ static int printf_comparison(const char* comparison_str, double calc_value, doub
     Iterates through threshold to test when failure occurs.
 */
 static int financial_functions_comparison(double threshold_steps, double max_threshold_steps) {
-    // - Auto tests -
-    double principal = 0.0f;
-    double rate = 0.0f;
-    int periods = 0;
     char buffer_in[1024];
     char buffer_out[1024];
-
+    double principal = 0.0f;
+    double rate = 0.0f;
+    double* cash_flow_arr = NULL;
+    int periods = 0;
     int counter = 1;
 
     // Threshold goes from "threshold_steps" to "max_threshold_steps"
@@ -67,7 +66,6 @@ static int financial_functions_comparison(double threshold_steps, double max_thr
         FILE *file_in = fopen("tests/in.txt", "r");
         FILE *file_out = fopen("tests/out.txt", "r");
         int line_counter = 0;
-        double* cash_flow_arr = NULL;
         int max_cash_arr_size = 0;
 
         if (file_in == NULL || file_out == NULL) {
@@ -104,6 +102,8 @@ static int financial_functions_comparison(double threshold_steps, double max_thr
                 if (periods > max_cash_arr_size) {
                     cash_flow_arr = realloc(cash_flow_arr, periods * sizeof(double));
                     max_cash_arr_size = periods;
+
+                    if (cash_flow_arr == NULL) return REALLOC_FAILED;
                 }
             }
 
@@ -189,8 +189,6 @@ static int financial_functions_comparison(double threshold_steps, double max_thr
         fclose(file_in);
         fclose(file_out);
 
-        free(cash_flow_arr);
-
     } while(threshold_steps > max_threshold_steps);
 
     // Report:
@@ -201,6 +199,8 @@ static int financial_functions_comparison(double threshold_steps, double max_thr
         "Note: 'nan' aren't counted as a fail.\n"
         "Note: 'internal_rate_of_return' interval used was -2 to 2.1, with 32 iterations.\n"
     );
+    
+    if(cash_flow_arr != NULL) free(cash_flow_arr);
 
     return NO_ERROR;
 }

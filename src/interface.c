@@ -180,6 +180,8 @@ int choice_menu(double principal, double rate, int periods) {
                 // Malloc here is slower, but keeps memory usage tight
                 cash_flow_arr = malloc(sizeof(double) * periods);
 
+                if (cash_flow_arr == NULL) return MALLOC_FAILED;
+
                 for (int p = 0; p < periods; p++) {
                     printf("Period %d: ", p + 1);
                     double curr_value = 0.0f;

@@ -21,6 +21,9 @@ ERRORS enum type
 NOTE: Some liberties were taken to emulate a binary mask on a enum.
 */
 enum errors_code{
+    // C related errors
+    REALLOC_FAILED=-3,
+    MALLOC_FAILED=-2,
     // Value errors
     NO_ERROR=0,
     NEG_PRINCIPAL=2,
@@ -34,7 +37,7 @@ enum errors_code{
     VALUE_IS_INVALID=65,
     VALUE_TYPE_NOT_FOUND=66,
     CURRENCY_CODE_IS_TOO_LONG=128,
-    TABLE_ALREADY_ALLOCATED=256, // Remove this error?
+    TABLE_ALREADY_ALLOCATED=256,
     TABLE_MISSING_COLUMNS=257,
     FILE_NOT_OPENED=512,
     FILE_NOT_CREATED=513,
