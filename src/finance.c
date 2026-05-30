@@ -79,6 +79,7 @@ void head_schedule_table(AmortizationTable sched_table) {
 
 void tail_schedule_table(AmortizationTable sched_table) {
     _print_schedule_header();
+    if (sched_table.length == 0) return;
     unsigned int max_val = (sched_table.length >= 5)  ? (sched_table.length - 5) : sched_table.length;
     for (unsigned int _m = sched_table.length - 1; _m >= max_val; _m--) {
         _print_schedule_row(sched_table.row_array[_m]);
