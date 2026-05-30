@@ -161,7 +161,7 @@ int choice_menu(double principal, double rate, int periods) {
             case 8:
                 printf("\nFor a period of %d months:\n\n", periods);
 
-                AmortizationTable _sched_table;
+                AmortizationTable _sched_table = create_empty_schedule_table();
 
                 generate_amortization_schedule(principal, rate, periods, &_sched_table);
 

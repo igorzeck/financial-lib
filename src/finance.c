@@ -280,7 +280,7 @@ AmortizationTable slice_amortization_table(const AmortizationTable* sched_origin
 
     sched_sliced.length = steps_length;
     if (steps_length > 0) {
-        sched_sliced.row_array = sched_origin->row_array + (start_length + (steps_length - 1));
+        sched_sliced.row_array = sched_origin->row_array + start_length;
     } else {
         sched_sliced.row_array = NULL;
     }

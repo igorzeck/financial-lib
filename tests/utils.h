@@ -11,7 +11,7 @@
 /*
 Variable threshold is_close
 */
-int is_close_threshold(double n1, double n2, double threshold) {
+static int is_close_threshold(double n1, double n2, double threshold) {
     return(fabs(n1 - n2) < threshold) ||
                    (isnan(n1) && isnan(n2));
 }
@@ -21,7 +21,7 @@ Prints comparison between two double (long-floats) values
 
 Returns 0 if comparison is exact, else another value.
 */
-int printf_comparison(const char* comparison_str, double calc_value, double exp_value, double threshold) {
+static int printf_comparison(const char* comparison_str, double calc_value, double exp_value, double threshold) {
     int b_comp;
 
     b_comp = is_close_threshold(calc_value, exp_value, threshold)
@@ -44,7 +44,7 @@ int printf_comparison(const char* comparison_str, double calc_value, double exp_
 
     Iterates through threshold to test when failure occurs.
 */
-int financial_functions_comparison(double threshold_steps, double max_threshold_steps) {
+static int financial_functions_comparison(double threshold_steps, double max_threshold_steps) {
     // - Auto tests -
     double principal = 0.0f;
     double rate = 0.0f;
@@ -212,7 +212,7 @@ int financial_functions_comparison(double threshold_steps, double max_threshold_
 
     This also works as a usage example of the `load_csv_schedule` function.
 */
-void amortization_comparison() {
+static void amortization_comparison() {
     char buf[1024];
     char curr_file_path[64];
     int curr_line = 1;
@@ -278,9 +278,7 @@ void amortization_comparison() {
             
         if (_cmp != 1) {
                 printf("   Difference on line: %d\n", _i + 1);
-                AmortizationTable _sliced_table;
-
-                _sliced_table = create_empty_schedule_table();
+                AmortizationTable _sliced_table = create_empty_schedule_table();
 
                 // Instead of printing the whole row, here prints a slice
                 // The row printing function is internal, therefore, shouldn't be used here
