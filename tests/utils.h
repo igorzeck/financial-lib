@@ -109,17 +109,17 @@ static int financial_functions_comparison(double threshold_steps, double max_thr
 
             // Fills cash flow array
             char *ptr = buffer_in + _chars_read;
-            char *end;
+            char *end_buf;
             int i = 0;
 
             while (*ptr != '\0') {
-                double value = strtod(ptr, &end);
+                double value = strtod(ptr, &end_buf);
 
-                if (ptr == end) break;
+                if (ptr == end_buf) break;
 
                 cash_flow_arr[i++] = value;
                 
-                ptr = end;
+                ptr = end_buf;
             }
 
             // Attributions

@@ -153,12 +153,14 @@ double present_value(double fv, double rate, int periods) {
 }
 
 double net_present_value(double capital, const double *cash_flow_arr, double discount_rate, int periods) {
-    // Note: The formula here used is somewhat flexible, so there is less need for variables checks.
-    double total;
+    double total = 0.0f;
+    int _err = check_variables(capital, discount_rate, periods);
 
-    if (discount_rate == -1) return NAN;
+    // NOTE: This work here because the only values are those less than 16.
+    //        However, a better system would need to be used in order to generalize this logic further.
+    if (NEG_PERIODS & _err) return NEG_PERIODS;
 
-    total = -capital;
+    if (is_close(discount_rate, -1)) return NAN;
 
     for (int p = 0; p < periods; p++)
         total += cash_flow_arr[p]/pow(1 + discount_rate, p + 1);
@@ -166,12 +168,12 @@ double net_present_value(double capital, const double *cash_flow_arr, double dis
     return total;
 }
 
-double internal_rate_of_return(double capital, const double *cash_flow_arr, int periods, double start, double end, int max_iterations) {
-    // NOTE: Assumes end >= start
+double internal_rate_of_return(double capital, const double *cash_flow_arr, int periods, double start, double finish, int max_iterations) {
+    // NOTE: Assumes finish >= start
     // This method may get stuck on local minima
     // - Checks if there is convergence -
     // Convergence is checked using the direction of change, if it doesn't change, then it don't converges
-    // This mean that values close to start and end might not be considered.
+    // This mean that values close to start and finish might not be considered.
     // Alternatively would be to use the Intermediate Value Theorem for polynomials,
     // However, it might return no root in interval even if there is some for certain polynomials.
     // Note: There are some bug with some values not converging.
@@ -183,8 +185,8 @@ double internal_rate_of_return(double capital, const double *cash_flow_arr, int 
     int curr_direction = 0; // > (-1) and < (1)
     int b_direction_changed = 0;
 
-    curr_rate = (end + start) / 2;
-    rate_step = (end - start) / 2;
+    curr_rate = (finish + start) / 2;
+    rate_step = (finish - start) / 2;
 
     for (int i = 0; i < max_iterations; i++) {
         int old_curr_direction = curr_direction;
@@ -205,7 +207,11 @@ double internal_rate_of_return(double capital, const double *cash_flow_arr, int 
 
         if ((old_curr_direction != 0) && (old_curr_direction != curr_direction)) b_direction_changed = 1;
         
-        if (is_close(npv, 0)) break;
+        if (is_close(npv, 0)) {
+            // In case the root is close enough, acts as if direction changed
+            b_direction_changed = 1;
+            break;
+        }
     }
 
     if (!b_direction_changed) return NAN;
