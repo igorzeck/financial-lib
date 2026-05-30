@@ -49,16 +49,16 @@ enum table_type{
 // Structs declared here are meant to be visible for every caller
 
 typedef struct {
-    int month;
+    unsigned int month;
     double installment;
     double interest;
     double amortization;
     double remaining_balance;
 } AmortizationRow;
 
-// Table of AmortizationRows.
+// Table of AmortizationRows
 typedef struct {
-    int length;
+    unsigned int length;
     enum table_type type;
     AmortizationRow *row_array;
 } AmortizationTable;
@@ -269,8 +269,8 @@ AmortizationTable create_empty_schedule_table();
 */
 AmortizationTable slice_amortization_table(
     const AmortizationTable* sched_origin,
-    uint start,
-    uint steps
+    unsigned int start,
+    unsigned int steps
 );
 
 /*

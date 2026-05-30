@@ -63,7 +63,7 @@ void _print_schedule_footer(int table_length) {
 
 void print_schedule_table(AmortizationTable sched_table) {    
     _print_schedule_header();
-    for (int _m = 0; _m < sched_table.length; _m++) {
+    for (unsigned int _m = 0; _m < sched_table.length; _m++) {
         _print_schedule_row(sched_table.row_array[_m]);
     }
     _print_schedule_footer(sched_table.length);
@@ -71,7 +71,7 @@ void print_schedule_table(AmortizationTable sched_table) {
 
 void head_schedule_table(AmortizationTable sched_table) {
     _print_schedule_header();
-    for (int _m = 0; (_m < 5) && (_m < sched_table.length); _m++) {
+    for (unsigned int _m = 0; (_m < 5) && (_m < sched_table.length); _m++) {
         _print_schedule_row(sched_table.row_array[_m]);
     }
     printf("\n");
@@ -79,7 +79,7 @@ void head_schedule_table(AmortizationTable sched_table) {
 
 void tail_schedule_table(AmortizationTable sched_table) {
     _print_schedule_header();
-    for (int _m = sched_table.length - 1; (_m >= 0) && (_m >= (sched_table.length - 5)); _m--) {
+    for (unsigned int _m = sched_table.length - 1; _m >= (sched_table.length - 5); _m--) {
         _print_schedule_row(sched_table.row_array[_m]);
     }
     printf("\n");
@@ -269,7 +269,7 @@ AmortizationTable create_empty_schedule_table() {
     return (AmortizationTable){.length = 0, .type = SCHEDULE_TABLE, .row_array = NULL};
 }
 
-AmortizationTable slice_amortization_table(const AmortizationTable* sched_origin, uint start, uint steps) {
+AmortizationTable slice_amortization_table(const AmortizationTable* sched_origin, unsigned int start, unsigned int steps) {
     AmortizationTable sched_sliced;
 
     sched_sliced.type = SCHEDULE_SLICE;
@@ -296,8 +296,6 @@ int load_schedule(const char *file_path, const char *sep, AmortizationTable* sch
     int i_row = 0;
     FILE *fin;
 
-    if (fin == NULL) return FILE_NOT_OPENED;
-
     // - Preparations -
     if (sched_table->length != 0) return TABLE_ALREADY_ALLOCATED;
 
@@ -316,6 +314,8 @@ int load_schedule(const char *file_path, const char *sep, AmortizationTable* sch
 
     // - File reading -
     fin = fopen(file_path, "r");
+
+    if (fin == NULL) return FILE_NOT_OPENED;
 
     while (fgets(buf, sizeof(buf), fin) != NULL) {
         int _n_read;
@@ -371,7 +371,7 @@ int save_schedule(AmortizationTable sched_table, const char *file_path, const ch
         "%%d%s%%lf%s%%lf%s%%lf%s%%lf\n",
         sep, sep, sep, sep);
 
-    for (int l = 0; l < sched_table.length; l++) fprintf(
+    for (unsigned int l = 0; l < sched_table.length; l++) fprintf(
         fout,
         format_string,
         sched_table.row_array[l].month,

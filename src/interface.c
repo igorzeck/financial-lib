@@ -3,12 +3,12 @@
 #include <stdlib.h>
 #include <string.h>
 
-int get_type_input(char* buffer, void* variable, const char* type) {
+int get_type_input(char* buffer, void* variable, const char* type, int buffer_size) {
     char* _status;
     int _result = -2;
 
     // This is made to limit input size (which scanf can't do)
-    _status = fgets(buffer, sizeof(buffer), stdin);
+    _status = fgets(buffer, buffer_size, stdin);
 
     if (_status == NULL) return VALUE_NOT_FOUND;
 
@@ -37,7 +37,7 @@ int input_menu(double *ptr_principal, double *ptr_rate, int *ptr_periods)
             while(1) {
                 printf("Principal: ");
                 
-                _result = get_type_input(user_input, ptr_principal, "lf");
+                _result = get_type_input(user_input, ptr_principal, "lf", 32);
 
                 if (_result == NO_ERROR) break; else return _result;
             }
@@ -46,7 +46,7 @@ int input_menu(double *ptr_principal, double *ptr_rate, int *ptr_periods)
             {
                 printf("Rate: ");
                 
-                _result = get_type_input(user_input, ptr_rate, "lf");
+                _result = get_type_input(user_input, ptr_rate, "lf", 32);
 
                 if (_result == NO_ERROR) break; else return _result;
             }
@@ -55,7 +55,7 @@ int input_menu(double *ptr_principal, double *ptr_rate, int *ptr_periods)
             {
                 printf("Periods: ");
                 
-                _result = get_type_input(user_input, ptr_periods, "d");
+                _result = get_type_input(user_input, ptr_periods, "d", 32);
 
                 if (_result == NO_ERROR) break; else return _result;
             }
@@ -71,7 +71,7 @@ int input_menu(double *ptr_principal, double *ptr_rate, int *ptr_periods)
         printf("\n");
         printf("\nConfirm \n1. Yes \n0. No:\nOption: ");
 
-        _result = get_type_input(user_input, &b_exit_input, "d");
+        _result = get_type_input(user_input, &b_exit_input, "d", 32);
 
         if (_result != NO_ERROR) return _result;
     } while(!b_exit_input);
@@ -105,7 +105,7 @@ int choice_menu(double principal, double rate, int periods) {
 
         printf("Option: ");
 
-        _result = get_type_input(user_input, &option, "d");
+        _result = get_type_input(user_input, &option, "d", 32);
 
         // Error validation
         if (_result == VALUE_NOT_FOUND) {
@@ -184,7 +184,7 @@ int choice_menu(double principal, double rate, int periods) {
                     printf("Period %d: ", p + 1);
                     double curr_value = 0.0f;
 
-                    get_type_input(user_input, &curr_value, "lf");
+                    get_type_input(user_input, &curr_value, "lf", 256);
 
                     cash_flow_arr[p] = curr_value;
                 }
@@ -221,4 +221,6 @@ int choice_menu(double principal, double rate, int periods) {
 
         printf("\n");
     }
+
+    return NO_ERROR;
 }

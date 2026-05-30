@@ -1,11 +1,10 @@
 # - Flags -
 CC = gcc
-CFLAGS = -g
+CFLAGS = -g -Wall -Wextra
 # -lm includes the math library
 INC_FLAGS := -I./include -lm
 BIN_DIR := ./bin/
 TARGETS := main interactive
-
 
 # - Variables -
 # Conditional deletion command based on OS type
@@ -19,6 +18,7 @@ endif
 
 # - Targets -
 # NOTE: For clarity the files name are explicitly set. May change in the future.
+.PHONY: all main interactive test launch clean
 
 # Cannon test is on 'main' target
 all: main test clean
