@@ -204,6 +204,8 @@ Here are the major sources and references for the making of this project:
 
 **Net Present Value Libre Office Calc use**: https://help.libreoffice.org/latest/en-US/text/scalc/01/04060103.html?&DbPAR=SHARED&System=UNIX#bm_id3153948
 
+**Newton-Raphson algorithm**: https://web.mit.edu/10.001/Web/Course_Notes/NLAE/node6.html
+
 ## Acknowledgments of AI
 
 AI was used in the making of this library as an evaluation and consultation tool. No code was generated directly and injected directly onto this project. However, the author concede that during the making of this project some code may have being generate directly (via ChatBots) and indirectly (via AI search engine functionalities), though it's usage and implementation was human-made.
