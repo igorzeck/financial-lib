@@ -131,7 +131,11 @@ static int financial_functions_comparison(double threshold_steps, double max_thr
             double _future_value             = future_value(principal, rate, periods);
             double _present_value            = present_value(future_value(principal, rate, periods), rate, periods);
             double _net_present_value        = net_present_value(principal, cash_flow_arr,rate, periods);
-            double _internal_rate_of_return  = internal_rate_of_return(principal, cash_flow_arr, periods, -2, 2.1, 24);
+            double _internal_rate_of_return  = internal_rate_of_return(principal, cash_flow_arr, periods, 0.1, 12);
+
+            // Fallback to binary search
+            if (isinf(_internal_rate_of_return))
+                _internal_rate_of_return = irr_binary_search(principal, cash_flow_arr, periods, -2, 2.1, 32);
 
             // Expected values
             double _exp_simple_interest;
@@ -197,7 +201,8 @@ static int financial_functions_comparison(double threshold_steps, double max_thr
     printf("Last perfect iteration at 1-e%d\n", last_perfect_count);
     printf(
         "Note: 'nan' aren't counted as a fail.\n"
-        "Note: 'internal_rate_of_return' interval used was -2 to 2.1, with 32 iterations.\n"
+        "Note: 'internal_rate_of_return' guess used was 0.1, with 12 iterations.\n"
+        "      'irr_binary_search' interval used was -2 to 2.1, with 32 iterations.\n"
     );
     
     if(cash_flow_arr != NULL) free(cash_flow_arr);

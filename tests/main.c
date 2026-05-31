@@ -12,8 +12,8 @@ int main()
     // NOTE: There is a bug that make intallmemnet show as 0.0 when it should be nan for rate = 0
     //       This bug was not fixed to show the slice function on the tests.
     // - Auto tests -
-    int _status; 
-
+    int _status = NO_ERROR;
+    
     // Tests from 1e0 to 1e-13
     _status = financial_functions_comparison(1.0, THRESHOLD * 1e-5);
     

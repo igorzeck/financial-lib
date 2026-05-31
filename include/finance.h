@@ -200,6 +200,30 @@ double net_present_value(
 );
 
 /*
+    Uses Newton-Raphson algorithm to guess optimal IRR.
+
+    Needs a guess value to start guessing from.
+
+    x_j = discount rate on iteration j
+
+    f(x_(j-1)) = NPV for x_(j-1)
+
+    f'(x_(j-1)) = dNPV for x_(j-1)
+
+    Return: best(x_j) for x_j = x_(j-1) - f(x_(j-1)) / f'(x_(j-1))
+            0 < j < max_iterations
+*/
+double internal_rate_of_return(
+    double capital,
+    const double* cash_flow_arr,
+    int periods,
+    double discount_rate_guess,
+    int max_iterations
+);
+
+/*
+    NOTE: Legacy function.
+
     Guesses best internal rate of return.
 
     Tries to split max_iterations times to find root for the `net_present_value`.
@@ -212,7 +236,7 @@ double net_present_value(
 
     WARNING: The arithmetic mean of start and finish shouldn't equal zero. Otherwise, it might return NAN.
 */
-double internal_rate_of_return(
+double irr_binary_search(
     double capital,
     const double* cash_flow_arr,
     int periods,

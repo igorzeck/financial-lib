@@ -5,10 +5,10 @@
 50000	150000	161051	61051.0000000001	26379.7480794745	161051	100000	15744.701988811	0.163756583486719
 nan	nan	nan	nan	nan	nan	nan	979.057658177986	0.007988242902992
 nan	nan	nan	nan	nan	nan	nan	-526.674118464198	-0.0389014485817626
-nan	nan	nan	nan	nan	nan	nan	-20000	nan
-nan	nan	nan	nan	nan	nan	nan	-20	nan
+nan	nan	nan	nan	nan	nan	nan	nan	nan
+nan	nan	nan	nan	nan	nan	nan	nan	nan
 nan	nan	nan	nan	nan	nan	nan	15250.5817612929	-1.62542520668528
-nan	nan	nan	nan	nan	nan	nan	1000	nan
-nan	nan	nan	nan	nan	nan	nan	-3000	nan
-nan	nan	nan	nan	nan	nan	nan	1000	nan
+nan	nan	nan	nan	nan	nan	nan	nan	nan
+nan	nan	nan	nan	nan	nan	nan	nan	nan
+nan	nan	nan	nan	nan	nan	nan	nan	nan
 nan	nan	nan	nan	nan	nan	nan	nan	0.163756583486719

@@ -171,7 +171,46 @@ double net_present_value(double capital, const double *cash_flow_arr, double dis
     return total;
 }
 
-double internal_rate_of_return(double capital, const double *cash_flow_arr, int periods, double start, double finish, int max_iterations) {
+// TODO: Move out of here
+/*
+    Gets the derivative of the NPV:
+
+    rate: (1 + discount_rate)
+
+    Return: sum((cash_flow_arr[i] * ln(rate) * rate ^ (periods))
+*/
+double _d_net_present_value(const double *cash_flow_arr, double discount_rate, int periods) {
+    double derivative = 0.0f;
+
+    for (int i = 1; i < (periods + 1); i++) {
+        derivative -= ((i * cash_flow_arr[i - 1]) / (pow((1 + discount_rate), (i + 1))));
+    }
+
+    return derivative;
+}
+
+double internal_rate_of_return(double capital, const double *cash_flow_arr, int periods, double discount_rate_guess, int max_iterations) {
+    // Note: Focus was on readability, not on performance.
+    double npv = 0.0f;
+    double _d_npv = 1.0f;
+
+    double curr_rate_guess = discount_rate_guess;
+
+    for (int i = 0; i < max_iterations; i++) {
+        npv = net_present_value(capital, cash_flow_arr, curr_rate_guess, periods);
+        _d_npv = _d_net_present_value(cash_flow_arr, curr_rate_guess, periods);
+
+        // printf("ITER: %d\nNPV: %lf dNPV: %lf\n", (i + 1), npv, _d_npv);
+        curr_rate_guess = curr_rate_guess - (npv / _d_npv);
+        // printf("New rate: %.12lf\n", curr_rate_guess);
+
+        if (is_close(npv, 0)) break;
+    }
+
+    return curr_rate_guess;
+}
+
+double irr_binary_search(double capital, const double *cash_flow_arr, int periods, double start, double finish, int max_iterations) {
     // NOTE: Assumes finish >= start
     // This method may get stuck on local minima
     // - Checks if there is convergence -

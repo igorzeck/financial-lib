@@ -1,7 +1,8 @@
-#include <stdio.h>
-#include "finance.h"
-#include <stdlib.h>
 #include <string.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+#include "finance.h"
 
 int get_type_input(char* buffer, void* variable, const char* type, int buffer_size) {
     char* _status;
@@ -198,7 +199,10 @@ int choice_menu(double principal, double rate, int periods) {
 
                 printf("\n");
                 
-                irr_value = internal_rate_of_return(principal, cash_flow_arr, periods, -2.0, 2.1, 28);
+                irr_value = internal_rate_of_return(principal, cash_flow_arr, periods, 0.1, 12);
+                
+                if (isinf(irr_value))
+                    irr_value = irr_binary_search(principal, cash_flow_arr, periods, -2, 2.1, 32);
                 
                 printf("IRR: %.3lf", irr_value);
 
@@ -209,7 +213,6 @@ int choice_menu(double principal, double rate, int periods) {
             case 10:
                 _result = input_menu(&principal, &rate, &periods);
                 
-
                 if (_result != NO_ERROR) {
                     printf("Error %d\n", _result);
                     exit(_result);
